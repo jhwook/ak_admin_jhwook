@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import LogoNav from "../../assets/icons/unnamed copy 2.svg"
 export const Navbar = () => {
   return (
     <Container>
+      <Logo src={LogoNav}/>
       <a href='#' className='navLogo' >
         AK Friends
     </a>
@@ -31,5 +33,10 @@ margin-left: 17px;
   text-decoration: none;
   color: #FFFFFF;
 }
+
+
+`
+const Logo = styled.img`
+
 `
 export default Navbar
