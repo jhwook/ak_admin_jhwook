@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 import styled from "styled-components";
-import { sidebar } from "../../cssFonts/Sidebar";
+import { sidebar } from "../../sidebar_data/sidebar_routes";
 export const Sidebar = () => {
   return (
     <Container>

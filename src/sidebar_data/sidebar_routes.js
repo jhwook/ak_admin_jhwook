@@ -14,6 +14,7 @@ import Nft from "../assets/icons/Nft.svg";
 import setting from "../assets/icons/setting.svg";
 import section from "../assets/icons/section.svg";
 import Generic from "../pages/Generec";
+import Home from "../Components/Home/home";
 
 export const sidebar = [
   {
@@ -22,7 +23,7 @@ export const sidebar = [
     path: "/일반",
     Icon: ilban,
     Img: section,
-    Component: Generic,
+    Component: Home,
     hidden: false,
   },
   {

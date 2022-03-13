@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./Components/Home/home";
-// import About from "./About";
+// import Home from "./Components/Home/home";
+import { sidebar } from "./sidebar_data/sidebar_routes";
 
 const Routers = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      {/* <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> */}
+      {sidebar.map((item, index) => {
+        return (
+          <Route key={index} path={item.path} element={<item.Component />} />
+        );
+      })}
     </Routes>
   );
 };
