@@ -10,7 +10,7 @@ export const sidebar = [
   {
     id: 1,
     title: "일반",
-    path: "/main",
+    path: "/",
     Icon: ilban,
     Img: section,
     hidden: false,
