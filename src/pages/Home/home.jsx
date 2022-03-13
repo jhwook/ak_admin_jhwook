@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Demo from "../AK Friends";
-import DenseTable from "../AKG";
+import Demo from "../../Components/AK Friends";
+import DenseTable from "../../Components/AKG";
 
 export const Home = () => {
   return (

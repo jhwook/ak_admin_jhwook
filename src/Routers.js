@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-// import Home from "./Components/Home/home";
-import { sidebar } from "./sidebar_data/sidebar_routes";
+import Home from "./pages/Home/home";
 
 const Routers = () => {
   return (
     <Routes>
-      {sidebar.map((item, index) => {
-        return (
-          <Route key={index} path={item.path} element={<item.Component />} />
-        );
-      })}
+      <Route path="/main" element={<Home />} />
+      <Route path="/members" element={<Home />} />
+      <Route path="/token_management" element={<Home />} />
+      <Route path="/asset_management" element={<Home />} />
+      <Route path="/nft_management" element={<Home />} />
+      <Route path="/settings" element={<Home />} />
     </Routes>
   );
 };

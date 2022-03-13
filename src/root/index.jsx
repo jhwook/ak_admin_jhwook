@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import Navbar from "../Components/Home/navbar";
+import Dashboard from "../pages/dashboard/Dashboard";
+import Navbar from "../pages/Home/navbar";
 import Routers from "../Routers";
 
 export const Root = () => {
@@ -9,7 +9,7 @@ export const Root = () => {
     <Container>
       <Navbar />
       <MainContent>
-        <Sidebar />
+        <Dashboard />
         <Routers />
       </MainContent>
     </Container>
