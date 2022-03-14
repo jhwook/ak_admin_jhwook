@@ -28,6 +28,7 @@ export const sidebar = [
     
     ]
   },
+  
   {
     id: 2,
     title: "회원관리",

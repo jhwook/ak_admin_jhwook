@@ -1,50 +1,63 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ListItem } from "@mui/material";
 import { ListItemText } from "@mui/material";
-import up_arrow_icon from "../../assets/icons/up-arrow-icon.svg"
+import up_arrow_icon from "../../assets/icons/up-arrow-icon.svg";
 import styled from "styled-components";
 import { sidebar } from "../../sidebar_data/sidebar_routes";
 
-
-export const Sidebar = ({title,Ilban, Section, ChildItems}) => {
-
-  const [open, SetOpen]= useState(false)
-  const onClick = ()=>{
-    SetOpen((open) => !open)
-  }
+export const Sidebar = ({ title, Ilban, Section, ChildItems }) => {
+  const [open, SetOpen] = useState(false);
+  const onClick = () => {
+    SetOpen((open) => !open);
+  };
   return (
     <Container>
       <Card>
-        <ListItem onClick={onClick} sx={{
-          display: "flex",
-          justifyContent: "space-between"
-        }} button >
-          <div style={{
-            display: 'flex'
-          }}>
-<img style={{marginLeft:'6px'}} src={Ilban} alt='ilban' />
-<ListItemText sx={{marginLEft: '1.5rem'}} primary={"vaxa"} />
+        <ListItem
+          onClick={onClick}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+          button
+        >
+          <div
+            style={{
+              display: "flex",
+            }}
+          >
+            <img
+              style={{ marginLeft: "6px" }}
+              src={up_arrow_icon}
+              alt="ilban"
+            />
+            <ListItemText sx={{ marginLEft: "1.5rem" }} primary={"vaxa"} />
           </div>
           <div>
-            <img src={open ? Section : Ilban} alt='section' />
+            <img src={open ? up_arrow_icon : up_arrow_icon} alt="section" />
           </div>
         </ListItem>
-{
-  open && sidebar.map((item)=>(
-    <Link to={item.path}>
-    <ListItem key={'index'} sx={{display: 'flex', justifyContent:'space-between'}}button  >
-<div style={{display:'flex'}}>
-  <ListItemText sx={{
-    marginLeft:"4.5rem",
-    color:"red",
-
-  }} primary={item.title}/>
-  </div>
-    </ListItem>
-    </Link>
-  ))
-}
+        {open &&
+          sidebar.map((item) => (
+            <Link to={item.path}>
+              <ListItem
+                key={"index"}
+                sx={{ display: "flex", justifyContent: "space-between" }}
+                button
+              >
+                <div style={{ display: "flex" }}>
+                  <ListItemText
+                    sx={{
+                      marginLeft: "4.5rem",
+                      color: "red",
+                    }}
+                    primary={item.title}
+                  />
+                </div>
+              </ListItem>
+            </Link>
+          ))}
         {/* {sidebar.map((item) => (
           <Link key={item.id} to={item.path}>
             {item.title}
