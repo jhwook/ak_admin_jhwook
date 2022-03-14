@@ -26,7 +26,7 @@ const columns = [
 
   {
     id: 'item',
-    label: 'Item수',
+    label: 'Item 수',
     format: (value) => value.toFixed(2),
   },
 
@@ -56,21 +56,21 @@ function createData(name, code, population, size,walet,  item, akd, akg,userstat
 }
 
 const rows = [
-  createData('1', "0x8..F7F8 ",'@ioimmoj', "40.169 USDT", "409.169 ßUSDT","22","333","44","4r","55"),
-  createData('2', "0q8.e.F7F8 ",'@ioimmojwwqwf', "49.169 USDT", "409.169 ßUSwwwDT", "22","333","44","4r","55"),
-  createData('3', "0a8.e.F7F8 ",'@ioimmoawj', "4029.169 USDT", "409.169 ßUSDqweT", "22","333","44","4r","55"),   
-  createData('4', "0d8.f..F7F8 ",'@ioimmodwj', "4039.169 USDT", "409.169 ßUSDqqT", "22","333","44","4r","55"),    
-  createData('5', "0f8..gg.F7F8 ",'@ioimmodwj', "4029.169 USDT", "409.169 ßUSwwDT", "22","333","44","4r","55"),   
-  createData('6', "0g8...ffF7F8 ",'@ioimmowdj', "4091.169 USDT", "409.169 ßUSwDT", "22","333","44","4r","55"),   
-  createData('7', "0g8...sdF7F8 ",'@ioimmojwaw', "4019.169 USDT", "409.169 ßUeerewSDT", "22","333","44","4r","55"),  
-  createData('8', "0r8...sadF7F8 ",'@ioimmoj', "4029.169 USDT", "409.169 ßUSqwDT", "22","333","44","4r","55"),   
-  createData('9', "0w8...asF7F8 ",'@ioimmoasj', "40239.169 USDT", "409.169 ßUSqwDT", "22","333","44","4r","55"),   
-  createData('10', "0h8...scaF7F8 ",'@ioimmojs', "409444.169 USDT", "409.169 ßUqwSDT", "22","333","44","4r","55"),   
-  createData('11', "0f8...cdsF7F8 ",'@ioimmojwd', "4094.169 USDT", "409.169 ßUqwSDT", "22","333","44","4r","55"),   
-  createData('12', "0h8...dcsF7F8 ",'@ioimmssqoj', "4095.169 USDT", "409.169 wqßUSDT", "22","333","44","4r","55"),    
-  createData('13', "0v8...dcF7F8 ",'@ioimmesoj', "409.1669 USDT", "409.169 ßUqwSDT", "22","333","44","4r","55"),   
-  createData('14', "0z8...dcsF7F8 ",'@ioimemoj', "409.1691 USDT", "409.169 ßUSDT", "22","333","44","4r","55"),   
-  createData('15', "0n8...dcscsF7F8 ",'@ioeimmoj', "409.1269 USDT", "409.16sde9 ßUSDT", "22","333","44","4r","55"),   
+  createData('1', "0x8..F7F8 ",'@ioimmoj', "410.169 USDT", "409.169 ßUSDT","22","333","44","41","75"),
+  createData('2', "0q8.e.F7F8 ",'@ioimmojwwqwf', "409.169 USDT", "409.169 ßUSwwwDT", "21","93","42","4r","77"),
+  createData('3', "0a8.e.F7F8 ",'@ioimmoawj', "419.169 USDT", "409.169 ßUSDqweT", "23","23","44","43","53"),   
+  createData('4', "0d8.f..F7F8 ",'@ioimmodwj', "429.169 USDT", "409.169 ßUSDqqT", "22","23","44","44","56"),    
+  createData('5', "0f8..gg.F7F8 ",'@ioimmodwj', "439.169 USDT", "409.169 ßUSwwDT", "22","23","44","45","17"),   
+  createData('6', "0g8...ffF7F8 ",'@ioimmowdj', "441.169 USDT", "409.169 ßUSwDT", "22","43","44","46","59"),   
+  createData('7', "0g8...sdF7F8 ",'@ioimmojwaw', "459.169 USDT", "409.169 ßUeerewSDT", "26","333","47","4r","55"),  
+  createData('8', "0r8...sadF7F8 ",'@ioimmoj', "489.169 USDT", "409.169 ßUSqwDT", "22","37","44","48","51"),   
+  createData('9', "0w8...asF7F8 ",'@ioimmoasj', "439.169 USDT", "409.169 ßUSqwDT", "22","36","44","49","65"),   
+  createData('10', "0h8...scaF7F8 ",'@ioimmojs', "444.169 USDT", "409.169 ßUqwSDT", "22","35","44","11","55"),   
+  createData('11', "0f8...cdsF7F8 ",'@ioimmojwd', "494.169 USDT", "409.169 ßUqwSDT", "22","34","44","12","35"),   
+  createData('12', "0h8...dcsF7F8 ",'@ioimmssqoj', "495.169 USDT", "409.169 wqßUSDT", "22","33","44","13","25"),    
+  createData('13', "0v8...dcF7F8 ",'@ioimmesoj', "439.169 USDT", "409.169 ßUqwSDT", "22","22","44","14","15"),   
+  createData('14', "0z8...dcsF7F8 ",'@ioimemoj', "489.191 USDT", "409.169 ßUSDT", "22","32","44","17","53"),   
+  createData('15', "0n8...dcscsF7F8 ",'@ioeimmoj', "434.169 USDT", "409.16sde9 ßUSDT", "22","31","23","4r","52"),   
 ];
 
 export default function StickyHeadTable() {
