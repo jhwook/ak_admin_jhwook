@@ -6,7 +6,7 @@ export const Navbar = () => {
   return (
     <Container>
       <Logo src={LogoNav} />
-      <Link to="/main" className="navLogo">
+      <Link to="/" className="navLogo">
         AK Friends
       </Link>
     </Container>
