@@ -1,32 +1,36 @@
-import ilban from "../assets/icons/ilban.svg";
-import user from "../assets/icons/user.svg";
-import AK from "../assets/icons/AK.svg";
-import Bank from "../assets/icons/Bank.svg";
-import Nft from "../assets/icons/Nft.svg";
-import setting from "../assets/icons/setting.svg";
-import section from "../assets/icons/section.svg";
+import {ReactComponent as Ilban}  from "../assets/icons/ilban.svg";
+import {ReactComponent as User}  from "../assets/icons/user.svg";
+import {ReactComponent as Ak}   from "../assets/icons/AK.svg";
+import {ReactComponent as Bank}  from "../assets/icons/Bank.svg";
+import {ReactComponent as Nft}  from "../assets/icons/Nft.svg";
+import {ReactComponent as Setting} from "../assets/icons/setting.svg";
+import {ReactComponent as Section}  from "../assets/icons/section.svg";
+import Generl from "../pages/Generl/indexs";
+import MemberShip_Status from "../pages/membrs/MemberShip_Status";
 
 export const sidebar = [
   {
     id: 1,
     title: "일반",
+    element:<Generl/>,
     path: "/",
-    Icon: ilban,
-    Img: section,
+    Icon: Ilban,
+    Img: Section,
     hidden: false,
   },
   {
     id: 2,
     title: "회원관리",
     path: "/members",
-    Icon: user,
+    element:<MemberShip_Status/>,
+    Icon: User,
     hidden: false,
   },
   {
     id: 3,
     title: "토근관리",
     path: "/token_management",
-    Icon: AK,
+    Icon: Ak,
     hidden: false,
   },
   {
@@ -47,7 +51,7 @@ export const sidebar = [
     id: 6,
     title: "성정",
     path: "/settings",
-    Icon: setting,
+    Icon: Setting,
     hidden: false,
   },
 ];

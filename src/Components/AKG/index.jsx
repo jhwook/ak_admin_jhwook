@@ -14,9 +14,9 @@ function createData(name, calories, fat, carbs, protein) {
 const rows = [
   createData("Stake", 0x8c4077dfeb3621ed2ddd07f36, 100, 6),
   createData("Lend", 0x8c4077dfeb3621ed2ddd07f36, 1, 1),
-  createData("Stake", 0x8c4077dfeb3621ed2ddd07f36, 1.2, 12.01),
-  createData("Stake", 0x8c4077dfeb3621ed2ddd07f36, 1, 1.01),
-  createData("Stake", 0x8c4077dfeb3621ed2ddd07f36, 0.6, 0.61),
+  createData("Stake1", 0x8c4077dfeb3621ed2ddd07f36, 1.2, 12.01),
+  createData("Stake2", 0x8c4077dfeb3621ed2ddd07f36, 1, 1.01),
+  createData("Stake3", 0x8c4077dfeb3621ed2ddd07f36, 0.6, 0.61),
 ];
 
 export default function BasicTable() {
