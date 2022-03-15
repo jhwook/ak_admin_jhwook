@@ -1,11 +1,18 @@
-import { Stack } from '@mui/material';
-import { Pagination } from 'antd';
+import { Pagination, Stack } from '@mui/material';
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import MemberDetailsTable from './MembrDetailsTable';
+import {memberData}from "./Data"
 export const MemberDetails = () => {
   return (
     <Container>
+<Link to={''}>
+  <a href="/">Minting</a>
+  <a href="/">Market</a>
+  <a href="/">Lend</a>
+</Link>
+
       <Wrapper>
         <Card>
           <MemberDetailsTable/>
@@ -21,7 +28,9 @@ export const MemberDetails = () => {
 
 
 const Container = styled.div`
+
   display: flex;
+  flex-direction: column;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -38,4 +47,14 @@ display: flex;
   align-items: center;
   width: 1526px;
   height: 734px;`
+
+  const Link = styled(NavLink)`
+  text-decoration: none;
+  margin: 62px 0 48px 73px;
+  a{
+    color: #000000;
+    margin-right: 43px;
+  }
+  
+  `
 export default MemberDetails

@@ -1,7 +1,15 @@
-import { MenuItem, Pagination, Stack } from "@mui/material";
+import React from "react";
+
+import { Box, Button, FormControl, InputLabel, MenuItem, Pagination, Select, Stack } from "@mui/material";
+import Search from "antd/lib/transfer/search";
 import styled from "styled-components";
-import Membership_Data from "./MemberShib_Data";
+import MembersTabele from "./MemberShib_Tabel";
 export const MemberShip_Status = () => {
+
+  const [age, setAge] = React.useState('');
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <Container>
 
@@ -9,6 +17,41 @@ export const MemberShip_Status = () => {
 
       <Wrapper>
         <h1>회원현황</h1>
+        <CardWrapper>
+          
+        
+        <WrapperBtn>
+<Stack direction="row" spacing={2}>
+<Box sx={{ minWidth: 160, minHeight: 44 }}>
+
+<FormControl fullWidth>
+        <InputLabel sx={{width:'160'}} id="demo-simple-select-label">10 개씩 보기</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="10 개씩 보기"
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>10 개씩 보기</MenuItem>
+          <MenuItem value={20}>30 개씩 보기</MenuItem>
+        </Select>
+      </FormControl>
+</Box>
+
+<Button  variant="outlined" startIcon={''}>
+  Delete
+</Button>
+</Stack>
+
+<Wrappersearch>
+  <Stack direction="row" spacing={2}>
+<Search placeholder="검색" allowClear  style={{ width: 200 }} />
+<Button variant="contained">등록</Button>
+</Stack>
+</Wrappersearch>
+</WrapperBtn>
+</CardWrapper>
         {/* <section style={{padding: '1rem'}}>
          <div style={{display: 'flex', alignItems:'center', justifyContent:'center'}} >
 <article style={{width:'150px'}} >
@@ -20,13 +63,12 @@ export const MemberShip_Status = () => {
          </div>
         </section> */}
 <Card>
-  <Membership_Data />
+  <MembersTabele/>
         <Stack>
           <Pagination count={2} shape="rounded" />
         </Stack>
 </Card>
-        
-      </Wrapper>
+        </Wrapper>     
     </Container>
   );
 };
@@ -61,6 +103,21 @@ display: flex;
   align-items: center;
   width: 1526px;
   height: 734px;
+  padding:50px ;
+
+`
+const WrapperBtn = styled.div`
+display: flex;
+
+`
+const Wrappersearch = styled.div`
+display: flex;
+margin-left: 880px;
+
+`
+const CardWrapper = styled.div`
+display: flex;
+padding:0 50px  24px;
 
 `
 export default MemberShip_Status;

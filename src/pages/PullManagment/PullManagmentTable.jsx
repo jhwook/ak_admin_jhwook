@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Switch from '@mui/material/Switch';
 import { Checkbox } from 'antd';
 
-export const Data = () => {
+export const PullTable = () => {
     const [checked, setChecked] = React.useState(true);
 
   const [age, setAge] = React.useState('');
@@ -16,7 +16,7 @@ export const Data = () => {
   };
   return (
     <Container>
-      <h1>Token 관리</h1>
+      <h1>Pull 관리</h1>
       <Wrapper>
 
       
@@ -145,4 +145,4 @@ display: flex;
 width: 100%;
 
 `
-export default Data
+export default PullTable

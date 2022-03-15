@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { Button } from "antd";
 // import { Pagination, Stack } from '@mui/material';
 
 const columns = [
@@ -23,18 +24,18 @@ const columns = [
     // label: 'Size\u00a0(km\u00b2)',
     format: (value) => value.toLocaleString("en-US"),
   },
-
+{
+    id: "walet",
+    label: "출금량",
+    format: (value) => value.toFixed(2),
+  },
   {
     id: "item",
     label: "Item 수",
     format: (value) => value.toFixed(2),
   },
 
-  {
-    id: "walet",
-    label: "출금량",
-    format: (value) => value.toFixed(2),
-  },
+  
   {
     id: "akd",
     label: "보유 AKD",
@@ -50,6 +51,11 @@ const columns = [
     label: "회원상태",
     format: (value) => value.toFixed(2),
   },
+  {
+    id: "register",
+    label: "가입일",
+    format: (value) => value.toFixed(2),
+  },
 ];
 
 function createData(
@@ -61,196 +67,103 @@ function createData(
   item,
   akd,
   akg,
-  userstatic
+  userstatic,
+  register,
 ) {
   const density = population / size;
-  return { name, code, population, size, density, item, akd, akg, userstatic };
+  return { name, code, population, size, walet, density, item, akd, akg, userstatic,register };
 }
 
 const rows = [
+ 
   createData(
     "1",
-    "0x8..F7F8 ",
-    "@ioimmoj",
-    "410.169 USDT",
-    "409.169 ßUSDT",
-    "22",
-    "333",
-    "44",
-    "41",
-    "75"
+    "0g8...sdF7F8 ",
+    "@ioimmojwaw",
+    "459.169 USDT",
+    "409.169 USDT",
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
   createData(
     "2",
-    "0q8.e.F7F8 ",
-    "@ioimmojwwqwf",
+    "0g8...sdF7F8 ",
+    "@ioimmojwaw",
+    "459.169 USDT",
     "409.169 USDT",
-    "409.169 ßUSwwwDT",
-    "21",
-    "93",
-    "42",
-    "4r",
-    "77"
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
   createData(
     "3",
-    "0a8.e.F7F8 ",
-    "@ioimmoawj",
-    "419.169 USDT",
-    "409.169 ßUSDqweT",
-    "23",
-    "23",
-    "44",
-    "43",
-    "53"
+    "0g8...sdF7F8 ",
+    "@ioimmojwaw",
+    "459.169 USDT",
+    "409.169 USDT",
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
   createData(
     "4",
-    "0d8.f..F7F8 ",
-    "@ioimmodwj",
-    "429.169 USDT",
-    "409.169 ßUSDqqT",
-    "22",
-    "23",
-    "44",
-    "44",
-    "56"
+    "0g8...sdF7F8 ",
+    "@ioimmojwaw",
+    "459.169 USDT",
+    "409.169 USDT",
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
   createData(
     "5",
-    "0f8..gg.F7F8 ",
-    "@ioimmodwj",
-    "439.169 USDT",
-    "409.169 ßUSwwDT",
-    "22",
-    "23",
-    "44",
-    "45",
-    "17"
+    "0g8...sdF7F8 ",
+    "@ioimmojwaw",
+    "459.169 USDT",
+    "409.169 USDT",
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
   createData(
     "6",
-    "0g8...ffF7F8 ",
-    "@ioimmowdj",
-    "441.169 USDT",
-    "409.169 ßUSwDT",
-    "22",
-    "43",
-    "44",
-    "46",
-    "59"
+    "0g8...sdF7F8 ",
+    "@ioimmojwaw",
+    "459.169 USDT",
+    "409.169 USDT",
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
   createData(
     "7",
     "0g8...sdF7F8 ",
     "@ioimmojwaw",
     "459.169 USDT",
-    "409.169 ßUeerewSDT",
-    "26",
-    "333",
-    "47",
-    "4r",
-    "55"
+    "409.169 USDT",
+    "50",
+    "1548 AKD",
+    "1548 AKG",
+    "일반",
+    "2022-01-29 11:00:00"
   ),
-  createData(
-    "8",
-    "0r8...sadF7F8 ",
-    "@ioimmoj",
-    "489.169 USDT",
-    "409.169 ßUSqwDT",
-    "22",
-    "37",
-    "44",
-    "48",
-    "51"
-  ),
-  createData(
-    "9",
-    "0w8...asF7F8 ",
-    "@ioimmoasj",
-    "439.169 USDT",
-    "409.169 ßUSqwDT",
-    "22",
-    "36",
-    "44",
-    "49",
-    "65"
-  ),
-  createData(
-    "10",
-    "0h8...scaF7F8 ",
-    "@ioimmojs",
-    "444.169 USDT",
-    "409.169 ßUqwSDT",
-    "22",
-    "35",
-    "44",
-    "11",
-    "55"
-  ),
-  createData(
-    "11",
-    "0f8...cdsF7F8 ",
-    "@ioimmojwd",
-    "494.169 USDT",
-    "409.169 ßUqwSDT",
-    "22",
-    "34",
-    "44",
-    "12",
-    "35"
-  ),
-  createData(
-    "12",
-    "0h8...dcsF7F8 ",
-    "@ioimmssqoj",
-    "495.169 USDT",
-    "409.169 wqßUSDT",
-    "22",
-    "33",
-    "44",
-    "13",
-    "25"
-  ),
-  createData(
-    "13",
-    "0v8...dcF7F8 ",
-    "@ioimmesoj",
-    "439.169 USDT",
-    "409.169 ßUqwSDT",
-    "22",
-    "22",
-    "44",
-    "14",
-    "15"
-  ),
-  createData(
-    "14",
-    "0z8...dcsF7F8 ",
-    "@ioimemoj",
-    "489.191 USDT",
-    "409.169 ßUSDT",
-    "22",
-    "32",
-    "44",
-    "17",
-    "53"
-  ),
-  createData(
-    "15",
-    "0n8...dcscsF7F8 ",
-    "@ioeimmoj",
-    "434.169 USDT",
-    "409.16sde9 ßUSDT",
-    "22",
-    "31",
-    "23",
-    "4r",
-    "52"
-  ),
+  
 ];
 
-export default function StickyHeadTable() {
+export default function MembersTabele() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -264,7 +177,7 @@ export default function StickyHeadTable() {
   // };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper sx={{  width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
