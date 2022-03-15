@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import AbleMatchingList from '../able-metching-list/AbleMatchingList'
 
 export const AssetManagment = () => {
   return (
-    <Container><Wrapper>assetManagment</Wrapper> </Container>
+    <Container><Wrapper> <AbleMatchingList/> </Wrapper> </Container>
   )
 }
 const Container =styled.div`
