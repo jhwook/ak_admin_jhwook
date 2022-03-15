@@ -58,18 +58,6 @@ const DrawerField = ({ title, childItems }) => {
   );
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  color: #555555;
-`;
-const Icons = styled.img`
-  width: 26px;
-  height: 26px;
-`;
 const Card = styled.div`
   width: 100%;
   display: flex;
