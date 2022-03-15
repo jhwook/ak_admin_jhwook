@@ -22,7 +22,7 @@ export const sidebar = [
     arrow: Section,
     hidden: false,
     Child: [
-      { title: "사이트", params: "sitemene2" },
+      { title: "사이", params: "sitemene2" },
       { title: "사이트", params: "sitemene1" },
       { title: "사이트", params: "sitemen 3 " },
     ],
