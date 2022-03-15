@@ -12,7 +12,7 @@ export const Sidebar = () => {
           title={item.title}
           path={item.path}
           childItems={item.Child}
-          icon={item.Icon}
+          Icon={item.Icon}
         />
       ))}
     </Container>

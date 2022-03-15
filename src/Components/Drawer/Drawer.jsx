@@ -28,6 +28,7 @@ const DrawerField = ({ title, childItems }) => {
             display: "flex",
           }}
         >
+          <img src={''} alt="icon" />
           <ListItemText sx={{ marginLEft: "1.5rem" }} primary={title} />
         </div>
         <div>
@@ -45,8 +46,8 @@ const DrawerField = ({ title, childItems }) => {
               <div style={{ display: "flex" }}>
                 <ListItemText
                   sx={{
-                    marginLeft: "4.5rem",
-                    color: "red",
+                    marginLeft: "2rem",
+                    color: "#555555;",
                   }}
                   primary={el.title}
                 />
