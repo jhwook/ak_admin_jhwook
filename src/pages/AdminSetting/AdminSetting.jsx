@@ -1,8 +1,14 @@
-import { Pagination, Stack } from '@mui/material'
+import { Pagination, Stack, Switch } from '@mui/material'
 import React from 'react'
+import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 
 export const AdminSetting = () => {
+  const [checked, setChecked] = React.useState(true);
+  const [age, setAge] = React.useState('');
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <Container>
       
@@ -20,6 +26,55 @@ export const AdminSetting = () => {
       </CardHead>
 
 <WrapperTable>
+<Table responsive="sm">
+    <thead>
+      <tr>
+        <th>순서</th>
+        <th>토큰명</th>
+        <th>심볼</th>
+        <th>Contract</th>
+        <th>총 수량</th>
+        <th>분배 수량</th>
+        <th>잔여 수량</th>
+        <th>사용여부</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      
+    
+      <tr>
+        <td>1</td>
+        <td>Table cell</td>
+        <td>AKD Dollar</td>
+        <td>AkD</td>
+        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
+        <td>264,321</td>
+        <td> 155,506</td>
+        <td>   <Switch
+      checked={checked}
+      onChange={handleChange}
+      inputProps={{ 'aria-label': 'controlled' }}
+    /> </td>
+      </tr>
+      <tr>
+
+        <td>2</td>
+        <td>Table cell</td>
+        <td>AKD Dollar</td>
+        <td>AkD</td>
+        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
+        <td>264,321</td>
+        <td> 155,506</td>
+        <td>   <Switch
+      checked={checked}
+      onChange={handleChange}
+      inputProps={{ 'aria-label': 'controlled' }}
+    /> </td>
+      </tr>
+      
+    </tbody>
+  </Table>
 </WrapperTable>
 <Paginotion>
       <Stack>
@@ -75,6 +130,7 @@ color: #FFFFFF;
 const CardHead = styled.div`
 width: 100%;
 height: 44px;
+margin-top: 24px;
 select{
   margin-right: 526px;
   width: 160px;
