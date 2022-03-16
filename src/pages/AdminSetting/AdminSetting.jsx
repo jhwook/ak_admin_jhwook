@@ -4,7 +4,8 @@ import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 
 export const AdminSetting = () => {
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
+  
   const [age, setAge] = React.useState('');
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -30,12 +31,13 @@ export const AdminSetting = () => {
     <thead>
       <tr>
         <th>순서</th>
-        <th>토큰명</th>
-        <th>심볼</th>
-        <th>Contract</th>
-        <th>총 수량</th>
-        <th>분배 수량</th>
-        <th>잔여 수량</th>
+        <th>관리자 ID</th>
+        <th>관리자 PW</th>
+        <th>관리자 이름</th>
+        <th>등록일</th>
+        <th>수정일</th>
+        <th>연락처</th>
+        <th>그룹명</th>
         <th>사용여부</th>
       </tr>
       
@@ -48,8 +50,9 @@ export const AdminSetting = () => {
         <td>Table cell</td>
         <td>AKD Dollar</td>
         <td>AkD</td>
-        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
+        <td>2022-01-29 11:00:00</td>
         <td>264,321</td>
+        <td> 155,506</td>
         <td> 155,506</td>
         <td>   <Switch
       checked={checked}
@@ -63,8 +66,9 @@ export const AdminSetting = () => {
         <td>Table cell</td>
         <td>AKD Dollar</td>
         <td>AkD</td>
-        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
+        <td>2022-01-29 11:00:00</td>
         <td>264,321</td>
+        <td> 155,506</td>
         <td> 155,506</td>
         <td>   <Switch
       checked={checked}
@@ -76,11 +80,7 @@ export const AdminSetting = () => {
     </tbody>
   </Table>
 </WrapperTable>
-<Paginotion>
-      <Stack>
-          <Pagination count={2} shape="rounded" />
-        </Stack>
-  </Paginotion>
+
       </Wrapper> 
     
     </Container>

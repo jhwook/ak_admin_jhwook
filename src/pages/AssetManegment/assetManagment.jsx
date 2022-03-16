@@ -1,5 +1,6 @@
 import { Pagination, Stack } from '@mui/material'
 import React from 'react'
+import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
 import AssetTable from './Table'
 
@@ -21,7 +22,52 @@ export const AssetManagment = () => {
       </CardHead>
 
 <WrapperTable>
-  <AssetTable/>
+
+<Table responsive="sm">
+    <thead>
+      <tr>
+        <th>순서</th>
+        <th>관리자 ID</th>
+        <th>관리자 PW</th>
+        <th>관리자 이름</th>
+        <th>등록일</th>
+        <th>수정일</th>
+        <th>연락처</th>
+        <th>그룹명</th>
+        <th>사용여부</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      
+    
+      <tr>
+        <td>1</td>
+        <td>Table cell</td>
+        <td>AKD Dollar</td>
+        <td>AkD</td>
+        <td>2022-01-29 11:00:00</td>
+        <td>264,321</td>
+        <td> 155,506</td>
+        <td> 155,506</td>
+        <td> 155,506</td>
+       
+      </tr>
+      <tr>
+
+        <td>2</td>
+        <td>Table cell</td>
+        <td>AKD Dollar</td>
+        <td>AkD</td>
+        <td>2022-01-29 11:00:00</td>
+        <td>264,321</td>
+        <td> 155,506</td>
+        <td> 155,506</td>
+       
+      </tr>
+      
+    </tbody>
+  </Table>
 </WrapperTable>
 <Paginotion>
       <Stack>
