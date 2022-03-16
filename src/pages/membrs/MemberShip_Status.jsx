@@ -4,7 +4,7 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Pagination, Select, Sta
 import Search from "antd/lib/transfer/search";
 import styled from "styled-components";
 import MembersTabele from "./MemberShib_Tabel";
-export const MemberShip_Status = () => {
+export const MemberShipStatus = () => {
 
   const [age, setAge] = React.useState('');
   const handleChange = (event) => {
@@ -120,4 +120,4 @@ display: flex;
 padding:0 50px  24px;
 
 `
-export default MemberShip_Status;
+export default MemberShipStatus;

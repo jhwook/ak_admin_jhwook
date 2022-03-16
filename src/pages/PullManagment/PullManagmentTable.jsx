@@ -58,12 +58,10 @@ export const PullTable = () => {
       <tr>
         <th> <Checkbox/> </th>
         <th>순서</th>
-        <th>토큰명</th>
-        <th>심볼</th>
-        <th>Contract</th>
-        <th>총 수량</th>
-        <th>분배 수량</th>
-        <th>잔여 수량</th>
+        <th>풀</th>
+        <th>총입금 수량</th>
+        <th>분배수량</th>
+        <th>풀상세 수량</th>
         <th>사용여부</th>
       </tr>
       
@@ -74,12 +72,10 @@ export const PullTable = () => {
       <tr>
       <td> <Checkbox/> </td>
         <td>1</td>
-        <td>Table cell</td>
-        <td>AKD Dollar</td>
-        <td>AkD</td>
-        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
-        <td>264,321</td>
-        <td> 155,506</td>
+        <td>AKD</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
         <td>   <Switch
       checked={checked}
       onChange={handleChange}
@@ -88,20 +84,18 @@ export const PullTable = () => {
       </tr>
       <tr>
       <td> <Checkbox/> </td>
-
-        <td>2</td>
-        <td>Table cell</td>
-        <td>AKD Dollar</td>
-        <td>AkD</td>
-        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
-        <td>264,321</td>
-        <td> 155,506</td>
+        <td>1</td>
+        <td>AKD</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
         <td>   <Switch
       checked={checked}
       onChange={handleChange}
       inputProps={{ 'aria-label': 'controlled' }}
     /> </td>
       </tr>
+     
       
     </tbody>
   </Table>

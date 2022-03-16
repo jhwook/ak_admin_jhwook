@@ -49,7 +49,7 @@ export const sidebar = [
       { title: "토근괸리", params: "token_managment" },
       { title: "풀 관리", params: "pull_managment" },
       { title: "APR 관리", params: "apr_managment " },
-      { title: "풀 생상", params: "pull_produce" },
+      { title: "풀 생성", params: "pull_praduct " },
     ],
   },
   {

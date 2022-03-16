@@ -3,7 +3,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import MemberDetailsTable from './MembrDetailsTable';
-import {memberData}from "./Data"
 export const MemberDetails = () => {
   return (
     <Container>

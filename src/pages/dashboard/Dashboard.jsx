@@ -21,9 +21,9 @@ export const Sidebar = () => {
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: 1030px;
   flex-direction: column;
-  width: 230px;
+  min-width: 230px;
   background: #ffffff;
   padding: 8px 0px 0 31px;
   box-shadow: 2px 0px 2px #e7eaf3;
