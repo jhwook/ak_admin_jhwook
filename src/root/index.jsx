@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Navbar from "../pages/Home/navbar";
 import Routers from "../Routers";

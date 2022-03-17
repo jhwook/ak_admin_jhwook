@@ -1,8 +1,9 @@
 import React from 'react'
+import { Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import {ReactComponent as Restart}  from '../../assets/icons/restart.svg'
-export const PulllPraduct = () => {
+export const CreateApair = () => {
 
 let navigate = useNavigate();
 
@@ -43,16 +44,91 @@ let navigate = useNavigate();
 <input placeholder='0.0' type='text' />
 <button>MAX</button>
   </CaardWrap>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td colSpan={2}>Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
  <button className='btn' onClick={()=>{navigate('/createApair')}}>Enter an amount 
-</button>  
+</button> 
+<Table>
+  <thead>
+    <tr>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+</Table>
+ {/* <PayCard>
+          <PayCardWraqq>페어명</PayCardWraqq>
+          <PayCardWraqq2>AKD + AKG</PayCardWraqq2>
+          
+      </PayCard> 
+      <PayCard>
+          <PayCardWraqq>페어명</PayCardWraqq>
+          <PayCardWraqq2>AKD + AKG</PayCardWraqq2>
+          
+      </PayCard> 
+      <PayCard>
+          <PayCardWraqq>페어명</PayCardWraqq>
+          <PayCardWraqq2>AKD + AKG</PayCardWraqq2>
+          
+      </PayCard>  */}
  </CardBody>  
-      
+     
  </Card>
   
         
 </Container>
   )
 }
+const PayCard = styled.div`
+padding: 24px 10px 0 0 ;
+display: flex;
+width: 100%;
+`
+const PayCardWraqq = styled.div`
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+display: flex;
+align-items: center;
+text-align: center;
+color: rgba(255, 255, 255, 0.4);
+margin-right: 206px;
+
+
+`
+const PayCardWraqq2 = styled.div`
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+display: flex;
+align-items: center;
+text-align: center;
+color: rgba(255, 255, 255, 0.6);
+`
+
 
 const Container = styled.div`
 display: flex;
@@ -62,7 +138,7 @@ const Card = styled.div`
 background: #27262C;
 border-radius: 24px;
 width: 500px;
-height: 522px;
+height: 650px;
 display: flex;
 flex-direction: column;
 color: wheat;
@@ -193,4 +269,18 @@ border: none;
 }
 
 `
-export default PulllPraduct
+export default CreateApair
+
+
+
+
+
+
+
+
+
+
+
+
+
+

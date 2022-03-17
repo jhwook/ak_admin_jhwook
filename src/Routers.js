@@ -11,6 +11,7 @@ import MemberInformation from "./pages/membrs/memberInformation";
 import MemberShip_Status from "./pages/membrs/MemberShip_Status";
 import NftCurrent from "./pages/NftCrurrent/NftCurrent";
 import { NftManagment } from "./pages/Nft_managment/Nft_managment";
+import CreateApair from "./pages/PulllPraduct/CreateApair";
 import PulllPraduct from "./pages/PulllPraduct/PulllPraduct";
 import Pullmnagament from "./pages/PullManagment/pullmnagament";
 import Settings from "./pages/Settings/settings";
@@ -32,10 +33,10 @@ const Routers = () => {
       <Route path="/nft_current" element={<NftCurrent />} />
       <Route path="/setting" element={<Settings />} />
       <Route path="/admin_setting" element={<AdminSetting />} />
-    
       <Route index path='/memberInformation' element={<MemberInformation/>} />
       <Route path='/market' element={<Market/>}/>
       <Route path='/lend' element={<Lend/>}  />
+      <Route path='/createApair' element={<CreateApair/>}  />
     </Routes>
 
   );

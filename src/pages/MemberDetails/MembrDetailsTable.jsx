@@ -1,14 +1,10 @@
-import { CalendarMonthOutlined, CloseOutlined, SearchOutlined } from '@mui/icons-material'
-import { Backdrop, Pagination, Stack } from '@mui/material'
-import React, { useState } from 'react'
+import { CalendarMonthOutlined, Close,  SearchOutlined } from '@mui/icons-material'
+import {Pagination, Stack } from '@mui/material'
+import React from 'react'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
-import Modal from 'react-modal'
-import { Button } from 'bootstrap'
 export const  MemberDetailsTable
 = () => {
-  const [smShow, setSmShow] = useState(false);
-  const [lgShow, setLgShow] = useState(false);
 
   return (
     <Container>
@@ -33,7 +29,7 @@ export const  MemberDetailsTable
 
     <thead>
      
-      <tr onClick={setSmShow}>
+      <tr>
         <th>순서</th>
         <th>거래일시</th>
         <th>아이템</th>
@@ -118,25 +114,87 @@ export const  MemberDetailsTable
         </Stack>
   </Paginotion>
       </Wrapper> 
-    <ModelTab   onHide={() => setSmShow(false)}>
-    <button onClick={() => setLgShow(true)}>Large modal</button>
+    <ModelTab>
+     <Head><h1>거래 세부 </h1><Close/> </Head>
+     <table className="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">거래일시</th>
+      <th scope="col">2022-01-12 09:50:11</th>
+    </tr>
+    </thead>
+    <thead>
+    <tr>
+      <td>마켓</td>
+      <td>Market</td>
+    </tr>
+    </thead>
+    <thead>
+    <tr>
+      <td>구분</td>
+      <td>구매</td>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <td>판매자</td>
+      <td>@dgjgj</td>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <td>구매자</td>
+      <td>@fdhdh3</td>
+    </tr>
+  </thead> 
+   <thead>
+    <tr>
+      <td>결제금액</td>
+      <td>100 AKD</td>
+    </tr>
+  </thead>
+
+  <thead>
+    <tr>
+      <td>아이템 이름</td>
+      <td>Friends #002</td>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <td>아이템 고유번호</td>
+      <td>A20e9894566311</td>
+    </tr>
+  </thead>
+  </table>
     </ModelTab>
     </Container>
   )
 }
-// const M
+
+
+
+const Head = styled.div`
+display: flex;
+align-items: center; 
+width:100%;
+`
 const ModelTab= styled.div`
+thead{
+  border-bottom: 1px solid #F6F6F6;
+}
 position: absolute;
 padding: 50px 34px;
 width: 500px;
-height: 530px;
+height: 630px;
 left: 1174px;
 top: 350px;
 background: #FFFFFF;
 box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 border-radius: 12px;
 h1{
-
+margin-right: auto;
 font-style: normal;
 font-weight: 600;
 font-size: 24px;
