@@ -1,74 +1,12 @@
 import React from "react";
 
-import { Box, Button, FormControl, InputLabel, MenuItem, Pagination, Select, Stack } from "@mui/material";
-import Search from "antd/lib/transfer/search";
 import styled from "styled-components";
 import MembersTabele from "./MemberShib_Tabel";
 export const MemberShipStatus = () => {
 
-  const [age, setAge] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
   return (
     <Container>
-
-
-
-      <Wrapper>
-        <h1>회원현황</h1>
-        <CardWrapper>
-          
-        
-        <WrapperBtn>
-<Stack direction="row" spacing={2}>
-<Box sx={{ minWidth: 160, minHeight: 44 }}>
-
-<FormControl fullWidth>
-        <InputLabel sx={{width:'160'}} id="demo-simple-select-label">10 개씩 보기</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="10 개씩 보기"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>10 개씩 보기</MenuItem>
-          <MenuItem value={20}>30 개씩 보기</MenuItem>
-        </Select>
-      </FormControl>
-</Box>
-
-<Button  variant="outlined" startIcon={''}>
-  Delete
-</Button>
-</Stack>
-
-<Wrappersearch>
-  <Stack direction="row" spacing={2}>
-<Search placeholder="검색" allowClear  style={{ width: 200 }} />
-<Button variant="contained">등록</Button>
-</Stack>
-</Wrappersearch>
-</WrapperBtn>
-</CardWrapper>
-        {/* <section style={{padding: '1rem'}}>
-         <div style={{display: 'flex', alignItems:'center', justifyContent:'center'}} >
-<article style={{width:'150px'}} >
-<select id='res'>
-  <MenuItem vlaue={10}>10</MenuItem>
-  <MenuItem >20</MenuItem>
-</select>
-</article>
-         </div>
-        </section> */}
-<Card>
-  <MembersTabele/>
-        <Stack>
-          <Pagination count={2} shape="rounded" />
-        </Stack>
-</Card>
-        </Wrapper>     
+        <MembersTabele/>
     </Container>
   );
 };
