@@ -8,7 +8,6 @@ import styled from 'styled-components'
 import search from '../../assets/icons/search.svg'
 
 export const MemberTable = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
 
 let navigate = useNavigate();
   return (
