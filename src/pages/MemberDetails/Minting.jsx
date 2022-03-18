@@ -15,7 +15,7 @@ const handleModal = () => {
   return (
     <div>
   <MemberDetailsTable onClick={handleModal} />
-  <ReactModal isOpen={modal}>
+  {/* <ReactModal isOpen={modal}>
   <table>
     <tr>
       <th>Heading</th>
@@ -31,7 +31,7 @@ const handleModal = () => {
     </tr>
       
     </table>    
-  </ReactModal>
+  </ReactModal> */}
  </div>
   )
 }

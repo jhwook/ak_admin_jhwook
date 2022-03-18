@@ -1,6 +1,6 @@
-import { CalendarMonthOutlined, Close,  SearchOutlined } from '@mui/icons-material'
-import {Pagination, Stack } from '@mui/material'
-import React from 'react'
+import { CalendarMonthOutlined, Close, SearchOutlined } from '@mui/icons-material'
+import { Pagination, Stack } from '@mui/material'
+import { React, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
 
@@ -8,157 +8,135 @@ import styled from 'styled-components'
 
 export const MemberDetailsTable = () => {
 
+  const [open, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen(() => !open);
+  }
+
+
   return (
     <Container>
-      
-      <Wrapper>  
-      <CardHead>
-      <select aria-label="Default select example">
-  <option selected>10개씩 보기</option>
-  <option selected>20개씩 보기</option>
-</select>
-<CalenIkon><CalendarMonthOutlined /></CalenIkon> 
-<input className='data' placeholder='2022-01-18 ~ 2202-01-28'/>
 
-<Ikon><SearchOutlined /> </Ikon>
-<input className='search' placeholder='검석'></input>
-<button className='excel'>EXCEL</button>
-      </CardHead>
+      <Wrapper>
+        <CardHead>
+          <select aria-label="Default select example">
+            <option selected>10개씩 보기</option>
+            <option selected>20개씩 보기</option>
+          </select>
+          <CalenIkon><CalendarMonthOutlined /></CalenIkon>
+          <input className='data' placeholder='2022-01-18 ~ 2202-01-28' />
 
-<WrapperTable>
-<Border/>
-<Table responsive="sm"> 
+          <Ikon><SearchOutlined /> </Ikon>
+          <input className='search' placeholder='검석'></input>
+          <button className='excel'>EXCEL</button>
+        </CardHead>
 
-    <thead>
-     
-      <tr>
-        <th>순서</th>
-        <th>거래일시</th>
-        <th>아이템</th>
-        <th>가격</th>
-        <th>거래번호</th>
-        <th>거래방식</th>
-        <th>체결상태</th>
-        <th>결제금액</th>
-        <th>판매자</th>
-        <th>구매자</th>
-        <th>수수료</th>
-        <th>Transaction</th>
-      </tr>
-      
-    </thead>
-  
-    <tbody>
-      <tr >
-        <td>1</td>
-        <td> 2022-01-12 09:50:11</td>
-        <td>Friends #002</td>
-        <td>100 AKD</td>
-        <td>Or 13</td>
-        <td>경매</td>
-        <td>진행중</td>
-        <td> 100 AKD</td>
-        <td>@Kimsdjfkdfl</td>
-        <td>@ioimmoj</td>
-        <td>0.25 AKD</td>
-        <td>0x5906a5c0e5747ee...</td>
-       
-      </tr>
-      
-      <tr>
-        <>
-        <td>1</td>
-        <td> 2022-01-12 09:50:11</td>
-        <td>Friends #002</td>
-        <td>100 AKD</td>
-        <td>Or 13</td>
-        <td>경매</td>
-        <td>진행중</td>
-        <td> 100 AKD</td>
-        <td>@Kimsdjfkdfl</td>
-        <td>@ioimmoj</td>
-        <td>0.25 AKD</td>
-        <td>0x5906a5c0e5747ee...</td>
-       </>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td> 2022-01-12 09:50:11</td>
-        <td>Friends #002</td>
-        <td>100 AKD</td>
-        <td>Or 13</td>
-        <td>경매</td>
-        <td>진행중</td>
-        <td> 100 AKD</td>
-        <td>@Kimsdjfkdfl</td>
-        <td>@ioimmoj</td>
-        <td>0.25 AKD</td>
-        <td>0x5906a5c0e5747ee...</td>
-      </tr>
-    </tbody>
-  </Table>
-</WrapperTable>
-<Paginotion>
-      <Stack>
-          <Pagination count={2} shape="rounded" />
-        </Stack>
-  </Paginotion>
-      </Wrapper> 
-    <ModelTab>
-     <Head><h1>거래 세부 </h1><Close/> </Head>
-     <table className="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">거래일시</th>
-      <th scope="col">2022-01-12 09:50:11</th>
-    </tr>
-    </thead>
-    <thead>
-    <tr>
-      <td>마켓</td>
-      <td>Market</td>
-    </tr>
-    </thead>
-    <thead>
-    <tr>
-      <td>구분</td>
-      <td>구매</td>
-    </tr>
-  </thead>
-  <thead>
-    <tr>
-      <td>판매자</td>
-      <td>@dgjgj</td>
-    </tr>
-  </thead>
+        <WrapperTable>
+          <Border />
+          <Table responsive="sm">
 
-  <thead>
-    <tr>
-      <td>구매자</td>
-      <td>@fdhdh3</td>
-    </tr>
-  </thead> 
-   <thead>
-    <tr>
-      <td>결제금액</td>
-      <td>100 AKD</td>
-    </tr>
-  </thead>
+            <thead>
 
-  <thead>
-    <tr>
-      <td>아이템 이름</td>
-      <td>Friends #002</td>
-    </tr>
-  </thead>
-  <thead>
-    <tr>
-      <td>아이템 고유번호</td>
-      <td>A20e9894566311</td>
-    </tr>
-  </thead>
-  </table>
-    </ModelTab>
+              <tr>
+                <th>순서</th>
+                <th>거래일시</th>
+                <th>아이템</th>
+                <th>가격</th>
+                <th>거래번호</th>
+                <th>거래방식</th>
+                <th>체결상태</th>
+                <th>결제금액</th>
+                <th>판매자</th>
+                <th>구매자</th>
+                <th>수수료</th>
+                <th>Transaction</th>
+              </tr>
+
+            </thead>
+
+            <tbody>
+              <tr onClick={handleClick}>
+                <td>1</td>
+                <td> 2022-01-12 09:50:11</td>
+                <td>Friends #002</td>
+                <td>100 AKD</td>
+                <td>Or 13</td>
+                <td>경매</td>
+                <td>진행중</td>
+                <td> 100 AKD</td>
+                <td>@Kimsdjfkdfl</td>
+                <td>@ioimmoj</td>
+                <td>0.25 AKD</td>
+                <td>0x5906a5c0e5747ee...</td>
+
+              </tr>
+            </tbody>
+          </Table>
+        </WrapperTable>
+        <Paginotion>
+          <Stack>
+            <Pagination count={2} shape="rounded" />
+          </Stack>
+        </Paginotion>
+      </Wrapper>
+
+
+      {open && <ModelTab>
+        <Head><h1>거래 세부 </h1><Close onClick={handleClick} /> </Head>
+        <table className="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">거래일시</th>
+              <th scope="col">2022-01-12 09:50:11</th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <td>마켓</td>
+              <td>Market</td>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <td>구분</td>
+              <td>구매</td>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <td>판매자</td>
+              <td>@dgjgj</td>
+            </tr>
+          </thead>
+
+          <thead>
+            <tr>
+              <td>구매자</td>
+              <td>@fdhdh3</td>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <td>결제금액</td>
+              <td>100 AKD</td>
+            </tr>
+          </thead>
+
+          <thead>
+            <tr>
+              <td>아이템 이름</td>
+              <td>Friends #002</td>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <td>아이템 고유번호</td>
+              <td>A20e9894566311</td>
+            </tr>
+          </thead>
+        </table>
+      </ModelTab>}
     </Container>
   )
 }
@@ -170,7 +148,7 @@ display: flex;
 align-items: center; 
 width:100%;
 `
-const ModelTab= styled.div`
+const ModelTab = styled.div`
 thead{
   border-bottom: 1px solid #F6F6F6;
 }
@@ -205,7 +183,7 @@ box-sizing: border-box;
 
 
 `
-const CalenIkon =styled.div`
+const CalenIkon = styled.div`
 position: absolute;
 width: 14px;
 height: 14px;
@@ -216,7 +194,7 @@ box-sizing: border-box;
 const Border = styled.div`
 border: 1px solid #D9D9D9;
 `
-const Container =styled.div`
+const Container = styled.div`
 margin: 44px;
 display: flex;
 flex-direction: column;
@@ -290,7 +268,7 @@ const WrapperTable = styled.div`
 margin-top: 24px;
 
 `
-const Paginotion =styled.div`
+const Paginotion = styled.div`
 display: flex ;
 justify-content: center;
 align-items: center;

@@ -4,212 +4,212 @@ import React from 'react'
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 export const Iteminformation = () => {
-  return (
-    <Container>
-    <Wrapper>  
-      <Title><h1>Item 정보 <ArrowForwardIosIcon/>  </h1><p>i0x564DaF7EBD1742Cedc3ECeE1B2b949eCBE35Dbe0 </p></Title>  
+    return (
+        <Container>
+            <Wrapper>
+                <Title><h1>Item 정보 <ArrowForwardIosIcon />  </h1><p>i0x564DaF7EBD1742Cedc3ECeE1B2b949eCBE35Dbe0 </p></Title>
 
-<Card>
-  <CardCont>
-      <TableCont>
-<TabdleCad>
-<TableLeft>등록일</TableLeft>
-<TableRight>0x564DaF7EBD1742Cedc3ECeE1B2b949eCBE35Dbe0</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>item name</TableLeft>
-<TableRight>2022-01-22 14:22:22</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>item ID</TableLeft>
-<TableRight>@ioimmoj</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>item file </TableLeft>
-<TableRight>Friends #002</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>item detail</TableLeft>
-<TableRight>Rosy cheeks, Bloodshot eyes, Milk bottle, Crazy hair, Earring</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>Level</TableLeft>
-<TableRight>2 lv</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>item token</TableLeft>
-<TableRight>AKD</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>Chain</TableLeft>
-<TableRight>BSC</TableRight>
-</TabdleCad>
+                <Card>
+                    <CardCont>
+                        <TableCont>
+                            <TabdleCad>
+                                <TableLeft>등록일</TableLeft>
+                                <TableRight>0x564DaF7EBD1742Cedc3ECeE1B2b949eCBE35Dbe0</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>item name</TableLeft>
+                                <TableRight>2022-01-22 14:22:22</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>item ID</TableLeft>
+                                <TableRight>@ioimmoj</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>item file </TableLeft>
+                                <TableRight>Friends #002</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>item detail</TableLeft>
+                                <TableRight>Rosy cheeks, Bloodshot eyes, Milk bottle, Crazy hair, Earring</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>Level</TableLeft>
+                                <TableRight>2 lv</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>item token</TableLeft>
+                                <TableRight>AKD</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>Chain</TableLeft>
+                                <TableRight>BSC</TableRight>
+                            </TabdleCad>
 
-      </TableCont>
-      <TableCont>
-<TabdleCad>
-<TableLeft>컨트랙트</TableLeft>
-<TableRight>x6452131b5aba502c76c4ec2e603874b8364984863ecb...</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>Owner</TableLeft>
-<TableRight>@ioimmoj</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>레퍼럴</TableLeft>
-<TableRight>1</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>?</TableLeft>
-<TableRight>11,058</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>?</TableLeft>
-<TableRight>11.058</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>View</TableLeft>
-<TableRight>11.058</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>상태</TableLeft>
-<TableRight>정상</TableRight>
-</TabdleCad>
-<TabdleCad>
-<TableLeft>숨김</TableLeft>
-<TableRight><Switch/> </TableRight>
-</TabdleCad>
-      </TableCont>
-      </CardCont>
-      
-      </Card>
-      <button className='memInfo' >저장</button>
-    </Wrapper> 
+                        </TableCont>
+                        <TableCont>
+                            <TabdleCad>
+                                <TableLeft>컨트랙트</TableLeft>
+                                <TableRight>x6452131b5aba502c76c4ec2e603874b8364984863ecb...</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>Owner</TableLeft>
+                                <TableRight>@ioimmoj</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>레퍼럴</TableLeft>
+                                <TableRight>1</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>?</TableLeft>
+                                <TableRight>11,058</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>?</TableLeft>
+                                <TableRight>11.058</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>View</TableLeft>
+                                <TableRight>11.058</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>상태</TableLeft>
+                                <TableRight>정상</TableRight>
+                            </TabdleCad>
+                            <TabdleCad>
+                                <TableLeft>숨김</TableLeft>
+                                <TableRight><Switch /> </TableRight>
+                            </TabdleCad>
+                        </TableCont>
+                    </CardCont>
+
+                </Card>
+                <button className='memInfo' >저장</button>
+            </Wrapper>
 
 
 
-    <ItemActive>
-        <ItemWrape>
+            <ItemActive>
+                <ItemWrape>
 
-       
-         <h1>Item Activity</h1>
-      <CardHead>
-      <select aria-label="Default select example">
-  <option selected>10개씩 보기</option>
-  <option selected>20개씩 보기</option>
-</select>
 
-<input className='data' placeholder='2022-01-18 ~ 2202-01-28'></input>
-<input className='search' placeholder='검석'></input>
-<button className='excel'>EXCEL</button>
-      </CardHead>
-      <WrapperTable>
+                    <h1>Item Activity</h1>
+                    <CardHead>
+                        <select aria-label="Default select example">
+                            <option selected>10개씩 보기</option>
+                            <option selected>20개씩 보기</option>
+                        </select>
 
-      <Table responsive="sm">
-    <thead>
-      <tr  >
-        <th>순서</th>
-        <th>거래일시</th>
-        <th>판매방식</th>
-        <th>가격</th>
-        <th>판매자</th>
-        <th>판매자</th>
-        <th>Transaction</th>
-      </tr>
-      
-    </thead>
-    <tbody>
-      
-    
-      <tr>
-        <td>1</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>고정가</td>
-        <td>AKD</td>
-        <td>120</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>@ioimmoj</td>
-        <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
-      </tr>
+                        <input className='data' placeholder='2022-01-18 ~ 2202-01-28'></input>
+                        <input className='search' placeholder='검석'></input>
+                        <button className='excel'>EXCEL</button>
+                    </CardHead>
+                    <WrapperTable>
 
-      <tr>
-        <td>2</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>고정가</td>
-        <td>AKD</td>
-        <td>120</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>@ioimmoj</td>
-        <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
-      </tr>
+                        <Table responsive="sm">
+                            <thead>
+                                <tr  >
+                                    <th>순서</th>
+                                    <th>거래일시</th>
+                                    <th>판매방식</th>
+                                    <th>가격</th>
+                                    <th>판매자</th>
+                                    <th>판매자</th>
+                                    <th>Transaction</th>
+                                </tr>
 
-      <tr>
-        <td>3</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>고정가</td>
-        <td>AKD</td>
-        <td>120</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>@ioimmoj</td>
-        <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
-      </tr>
+                            </thead>
+                            <tbody>
 
-      <tr>
-        <td>4</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>고정가</td>
-        <td>AKD</td>
-        <td>120</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>@ioimmoj</td>
-        <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>고정가</td>
-        <td>AKD</td>
-        <td>120</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>@ioimmoj</td>
-        <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
-      </tr>
-      
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-    </tbody>
-  </Table>
-</WrapperTable>
-<Paginotion>
-      <Stack>
-          <Pagination count={2} shape="rounded" />
-        </Stack>
-  </Paginotion>
 
-       </ItemWrape>  
-    </ItemActive> 
-    
-    </Container>
-  )
+                                <tr>
+                                    <td>1</td>
+                                    <td>2022-01-12 09:50:11</td>
+                                    <td>고정가</td>
+                                    <td>AKD</td>
+                                    <td>120</td>
+                                    <td>@ioisdfsfsdgsg</td>
+                                    <td>@ioimmoj</td>
+                                    <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>2022-01-12 09:50:11</td>
+                                    <td>고정가</td>
+                                    <td>AKD</td>
+                                    <td>120</td>
+                                    <td>@ioisdfsfsdgsg</td>
+                                    <td>@ioimmoj</td>
+                                    <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
+                                </tr>
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>2022-01-12 09:50:11</td>
+                                    <td>고정가</td>
+                                    <td>AKD</td>
+                                    <td>120</td>
+                                    <td>@ioisdfsfsdgsg</td>
+                                    <td>@ioimmoj</td>
+                                    <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
+                                </tr>
+
+                                <tr>
+                                    <td>4</td>
+                                    <td>2022-01-12 09:50:11</td>
+                                    <td>고정가</td>
+                                    <td>AKD</td>
+                                    <td>120</td>
+                                    <td>@ioisdfsfsdgsg</td>
+                                    <td>@ioimmoj</td>
+                                    <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>2022-01-12 09:50:11</td>
+                                    <td>고정가</td>
+                                    <td>AKD</td>
+                                    <td>120</td>
+                                    <td>@ioisdfsfsdgsg</td>
+                                    <td>@ioimmoj</td>
+                                    <td>0x6452131b5aba502c76c4ec2e603874b8364984863ecb9b1d70c...</td>
+                                </tr>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tbody>
+                        </Table>
+                    </WrapperTable>
+                    <Paginotion>
+                        <Stack>
+                            <Pagination count={2} shape="rounded" />
+                        </Stack>
+                    </Paginotion>
+
+                </ItemWrape>
+            </ItemActive>
+
+        </Container>
+    )
 }
 
 
 
 
 
-  const Paginotion =styled.div`
+const Paginotion = styled.div`
   display: flex ;
   justify-content: center;
   align-items: center;
   width: 100%;
   `
-  
+
 const ItemWrape = styled.div`
 padding: 34px 50px 0 50px;
 h1{
@@ -305,7 +305,7 @@ flex-direction: column;
 const CardCont = styled.div`
 display: flex;
 `
-const Card =styled.div`
+const Card = styled.div`
 display: flex;
 `
 const TabdleCad = styled.div`
@@ -359,7 +359,7 @@ flex-direction: column;
 padding: 44px;
 
 
-` 
+`
 
 const Wrapper = styled.div`
 .memInfo{
