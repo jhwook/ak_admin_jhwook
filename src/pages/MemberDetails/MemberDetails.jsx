@@ -11,12 +11,7 @@ export const MemberDetails = () => {
         <NavLink className={({ isActive }) => (isActive ? "minting active" : "minting")} to='minting'>Minting </NavLink>
         <NavLink className={({ isActive }) => (isActive ? "market active" : "market")} to='market'>Market</NavLink>
         <NavLink className={({ isActive }) => (isActive ? "lend active" : "lend")} to='lend'>Lend</NavLink>
-        {/* <NavLink className={'minting'} style={({ isActive }) => { return { color: isActive ? '#000000' : "#7A7A7A", } }} to='minting'>Minting </NavLink>
-        <NavLink className={'market'} style={({ isActive }) => { return { color: isActive ? '#000000' : "#7A7A7A" } }} to='market'>Market</NavLink>
-        <NavLink className={'lend'} style={({ isActive }) => { return { color: isActive ? '#000000' : '#7A7A7A' } }} to='lend'>Lend</NavLink> */}
       </LinkCont>
-
-      {/* <MemberDetailsTable/> */}
       <Outlet />
 
 
@@ -36,7 +31,6 @@ font-weight: 600;
 font-size: 24px;
 line-height: 36px;
 color: #7A7A7A;
-/* border-bottom: ${(props) => (props.isActive ? '0px solid #4876EF;' : '6px solid #4876EF;')}; */
 }
 
 .lend{
@@ -47,7 +41,6 @@ font-weight: 600;
 font-size: 24px;
 line-height: 36px;
 color: #7A7A7A;
-/* border-bottom: ${(props) => (props.isActive ? '0px solid #4876EF;' : '6px solid #4876EF;')}; */
 }
 
 
@@ -58,7 +51,6 @@ font-weight: 600;
 font-size: 24px;
 line-height: 36px;
 color: #7A7A7A;
-/* border-bottom: ${(props) => (props.isActive ? '0px solid #4876EF;' : '6px solid #4876EF;')}; */
 }
 
 .active {

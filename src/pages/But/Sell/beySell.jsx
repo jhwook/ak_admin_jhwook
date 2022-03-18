@@ -8,141 +8,141 @@ import BuysellTable from '../BuysellTable'
 export const BeySell = () => {
   return (
     <Container>
-        <NavLink to='/buy/sel' >Buy</NavLink>
-        <NavLink to='/buy' >Sell</NavLink>
+      <NavLink to='sell'>Buy</NavLink>
+      <NavLink to='buy' >Sell</NavLink>
 
-       <Outlet />
-      <Wrapper>  
-     
-      <CardHead>
-      <select aria-label="Default select example">
-  <option selected>10개씩 보기</option>
-  <option selected>20개씩 보기</option>
-</select>
+      <Outlet />
+      {/* <Wrapper>
 
-<input className='data' placeholder='2022-01-18 ~ 2202-01-28'></input>
-<input className='search' placeholder='검석'></input>
-<button className='excel'>EXCEL</button>
-      </CardHead>
+        <CardHead>
+          <select aria-label="Default select example">
+            <option selected>10개씩 보기</option>
+            <option selected>20개씩 보기</option>
+          </select>
 
-<WrapperTable>
+          <input className='data' placeholder='2022-01-18 ~ 2202-01-28'></input>
+          <input className='search' placeholder='검석'></input>
+          <button className='excel'>EXCEL</button>
+        </CardHead>
 
-<Table responsive="sm">
-    <thead>
-      <tr>
-        <th>순서</th>
-        <th>거래일시</th>
-        <th>계정</th>
-        <th>결제 Token</th>
-        <th>결제금액</th>
-        <th>체결상태</th>
-        <th>수수료</th>
-        <th>정산금액</th>
-        <th>Transaction</th>
-      </tr>
-      
-    </thead>
-    <tbody>
-      
-    
-      <tr>
-        <td>1</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>USDT</td>
-        <td>100</td>
-        <td>진행중</td>
-        <td>0.25 AKD</td>
-        <td> 100.25 AKD</td>
-        <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
-       
-      </tr>
-      <tr>
+        <WrapperTable>
 
-      <td>2</td>
-        <td>2022-01-12 09:50:11</td>
-        <td>@ioisdfsfsdgsg</td>
-        <td>USDT</td>
-        <td>100</td>
-        <td>진행중</td>
-        <td>0.25 AKD</td>
-        <td> 100.25 AKD</td>
-        <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
-       
-      </tr>
+          <Table responsive="sm">
+            <thead>
+              <tr>
+                <th>순서</th>
+                <th>거래일시</th>
+                <th>계정</th>
+                <th>결제 Token</th>
+                <th>결제금액</th>
+                <th>체결상태</th>
+                <th>수수료</th>
+                <th>정산금액</th>
+                <th>Transaction</th>
+              </tr>
 
-      <tr>
+            </thead>
+            <tbody>
 
-<td>3</td>
-  <td>2022-01-12 09:50:11</td>
-  <td>@ioisdfsfsdgsg</td>
-  <td>USDT</td>
-  <td>100</td>
-  <td>진행중</td>
-  <td>0.25 AKD</td>
-  <td> 100.25 AKD</td>
-  <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
- 
-</tr>
 
-<tr>
+              <tr>
+                <td>1</td>
+                <td>2022-01-12 09:50:11</td>
+                <td>@ioisdfsfsdgsg</td>
+                <td>USDT</td>
+                <td>100</td>
+                <td>진행중</td>
+                <td>0.25 AKD</td>
+                <td> 100.25 AKD</td>
+                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
 
-<td>4</td>
-  <td>2022-01-12 09:50:11</td>
-  <td>@ioisdfsfsdgsg</td>
-  <td>USDT</td>
-  <td>100</td>
-  <td>진행중</td>
-  <td>0.25 AKD</td>
-  <td> 100.25 AKD</td>
-  <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
- 
-</tr>
+              </tr>
+              <tr>
 
-<tr>
+                <td>2</td>
+                <td>2022-01-12 09:50:11</td>
+                <td>@ioisdfsfsdgsg</td>
+                <td>USDT</td>
+                <td>100</td>
+                <td>진행중</td>
+                <td>0.25 AKD</td>
+                <td> 100.25 AKD</td>
+                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
 
-<td>5</td>
-  <td>2022-01-12 09:50:11</td>
-  <td>@ioisdfsfsdgsg</td>
-  <td>USDT</td>
-  <td>100</td>
-  <td>진행중</td>
-  <td>0.25 AKD</td>
-  <td> 100.25 AKD</td>
-  <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
- 
-</tr>
+              </tr>
 
-<tr>
+              <tr>
 
-<td>6</td>
-  <td>2022-01-12 09:50:11</td>
-  <td>@ioisdfsfsdgsg</td>
-  <td>USDT</td>
-  <td>100</td>
-  <td>진행중</td>
-  <td>0.25 AKD</td>
-  <td> 100.25 AKD</td>
-  <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
- 
-</tr>
-      
-    </tbody>
-  </Table>
+                <td>3</td>
+                <td>2022-01-12 09:50:11</td>
+                <td>@ioisdfsfsdgsg</td>
+                <td>USDT</td>
+                <td>100</td>
+                <td>진행중</td>
+                <td>0.25 AKD</td>
+                <td> 100.25 AKD</td>
+                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
 
-  {/* <BuysellTable/> */}
-</WrapperTable>
-<Paginotion>
-      <Stack>
-          <Pagination count={2} shape="rounded" />
-        </Stack>
-  </Paginotion>
-      </Wrapper> 
-    
+              </tr>
+
+              <tr>
+
+                <td>4</td>
+                <td>2022-01-12 09:50:11</td>
+                <td>@ioisdfsfsdgsg</td>
+                <td>USDT</td>
+                <td>100</td>
+                <td>진행중</td>
+                <td>0.25 AKD</td>
+                <td> 100.25 AKD</td>
+                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
+
+              </tr>
+
+              <tr>
+
+                <td>5</td>
+                <td>2022-01-12 09:50:11</td>
+                <td>@ioisdfsfsdgsg</td>
+                <td>USDT</td>
+                <td>100</td>
+                <td>진행중</td>
+                <td>0.25 AKD</td>
+                <td> 100.25 AKD</td>
+                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
+
+              </tr>
+
+              <tr>
+
+                <td>6</td>
+                <td>2022-01-12 09:50:11</td>
+                <td>@ioisdfsfsdgsg</td>
+                <td>USDT</td>
+                <td>100</td>
+                <td>진행중</td>
+                <td>0.25 AKD</td>
+                <td> 100.25 AKD</td>
+                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
+
+              </tr>
+
+            </tbody>
+          </Table> */}
+
+      {/* <BuysellTable/> */}
+      {/* </WrapperTable>
+        <Paginotion>
+          <Stack>
+            <Pagination count={2} shape="rounded" />
+          </Stack>
+        </Paginotion>
+      </Wrapper> */}
+
     </Container>
   )
 }
-const Container =styled.div`
+const Container = styled.div`
 .buysell{
   display: flex;
   h1{
@@ -225,7 +225,7 @@ background-color: #D9D9D9;
 }
 
 `
-const Paginotion =styled.div`
+const Paginotion = styled.div`
 display: flex ;
 justify-content: center;
 align-items: center;

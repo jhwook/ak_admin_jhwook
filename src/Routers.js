@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AdminSetting from "./pages/AdminSetting/AdminSetting";
 import AprManagment from "./pages/AprManagment/AprManagment";
 import AssetManagment from "./pages/AssetManegment/assetManagment";
@@ -25,14 +25,14 @@ import Myprofile from "./pages/AdminSetting/Myprofile";
 
 const Routers = () => {
   return (
-    <Routes>  
-      <Route path="/"  element={<Home />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/members" element={<MemberShip_Status />} />
-      <Route path="/memberDetails" element={<MemberDetails />}>
-          <Route  index path="minting" element={<Minting/>}/>         
-          <Route path="market" element={<Market />} />
-          <Route path="lend" element={<Lend />} />
-       </Route>
+      <Route path="memberDetails" element={<MemberDetails />}>
+        <Route index path="minting" element={<Minting />} />
+        <Route path="market" element={<Market />} />
+        <Route path="lend" element={<Lend />} />
+      </Route>
       <Route path="/token_managment" element={<TokenMember />} />
       <Route path="/pull_managment" element={<Pullmnagament />} />
       <Route path="/apr_managment" element={<AprManagment />} />
@@ -40,21 +40,21 @@ const Routers = () => {
       <Route path="/asset_management" element={<AssetManagment />} />
 
 
-      <Route path="/buy/sell" element={<BeySell />}>
-        <Route index path="buy" element={<Buy />} />
+      <Route path="/buy" element={<BeySell />}>
+        <Route path="buy" element={<Buy />} />
         <Route path="sell" element={<Sell />} />
       </Route>
-       
+
       <Route path="/nft_register" element={<NftManagment />} />
       <Route path="/nft_current" element={<NftCurrent />} />
       <Route path="/setting" element={<Settings />} />
       <Route path="/admin_setting" element={<AdminSetting />} />
-      <Route index path='/memberInformation' element={<MemberInformation/>} />
-      <Route path='/market' element={<Market/>}/>
-      <Route path='/lend' element={<Lend/>}  />
-      <Route path='/createApair' element={<CreateApair/>}  />
-      <Route path='/iteminformation' element={<Iteminformation/>}  />
-      <Route path='/myProfile' element={<Myprofile/>}  />
+      <Route index path='/memberInformation' element={<MemberInformation />} />
+      <Route path='/market' element={<Market />} />
+      <Route path='/lend' element={<Lend />} />
+      <Route path='/createApair' element={<CreateApair />} />
+      <Route path='/iteminformation' element={<Iteminformation />} />
+      <Route path='/myProfile' element={<Myprofile />} />
     </Routes>
 
   );

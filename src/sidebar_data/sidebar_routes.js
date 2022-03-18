@@ -18,11 +18,11 @@ export const sidebar = [
     title: "일반",
     element: <Generl />,
     path: "/",
-    icon: Ilban,
+    Icon: Ilban,
     arrow: Section,
     hidden: false,
     Child: [
-      { title: "대시보드", params: "",},
+      { title: "대시보드", params: "", },
     ],
   },
 

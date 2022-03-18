@@ -6,112 +6,111 @@ import styled from 'styled-components'
 export const Market = () => {
   return (
     <Container>
-      
-      <Wrapper>  
-      <CardHead>
-        <h1>market</h1>
-      <select aria-label="Default select example">
-  <option selected>10개씩 보기</option>
-  <option selected>20개씩 보기</option>
-</select>
-<CalenIkon><CalendarMonthOutlined /></CalenIkon> 
-<input className='data' placeholder='2022-01-18 ~ 2202-01-28'/>
 
-<Ikon><SearchOutlined /> </Ikon>
-<input className='search' placeholder='검석'></input>
-<button className='excel'>EXCEL</button>
-      </CardHead>
+      <Wrapper>
+        <CardHead>
+          <select aria-label="Default select example">
+            <option selected>10개씩 보기</option>
+            <option selected>20개씩 보기</option>
+          </select>
+          <CalenIkon><CalendarMonthOutlined /></CalenIkon>
+          <input className='data' placeholder='2022-01-18 ~ 2202-01-28' />
 
-<WrapperTable>
-<Border/>
-<Table responsive="sm"> 
-    <thead>
-     
-      <tr>
-        <th>순서</th>
-        <th>거래일시</th>
-        <th>아이템</th>
-        <th>가격</th>
-        <th>거래번호</th>
-        <th>거래방식</th>
-        <th>체결상태</th>
-        <th>결제금액</th>
-        <th>판매자</th>
-        <th>구매자</th>
-        <th>수수료</th>
-        <th>Transaction</th>
-      </tr>
-      
-    </thead>
-    <tbody>
-      
-    
-      <tr>
-        <td>1</td>
-        <td> 2022-01-12 09:50:11</td>
-        <td>Friends #002</td>
-        <td>100 AKD</td>
-        <td>Or 13</td>
-        <td>경매</td>
-        <td>진행중</td>
-        <td> 100 AKD</td>
-        <td>@Kimsdjfkdfl</td>
-        <td>@ioimmoj</td>
-        <td>0.25 AKD</td>
-        <td>0x5906a5c0e5747ee...</td>
-       
-      </tr>
-      <tr>
-        <td>1</td>
-        <td> 2022-01-12 09:50:11</td>
-        <td>Friends #002</td>
-        <td>100 AKD</td>
-        <td>Or 13</td>
-        <td>경매</td>
-        <td>진행중</td>
-        <td> 100 AKD</td>
-        <td>@Kimsdjfkdfl</td>
-        <td>@ioimmoj</td>
-        <td>0.25 AKD</td>
-        <td>0x5906a5c0e5747ee...</td>
-       
-      </tr>
-      <tr>
-        <td>1</td>
-        <td> 2022-01-12 09:50:11</td>
-        <td>Friends #002</td>
-        <td>100 AKD</td>
-        <td>Or 13</td>
-        <td>경매</td>
-        <td>진행중</td>
-        <td> 100 AKD</td>
-        <td>@Kimsdjfkdfl</td>
-        <td>@ioimmoj</td>
-        <td>0.25 AKD</td>
-        <td>0x5906a5c0e5747ee...</td>
-      </tr>
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-    </tbody>
-  </Table>
-</WrapperTable>
-<Paginotion>
-      <Stack>
-          <Pagination count={2} shape="rounded" />
-        </Stack>
-  </Paginotion>
-      </Wrapper> 
-    
+          <Ikon><SearchOutlined /> </Ikon>
+          <input className='search' placeholder='검석'></input>
+          <button className='excel'>EXCEL</button>
+        </CardHead>
+
+        <WrapperTable>
+          <Border />
+          <Table responsive="sm">
+            <thead>
+
+              <tr>
+                <th>순서</th>
+                <th>거래일시</th>
+                <th>아이템</th>
+                <th>가격</th>
+                <th>거래번호</th>
+                <th>거래방식</th>
+                <th>체결상태</th>
+                <th>결제금액</th>
+                <th>판매자</th>
+                <th>구매자</th>
+                <th>수수료</th>
+                <th>Transaction</th>
+              </tr>
+
+            </thead>
+            <tbody>
+
+
+              <tr>
+                <td>1</td>
+                <td> 2022-01-12 09:50:11</td>
+                <td>Friends #002</td>
+                <td>100 AKD</td>
+                <td>Or 13</td>
+                <td>경매</td>
+                <td>진행중</td>
+                <td> 100 AKD</td>
+                <td>@Kimsdjfkdfl</td>
+                <td>@ioimmoj</td>
+                <td>0.25 AKD</td>
+                <td>0x5906a5c0e5747ee...</td>
+
+              </tr>
+              <tr>
+                <td>1</td>
+                <td> 2022-01-12 09:50:11</td>
+                <td>Friends #002</td>
+                <td>100 AKD</td>
+                <td>Or 13</td>
+                <td>경매</td>
+                <td>진행중</td>
+                <td> 100 AKD</td>
+                <td>@Kimsdjfkdfl</td>
+                <td>@ioimmoj</td>
+                <td>0.25 AKD</td>
+                <td>0x5906a5c0e5747ee...</td>
+
+              </tr>
+              <tr>
+                <td>1</td>
+                <td> 2022-01-12 09:50:11</td>
+                <td>Friends #002</td>
+                <td>100 AKD</td>
+                <td>Or 13</td>
+                <td>경매</td>
+                <td>진행중</td>
+                <td> 100 AKD</td>
+                <td>@Kimsdjfkdfl</td>
+                <td>@ioimmoj</td>
+                <td>0.25 AKD</td>
+                <td>0x5906a5c0e5747ee...</td>
+              </tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tbody>
+          </Table>
+        </WrapperTable>
+        <Paginotion>
+          <Stack>
+            <Pagination count={2} shape="rounded" />
+          </Stack>
+        </Paginotion>
+      </Wrapper>
+
     </Container>
   )
 }
@@ -126,7 +125,7 @@ box-sizing: border-box;
 
 
 `
-const CalenIkon =styled.div`
+const CalenIkon = styled.div`
 position: absolute;
 width: 14px;
 height: 14px;
@@ -137,7 +136,7 @@ box-sizing: border-box;
 const Border = styled.div`
 border: 1px solid #D9D9D9;
 `
-const Container =styled.div`
+const Container = styled.div`
 margin: 44px;
 display: flex;
 flex-direction: column;
@@ -211,7 +210,7 @@ const WrapperTable = styled.div`
 margin-top: 24px;
 
 `
-const Paginotion =styled.div`
+const Paginotion = styled.div`
 display: flex ;
 justify-content: center;
 align-items: center;
