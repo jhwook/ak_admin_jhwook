@@ -1,15 +1,13 @@
-import { Pagination, Stack, Switch } from '@mui/material'
+import {  Switch } from '@mui/material'
 import React from 'react'
 import { Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'
+
 import styled from 'styled-components'
 
 export const AdminSetting = () => {
-  const [checked, setChecked] = React.useState(false);
-  
-  const [age, setAge] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  let navigation = useNavigate();
+
   return (
     <Container>
       
@@ -27,6 +25,7 @@ export const AdminSetting = () => {
       </CardHead>
 
 <WrapperTable>
+  <Boreder/>
 <Table responsive="sm">
     <thead>
       <tr>
@@ -45,38 +44,67 @@ export const AdminSetting = () => {
     <tbody>
       
     
-      <tr>
+      <tr  >
         <td>1</td>
-        <td>Table cell</td>
-        <td>AKD Dollar</td>
-        <td>AkD</td>
-        <td>2022-01-29 11:00:00</td>
-        <td>264,321</td>
-        <td> 155,506</td>
-        <td> 155,506</td>
-        <td>   <Switch
-      checked={checked}
-      onChange={handleChange}
-      inputProps={{ 'aria-label': 'controlled' }}
-    /> </td>
+        <td onClick={()=>{navigation('/Myprofile')}} >ioimmoj</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>X@5YfD4p5hzKxq!</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>AkD</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 010-0000-0000</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 최고관리자</td>
+        <td> <Switch/> </td>
       </tr>
-      <tr>
-
+      <tr  >
         <td>2</td>
-        <td>Table cell</td>
-        <td>AKD Dollar</td>
-        <td>AkD</td>
-        <td>2022-01-29 11:00:00</td>
-        <td>264,321</td>
-        <td> 155,506</td>
-        <td> 155,506</td>
-        <td>   <Switch
-      checked={checked}
-      onChange={handleChange}
-      inputProps={{ 'aria-label': 'controlled' }}
-    /> </td>
+        <td onClick={()=>{navigation('/Myprofile')}} >ioimmoj</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>X@5YfD4p5hzKxq!</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>AkD</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 010-0000-0000</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 최고관리자</td>
+        <td> <Switch/> </td>
       </tr>
+
+      <tr  >
+        <td>3</td>
+        <td onClick={()=>{navigation('/Myprofile')}} >ioimmoj</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>X@5YfD4p5hzKxq!</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>AkD</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 010-0000-0000</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 최고관리자</td>
+        <td> <Switch/> </td>
+      </tr>
+
+      <tr  >
+        <td>4</td>
+        <td onClick={()=>{navigation('/Myprofile')}} >ioimmoj</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>X@5YfD4p5hzKxq!</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>AkD</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}>2022-01-29 11:00:00</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 010-0000-0000</td>
+        <td onClick={()=>{navigation('/Myprofile')}}> 최고관리자</td>
+        <td> <Switch/> </td>
+      </tr>
+
+
+
+
       
+     
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tbody>
   </Table>
 </WrapperTable>
@@ -86,6 +114,10 @@ export const AdminSetting = () => {
     </Container>
   )
 }
+
+const Boreder = styled.div`
+border: 1px solid #D9D9D9;
+`
 const Container =styled.div`
 margin: 44px;
 display: flex;
@@ -163,14 +195,11 @@ color: #000000;
 
 const WrapperTable = styled.div`
 margin-top: 24px;
-
-`
-const Paginotion =styled.div`
-display: flex ;
-justify-content: center;
-align-items: center;
-width: 100%;
-margin-top: 24px;
+tbody{
+  tr:hover{
+    background: #F5F5F5;
+  }
+}
 
 `
 export default AdminSetting

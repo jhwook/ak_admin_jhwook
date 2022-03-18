@@ -68,6 +68,7 @@ export const NftManagment = () => {
       <button className='file'>선택</button>
       </Tabble>
       <Border/>
+      <button className='nftreg'>저장</button>
       </Wrapper>
       
      </Container>
@@ -80,6 +81,22 @@ const Container =styled.div`
 margin: 44px;
 display: flex;
 flex-direction: column;
+.nftreg{
+width: 30px;
+height: 19px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+color: #FFFFFF;
+width: 162px;
+height: 44px;
+background: #4876EF;
+border-radius: 8px;
+margin-left: 1270px;
+margin-top: 24px;
+}
 input{
   margin-left: auto;
   padding-left: 20px;

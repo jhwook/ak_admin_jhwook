@@ -44,54 +44,28 @@ let navigate = useNavigate();
 <input placeholder='0.0' type='text' />
 <button>MAX</button>
   </CaardWrap>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan={2}>Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
- <button className='btn' onClick={()=>{navigate('/createApair')}}>Enter an amount 
-</button> 
-<Table>
-  <thead>
-    <tr>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-    <tr>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-</Table>
- {/* <PayCard>
+
+ 
+ <PayCard>
+   <PayContainer> 
           <PayCardWraqq>페어명</PayCardWraqq>
-          <PayCardWraqq2>AKD + AKG</PayCardWraqq2>
-          
+          <PayCardWraqq>페어 심볼명</PayCardWraqq>
+           <PayCardWraqq>초기 교환 비율</PayCardWraqq>
+          <PayCardWraqq>수수료</PayCardWraqq>
+  </PayContainer>  
+  <PayContainer>
+          <PayCardWraqq2  ><span className='akd'>AKD + AKG</span> </PayCardWraqq2>
+          <PayCardWraqq2 ><span>AKD/AKG</span> </PayCardWraqq2>
+
+          <PayCardWraqq2>1 AKD = 1 AKG</PayCardWraqq2>
+        <PayCardWraqq2>0.000000 AKD</PayCardWraqq2>
+
+    </PayContainer>   
       </PayCard> 
-      <PayCard>
-          <PayCardWraqq>페어명</PayCardWraqq>
-          <PayCardWraqq2>AKD + AKG</PayCardWraqq2>
           
-      </PayCard> 
-      <PayCard>
-          <PayCardWraqq>페어명</PayCardWraqq>
-          <PayCardWraqq2>AKD + AKG</PayCardWraqq2>
-          
-      </PayCard>  */}
+
+    <button className='btn' onClick={()=>{navigate('/createApair')}}>Enter an amount 
+</button>       
  </CardBody>  
      
  </Card>
@@ -100,21 +74,24 @@ let navigate = useNavigate();
 </Container>
   )
 }
+const PayContainer = styled.div`
+
+`
 const PayCard = styled.div`
-padding: 24px 10px 0 0 ;
+margin-top: 24px;
 display: flex;
 width: 100%;
+justify-content: center;
+align-items: center;
 `
 const PayCardWraqq = styled.div`
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 19px;
-display: flex;
-align-items: center;
-text-align: center;
 color: rgba(255, 255, 255, 0.4);
-margin-right: 206px;
+margin-right: 229px;
+margin-bottom: 12px;
 
 
 `
@@ -123,10 +100,19 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 19px;
-display: flex;
-align-items: center;
-text-align: center;
 color: rgba(255, 255, 255, 0.6);
+margin-bottom: 12px;
+span{
+  position: relative;
+  left: 35px;
+}
+.akd{
+  position: relative;
+  left: 25px;
+
+}
+
+
 `
 
 
@@ -155,7 +141,6 @@ text-align: center;
 color: #FFFFFF;
 }
 .btn{
-margin-top: 30px;
 width: 432px;
 height: 56px;
 background: #FFFFFF;

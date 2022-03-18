@@ -1,28 +1,20 @@
-import React, { useState } from 'react'
-import {Routes, Route,  Link, Outlet } from 'react-router-dom';
+import React from 'react'
+import {  NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import MemberDetailsTable from './MembrDetailsTable';
-import Lend from './Lend'
-import Market from './Market'
 export const MemberDetails = () => {
  
-  <Routes>
-  <Route element={MemberDetails} >
-  <Route index path='minting' element={<Market/>} />
-  <Route path='market' element={<Market/>}/>
-  <Route path='lend' element={<Lend/>}  />
-  </Route>
-</Routes>
+
   return (
     <Container>
   <LinkCont>
-  <Link to='/minting'>Minting</Link>
-  <Link to='/market'>Market</Link>
-  <Link to='/lend'>Lend</Link>
+  <NavLink className={'minting'} style={({isActive})=>{return{ color: isActive ? '#000000' : "#7A7A7A", }}}  to='minting'>Minting </NavLink>
+  <NavLink className={'market'} style={({isActive})=>{return{ color: isActive ? '#000000' : "#7A7A7A"}}}  to='market'>Market</NavLink>
+  <NavLink className={'lend'} style={({isActive})=>{return{ color: isActive ? '#000000' : '#7A7A7A'}}}  to='lend'>Lend</NavLink>
   </LinkCont>
-  <Outlet/>
- <MemberDetailsTable/>
-
+ 
+  {/* <MemberDetailsTable/> */}
+  <Outlet />
 
       
     </Container>
@@ -30,8 +22,41 @@ export const MemberDetails = () => {
 }
 
 const LinkCont = styled.div`
-display: flex;
+padding-top: 62px;
+padding-bottom: 48px;
+padding-left: 73px;
+.market{
+  margin-left: 63px;
+  text-decoration: none;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+border-bottom: ${(props)=> (props.isActive ? '0px solid #4876EF;' : '6px solid #4876EF;')};
+}
+}
+.lend{
+  margin-left: 63px;
+  text-decoration: none;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+border-bottom: ${(props)=> (props.isActive ? '0px solid #4876EF;' : '6px solid #4876EF;')};
+}
+
+
+.minting{
+  text-decoration: none;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+border-bottom: ${(props)=> (props.isActive ? '0px solid #4876EF;' : '6px solid #4876EF;')};
+}
 `
+
+
 const CardHead = styled.div`
 margin-bottom: 20px;
 width: 100%;
@@ -89,14 +114,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  margin: 44px;
-`;
+// const Wrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   background: #ffffff;
+//   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+//   border-radius: 12px;
+//   margin: 44px;
+// `;
 const Card = styled.div`
 padding: 50px;
 display: flex;

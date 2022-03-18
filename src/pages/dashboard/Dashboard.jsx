@@ -21,7 +21,7 @@ export const Sidebar = () => {
 
 const Container = styled.div`
   display: flex;
-  height: 1030px;
+  height: 1430px;
   flex-direction: column;
   min-width: 230px;
   background: #ffffff;

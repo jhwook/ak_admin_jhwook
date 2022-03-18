@@ -1,9 +1,11 @@
 import { Pagination, Stack } from '@mui/material'
 import React from 'react'
+import { Table } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import CurrentTable from './NftCurrentTable'
 
 export const NftCurrent = () => {
+  let navigate = useNavigate();
 
     return (
       <Container>
@@ -40,7 +42,104 @@ export const NftCurrent = () => {
       </CardHead>
 
 <WrapperTable>
-  <CurrentTable/>
+
+
+<Table responsive="sm">
+    <thead>
+      <tr  >
+        <th>순서</th>
+        <th>아이템</th>
+        <th>아이템 번호</th>
+        <th>가격</th>
+        <th>판매방식</th>
+        <th>Contract</th>
+        <th>상태</th>
+        <th>Owner</th>
+        <th>등록일</th>
+        <th>수정일</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      
+    
+      <tr onClick={()=>{navigate('/iteminformation')}}>
+        <td>1</td>
+        <td>Friends #0002</td>
+        <td>@A20e989...</td>
+        <td>100 AKD</td>
+        <td>고정가</td>
+        <td>0x5906a5c0e5747ee...</td>
+        <td>진행중</td>
+        <td>@ioimmoj</td>
+        <td> 2022-01-12 09:50:11</td>
+        <td> 2022-01-12 09:50:11</td>
+      </tr>
+
+      <tr onClick={()=>{navigate('/iteminformation')}}>
+        <td>2</td>
+        <td>Friends #0002</td>
+        <td>@A20e989...</td>
+        <td>100 AKD</td>
+        <td>고정가</td>
+        <td>0x5906a5c0e5747ee...</td>
+        <td>진행중</td>
+        <td>@ioimmoj</td>
+        <td> 2022-01-12 09:50:11</td>
+        <td> 2022-01-12 09:50:11</td>
+      </tr>
+
+      <tr onClick={()=>{navigate('/iteminformation')}}>
+        <td>3</td>
+        <td>Friends #0002</td>
+        <td>@A20e989...</td>
+        <td>100 AKD</td>
+        <td>고정가</td>
+        <td>0x5906a5c0e5747ee...</td>
+        <td>진행중</td>
+        <td>@ioimmoj</td>
+        <td> 2022-01-12 09:50:11</td>
+        <td> 2022-01-12 09:50:11</td>
+      </tr>
+
+      <tr onClick={()=>{navigate('/iteminformation')}}>
+        <td>4</td>
+        <td>Friends #0002</td>
+        <td>@A20e989...</td>
+        <td>100 AKD</td>
+        <td>고정가</td>
+        <td>0x5906a5c0e5747ee...</td>
+        <td>진행중</td>
+        <td>@ioimmoj</td>
+        <td> 2022-01-12 09:50:11</td>
+        <td> 2022-01-12 09:50:11</td>
+      </tr>
+
+      <tr onClick={()=>{navigate('/iteminformation')}}>
+        <td>5</td>
+        <td>Friends #0002</td>
+        <td>@A20e989...</td>
+        <td>100 AKD</td>
+        <td>고정가</td>
+        <td>0x5906a5c0e5747ee...</td>
+        <td>진행중</td>
+        <td>@ioimmoj</td>
+        <td> 2022-01-12 09:50:11</td>
+        <td> 2022-01-12 09:50:11</td>
+      </tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      
+    </tbody>
+  </Table>
 </WrapperTable>
 <Paginotion>
       <Stack>
@@ -70,6 +169,11 @@ export const NftCurrent = () => {
 
   const WrapperTable = styled.div`
   margin-top: 24px;
+  tbody{
+  tr:hover{
+background-color: #D9D9D9;
+  }
+}
   
   `
   const Paginotion =styled.div`

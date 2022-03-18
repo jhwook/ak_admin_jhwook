@@ -1,16 +1,15 @@
 import { CalendarMonthOutlined, SearchOutlined } from '@mui/icons-material'
 import { Pagination, Stack } from '@mui/material'
-import { Input } from 'antd'
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
-import search from '../../assets/icons/search.svg'
 export const Market = () => {
   return (
     <Container>
       
       <Wrapper>  
       <CardHead>
+        <h1>market</h1>
       <select aria-label="Default select example">
   <option selected>10개씩 보기</option>
   <option selected>20개씩 보기</option>

@@ -9,6 +9,7 @@ export const MemberInformation = () => {
       <Title><h1>회원정보 확인 <ArrowForwardIosIcon/>  </h1><p>i0x564DaF7EBD1742Cedc3ECeE1B2b949eCBE35Dbe0 </p></Title>  
 
 <Card>
+  <CardCont>
       <TableCont>
 <TabdleCad>
 <TableLeft>지갑주소</TableLeft>
@@ -61,8 +62,10 @@ export const MemberInformation = () => {
 <TableRight><Switch/> </TableRight>
 </TabdleCad>
       </TableCont>
+      </CardCont>
       
       </Card>
+      <button className='memInfo' >저장</button>
     </Wrapper>    
     </Container>
   )
@@ -71,6 +74,9 @@ const TableCont = styled.div`
 display: flex;
 flex-direction: column;
 
+`
+const CardCont = styled.div`
+display: flex;
 `
 const Card =styled.div`
 display: flex;
@@ -128,11 +134,22 @@ padding: 44px;
 ` 
 
 const Wrapper = styled.div`
-
+.memInfo{
+  margin-top: 24px;
+  margin-left: 1264px;
+width: 162px;
+height: 44px;
+background: #4876EF;
+border-radius: 8px;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+color: #FFFFFF;
+}
 width: 1526px;
 height: 654px;
-left: 274px;
-top: 108px;
 background: #FFFFFF;
 box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 border-radius: 12px;

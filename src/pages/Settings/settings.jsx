@@ -36,6 +36,9 @@ export const Settings = () => {
      
       
    <Cards>
+     {/* 1 */}
+     
+    <Left>
      <ItemCard>
        <ItemWrapper>
        레퍼럴 회원 설정 범위 (%) 
@@ -46,10 +49,10 @@ export const Settings = () => {
          <button className='ok' >확인</button>
        </ButtonItem>
      </ItemCard>
-
+{/* 2 */}
      <ItemCard>
        <ItemWrapper>
-       레퍼럴 회원 설정 범위 (%) 
+       레퍼럴 지급 기준 (1건당 AKG이상)
        </ItemWrapper>
        <input type="text" placeholder='0' />
        <ButtonItem>
@@ -57,11 +60,28 @@ export const Settings = () => {
          <button className='ok' >확인</button>
        </ButtonItem>
      </ItemCard>
+     </Left>
    </Cards>
-      
+   {/* 3 */}
+       <Cards>
+     <ItemCard left>
+       <ItemWrapper>
+       레퍼럴 지급주기 (week마다)
+       </ItemWrapper>
+       <input type="text" placeholder='0' />
+       <ButtonItem>
+         <button className='cancel' >취소</button>
+         <button className='ok' >확인</button>
+       </ButtonItem>
+     </ItemCard>
+      </Cards>
 </Container>
   )
 }
+const Left = styled.div`
+display: flex;
+margin-left: auto;
+`
 
 const ButtonItem = styled.div`
 display: flex;
@@ -94,6 +114,7 @@ text-align: center;
 color: #000000;
 `
 const ItemCard = styled.div`
+margin-left: ${({left})=> left ?'auto': '44px'};
 padding: 37px 50px;
 width: 540px;
 height: 270px;
@@ -101,7 +122,6 @@ background: #FFFFFF;
 box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 border-radius: 12px;
 margin-top: 37px;
-margin-right: 44px;
 input{
   padding-left: 20px;
   margin-top: 44px;
@@ -115,7 +135,7 @@ border-radius: 8px;
 `
 const Cards = styled.div`
 display: flex;
-
+width: 100%;
 
 `
 const Container =styled.div`

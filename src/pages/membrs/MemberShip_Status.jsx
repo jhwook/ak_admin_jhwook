@@ -34,28 +34,28 @@ text-align: center;
 color: #000000;
   }
 `;
-const Card = styled.div`
-display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 1526px;
-  height: 734px;
-  padding:50px ;
+// const Card = styled.div`
+// display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   width: 1526px;
+//   height: 734px;
+//   padding:50px ;
 
-`
-const WrapperBtn = styled.div`
-display: flex;
+// `
+// const WrapperBtn = styled.div`
+// display: flex;
 
-`
-const Wrappersearch = styled.div`
-display: flex;
-margin-left: 880px;
+// `
+// const Wrappersearch = styled.div`
+// display: flex;
+// margin-left: 880px;
 
-`
-const CardWrapper = styled.div`
-display: flex;
-padding:0 50px  24px;
+// `
+// const CardWrapper = styled.div`
+// display: flex;
+// padding:0 50px  24px;
 
-`
+// `
 export default MemberShipStatus;

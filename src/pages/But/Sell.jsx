@@ -3,15 +3,11 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import { NavLink, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
-import BuysellTable from '../BuysellTable'
 
-export const BeySell = () => {
+export const Sell = () => {
   return (
     <Container>
-        <NavLink to='/buy/sel' >Buy</NavLink>
-        <NavLink to='/buy' >Sell</NavLink>
-
-       <Outlet />
+ 
       <Wrapper>  
      
       <CardHead>
@@ -33,8 +29,8 @@ export const BeySell = () => {
         <th>순서</th>
         <th>거래일시</th>
         <th>계정</th>
-        <th>결제 Token</th>
-        <th>결제금액</th>
+        <th>출금 Token</th>
+        <th>출금금액</th>
         <th>체결상태</th>
         <th>수수료</th>
         <th>정산금액</th>
@@ -233,4 +229,4 @@ width: 100%;
 margin-top: 24px;
 
 `
-export default BeySell
+export default Sell

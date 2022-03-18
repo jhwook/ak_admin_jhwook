@@ -3,8 +3,10 @@ import {Pagination, Stack } from '@mui/material'
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
-export const  MemberDetailsTable
-= () => {
+
+
+
+export const MemberDetailsTable = () => {
 
   return (
     <Container>
@@ -93,18 +95,6 @@ export const  MemberDetailsTable
         <td>0.25 AKD</td>
         <td>0x5906a5c0e5747ee...</td>
       </tr>
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
-      <td></td>  
     </tbody>
   </Table>
 </WrapperTable>
