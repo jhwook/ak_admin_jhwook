@@ -1,11 +1,6 @@
-import React from 'react'
+import React from "react";
 
 export const Bey = () => {
-  return (
-    <div>
-bey
-
-    </div>
-  )
-}
-export default Bey
+  return <div>beysdkskjcg</div>;
+};
+export default Bey;
