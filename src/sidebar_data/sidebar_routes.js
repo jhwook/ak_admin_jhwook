@@ -1,5 +1,5 @@
-import { ReactComponent as Ilban } from "../assets/icons/ilban.svg";
-import { ReactComponent as User } from "../assets/icons/user.svg";
+import { ReactComponent as Ilban } from "../assets/icons/Ilban.svg";
+import { ReactComponent as User } from "../assets/icons/User.svg";
 import { ReactComponent as Ak } from "../assets/icons/AK.svg";
 import { ReactComponent as Bank } from "../assets/icons/Bank.svg";
 import { ReactComponent as Nft } from "../assets/icons/Nft.svg";
@@ -21,9 +21,7 @@ export const sidebar = [
     Icon: Ilban,
     arrow: Section,
     hidden: false,
-    Child: [
-      { title: "대시보드", params: "", },
-    ],
+    Child: [{ title: "대시보드", params: "" }],
   },
 
   {
