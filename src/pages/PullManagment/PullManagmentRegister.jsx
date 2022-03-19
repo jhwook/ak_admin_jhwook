@@ -1,13 +1,10 @@
 import { Pagination, Stack } from "@mui/material";
-import { Checkbox, Switch } from "antd";
+import { Switch } from "antd";
 import React from "react";
 import { Table } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export const Pullmnagment = () => {
-  let navigate = useNavigate();
-
+export const PullmnagmentRegister = () => {
   return (
     <Container>
       <Wrapper>
@@ -17,17 +14,9 @@ export const Pullmnagment = () => {
             <option selected>10개씩 보기</option>
             <option selected>20개씩 보기</option>
           </select>
-          <button className="btnDelte">선택삭제</button>
           <input className="data" placeholder="2022-01-18 ~ 2202-01-28"></input>
           <input className="search" placeholder="검석"></input>
-          <button
-            className="excel"
-            onClick={() => {
-              navigate("/pullmnagmentRegister");
-            }}
-          >
-            등록
-          </button>
+          <button className="excel">등록</button>
         </CardHead>
         <WrapperTable>
           <Table responsive="sm">
@@ -40,27 +29,25 @@ export const Pullmnagment = () => {
               <th></th>
               <th></th>
               <tr>
-                <th>
-                  <Checkbox />
-                </th>
                 <th>순서</th>
-                <th>풀</th>
-                <th>분배 수량</th>
-                <th>총 입금 수량</th>
-                <th>풀 상세 수량</th>
+                <th>pair Pool Address</th>
+                <th>token00 address</th>
+                <th>token01 address</th>
+                <th>token00 reserve</th>
+                <th>token01 reserve</th>
+                <th>누적 트랜잭션 횟수 add/swap/remove</th>
                 <th>사용여부</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th>
-                  <Checkbox />
-                </th>
                 <td>1</td>
-                <td>AKD</td>
-                <td>AKD : 264,524.102</td>
-                <td>AKD : 264,524.102</td>
-                <td>AKD : 264,524.102</td>
+                <td>0x8...F7F8</td>
+                <td>0x8...F7F8</td>
+                <td>0x8...F7F8</td>
+                <td>409.169</td>
+                <td>409.169</td>
+                <td>89 / 67 / 45</td>
                 <td>
                   <Switch />{" "}
                 </td>
@@ -74,7 +61,85 @@ export const Pullmnagment = () => {
               <td></td>
             </tbody>
           </Table>
+
+          <ModalRegister>
+            <h1>Register pool</h1>
+            <div className="registerCont">
+              <div className="regText">token1 address</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 2 */}
+            <div className="registerCont">
+              <div className="regText">token1 symbol</div>
+              <div>
+                <select
+                  class="form-select"
+                  className="ModalSelect"
+                  aria-label="Default select example"
+                >
+                  <option selected>선택</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <Border />
+            {/* 3 */}
+            <div className="registerCont">
+              <div className="regText">token1 initial supply</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 4 */}
+            <div className="registerCont">
+              <div className="regText">token2 address</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 5 */}
+            <div className="registerCont">
+              <div className="regText">token2 symbol</div>
+              <div>
+                <select
+                  class="form-select"
+                  className="ModalSelect"
+                  aria-label="Default select example"
+                >
+                  <option selected>선택</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <Border />
+            {/* 6 */}
+            <div className="registerCont">
+              <div className="regText">token2 initial supply</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            <div className="regButton">
+              <button className="regCencel">취소</button>
+              <button className="regOk">확인</button>
+            </div>
+          </ModalRegister>
         </WrapperTable>
+        <Paginotion>
+          <Stack>
+            <Pagination count={2} shape="rounded" />
+          </Stack>
+        </Paginotion>
       </Wrapper>
     </Container>
   );
@@ -88,7 +153,8 @@ const ModalRegister = styled.div`
   position: absolute;
   width: 620px;
   height: 556px;
-  left: 1096px;
+  left: 1200px;
+  top: 300px;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
@@ -151,6 +217,15 @@ const ModalRegister = styled.div`
     text-align: center;
     color: #000000;
     margin-right: auto;
+  }
+  .ModalSelect {
+    padding-left: 20px;
+    width: 321px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
   }
   .ModalInput {
     width: 321px;
@@ -227,7 +302,7 @@ const CardHead = styled.div`
     margin-left: 14px;
   }
   select {
-    /* margin-right: 526px; */
+    margin-right: 526px;
     width: 160px;
     height: 44px;
 
@@ -280,4 +355,4 @@ const Paginotion = styled.div`
   margin-top: 24px;
 `;
 
-export default Pullmnagment;
+export default PullmnagmentRegister;

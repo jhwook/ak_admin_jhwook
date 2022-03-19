@@ -21,6 +21,7 @@ import Buy from "./pages/But/Buy";
 import Sell from "./pages/But/Sell";
 import Iteminformation from "./pages/NftCrurrent/Iteminformation";
 import Myprofile from "./pages/AdminSetting/Myprofile";
+import PullmnagmentRegister from "./pages/PullManagment/PullManagmentRegister";
 
 const Routers = () => {
   return (
@@ -54,6 +55,7 @@ const Routers = () => {
       <Route path="/createApair" element={<CreateApair />} />
       <Route path="/iteminformation" element={<Iteminformation />} />
       <Route path="/myProfile" element={<Myprofile />} />
+      <Route path="/pullmnagmentRegister" element={<PullmnagmentRegister />} />
     </Routes>
   );
 };

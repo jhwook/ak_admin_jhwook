@@ -19,6 +19,7 @@ const Container = styled.div`
   height: 64px;
   background: #21325b;
   color: #ffffff;
+  width: 100%;
   .navLogo {
     font-style: normal;
     font-weight: 600;

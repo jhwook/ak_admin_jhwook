@@ -1,8 +1,7 @@
 import { Pagination, Stack } from "@mui/material";
-import { Checkbox } from "antd";
+import { Checkbox, Switch } from "antd";
 import React from "react";
 import { Table } from "react-bootstrap";
-import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 export const TokenMember = () => {
@@ -18,13 +17,11 @@ export const TokenMember = () => {
           <button className="btnDelte">선택삭제</button>
           <input className="data" placeholder="2022-01-18 ~ 2202-01-28"></input>
           <input className="search" placeholder="검석"></input>
-          <button className="excel">EXCEL</button>
+          <button className="excel">등록</button>
         </CardHead>
-
         <WrapperTable>
           <Table responsive="sm">
             <thead>
-              <th></th>
               <th></th>
               <th></th>
               <th></th>
@@ -39,14 +36,13 @@ export const TokenMember = () => {
                   <Checkbox />
                 </th>
                 <th>순서</th>
-                <th>거래일시</th>
-                <th>계정</th>
-                <th>출금 Token</th>
-                <th>출금금액</th>
-                <th>체결상태</th>
-                <th>수수료</th>
-                <th>정산금액</th>
-                <th>Transaction</th>
+                <th>토큰명</th>
+                <th>심볼</th>
+                <th>Contract</th>
+                <th>총 수량</th>
+                <th>분배 수량</th>
+                <th>잔여 수량</th>
+                <th>사용여부</th>
               </tr>
             </thead>
             <tbody>
@@ -55,29 +51,164 @@ export const TokenMember = () => {
                   <Checkbox />
                 </th>
                 <td>1</td>
-                <td>2022-01-12 09:50:11</td>
-                <td>@ioisdfsfsdgsg</td>
-                <td>USDT</td>
-                <td>100</td>
-                <td>진행중</td>
-                <td>0.25 AKD</td>
-                <td> 100.25 AKD</td>
-                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
+                <td>AK dollar</td>
+                <td>AKD</td>
+                <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
+                <td>264,321</td>
+                <td>155,506</td>
+                <td>155,506</td>
+                <td>
+                  {" "}
+                  <Switch />{" "}
+                </td>
               </tr>
             </tbody>
           </Table>
-
-          {/* <BuysellTable/> */}
+          <ModalRegister>
+            <h1>토큰 등록</h1>
+            <div className="registerCont">
+              <div className="regText">컨트랙트</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 2 */}
+            <div className="registerCont">
+              <div className="regText">토큰명 (한글)</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 3 */}
+            <div className="registerCont">
+              <div className="regText">토큰명 (영문)</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 4 */}
+            <div className="registerCont">
+              <div className="regText">소수 자릿수</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
+            </div>
+            <Border />
+            {/* 5 */}
+            <div className="registerCont">
+              <div className="regText">심볼</div>
+              <div>
+                <input
+                  className="ModalInput"
+                  placeholder="이미지를 추가해주세요."
+                  type="text"
+                />
+                <button className="regSelect">선택</button>
+              </div>
+            </div>
+            <Border />
+            <div className="regButton">
+              <button className="regCencel">취소</button>
+              <button className="regOk">확인</button>
+            </div>
+          </ModalRegister>
         </WrapperTable>
-        <Paginotion>
-          <Stack>
-            <Pagination count={2} shape="rounded" />
-          </Stack>
-        </Paginotion>
       </Wrapper>
     </Container>
   );
 };
+const Border = styled.div`
+  border: 1px solid #e6e6e6;
+`;
+const ModalRegister = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 620px;
+  height: 556px;
+  left: 1096px;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 34px 50px 34px 50px;
+  .regButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    width: 100%;
+    gap: 20px;
+  }
+  .regCencel {
+    width: 230px;
+    height: 54px;
+    background: #f1f2f4;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #7a7a7a;
+  }
+  .regOk {
+    width: 230px;
+    height: 54px;
+    background: #4876ef;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .regSelect {
+    width: 60px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #4876ef;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #4876ef;
+    margin-left: 13px;
+  }
+  .regText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-right: auto;
+  }
+  .ModalInput {
+    width: 321px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    /* gap: 10px; */
+  }
+  .registerCont {
+    display: flex;
+    margin-bottom: 9px;
+    margin-top: 8px;
+  }
+`;
+
 const Container = styled.div`
   .buysell {
     display: flex;
@@ -190,107 +321,3 @@ const Paginotion = styled.div`
   margin-top: 24px;
 `;
 export default TokenMember;
-
-const ModelTab = styled.div`
-  //   thead {
-  //     border-bottom: 1px solid #f6f6f6;
-  //   }
-  //   input {
-  //     width: 321px;
-  //     height: 38px;
-  //     background: #ffffff;
-  //     border: 1px solid #d9d9d9;
-  //     box-sizing: border-box;
-  //     border-radius: 8px;
-  //   }
-  //   .img {
-  //     width: 248px;
-  //   }
-  //   .btntoken {
-  //     margin-left: 8px;
-  //     width: 60px;
-  //     height: 38px;
-  //     background: #ffffff;
-  //     border: 1px solid #4876ef;
-  //     box-sizing: border-box;
-  //     border-radius: 8px;
-  //   }
-  //   position: absolute;
-  //   padding: 50px 34px;
-  //   width: 540px;
-  //   height: 550px;
-  //   left: 1174px;
-  //   top: 350px;
-  //   background: #ffffff;
-  //   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  //   border-radius: 12px;
-  //   h1 {
-  //     margin-right: auto;
-  //     font-style: normal;
-  //     font-weight: 600;
-  //     font-size: 24px;
-  //     line-height: 36px;
-  //     display: flex;
-  //     align-items: center;
-  //     text-align: center;
-  //     color: #000000;
-  //   }
-  //
-`;
-
-{
-  /* <ModelTab>
-          <Head>
-            <h1> 토큰 등록</h1>
-          </Head>
-          <table className="table table-borderless">
-            <thead>
-              <tr>
-                <th scope="col">컨트랙트</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">토큰명 (한글)</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">토큰명 (영문)</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">소수 자릿수</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">심볼</th>
-                <th scope="col">
-                  <input className="img" />{" "}
-                  <button className="btntoken">선택</button>{" "}
-                </th>
-                <th scope="col"> </th>
-              </tr>
-            </thead>
-          </table>
-          <BtnCont>
-            <button className="btnTokens">취소</button>
-
-            <button className="btnTokenOk">등록</button>
-          </BtnCont>
-        </ModelTab> */
-}
