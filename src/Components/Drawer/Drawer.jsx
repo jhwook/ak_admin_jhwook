@@ -6,7 +6,7 @@ import up_arrow_icon from "../../assets/icons/up-arrow-icon.svg";
 import down_arrow_icon from "../../assets/icons/down-arrow-icon.svg";
 import styled from "styled-components";
 
-const DrawerField = ({ title, childItems, Icon }) => {
+const DrawerField = ({ title, childItems, setting_icon }) => {
   const [open, setOpen] = useState(false);
 
   const onClick = () => {
@@ -31,7 +31,7 @@ const DrawerField = ({ title, childItems, Icon }) => {
         >
           {/* <Icon /> */}
 
-          <img src={Icon} alt="icons" />
+          <img src={setting_icon} alt="icons" />
 
           <ListItemText sx={{ marginLEft: "1.5rem" }} primary={title} />
         </div>
@@ -76,7 +76,6 @@ export const Link = styled(NavLink)`
   line-height: 19px;
   color: #555555;
   margin-bottom: 10px;
-  
 `;
 
 export default DrawerField;

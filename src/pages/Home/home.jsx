@@ -63,7 +63,7 @@ const Cards = styled.div`
     font-size: 16px;
     line-height: 19px;
     color: #000000;
-    margin-top: 26px;
+    margin-top: 15px;
   }
   span {
     font-style: normal;
@@ -77,7 +77,7 @@ const Cards = styled.div`
     font-weight: 700;
     font-size: 40px;
     line-height: 47px;
-    margin-top: 22px;
+    margin-top: 10px;
     color: #000000;
   }
 `;

@@ -1,10 +1,10 @@
-import { ReactComponent as Ilban } from "../assets/icons/Ilban.svg";
-import { ReactComponent as User } from "../assets/icons/User.svg";
-import { ReactComponent as Ak } from "../assets/icons/AK.svg";
-import { ReactComponent as Bank } from "../assets/icons/Bank.svg";
-import { ReactComponent as Nft } from "../assets/icons/Nft.svg";
-import { ReactComponent as Setting } from "../assets/icons/setting.svg";
-import { ReactComponent as Section } from "../assets/icons/section.svg";
+import ilban_setting_icon from "../assets/icons/Ilban.svg";
+import user_setting_icon from "../assets/icons/User.svg";
+import ak_setting_icon from "../assets/icons/AK.svg";
+import bank_setting_icon from "../assets/icons/Bank.svg";
+import nft_setting_icon from "../assets/icons/Nft.svg";
+import setting_icon from "../assets/icons/setting.svg";
+import section_setting_icon from "../assets/icons/section.svg";
 import Generl from "../pages/Generl/indexs";
 import MemberShip_Status from "../pages/membrs/MemberShip_Status";
 import TokenMember from "../pages/TokenMember/TokenMember";
@@ -18,8 +18,8 @@ export const sidebar = [
     title: "일반",
     element: <Generl />,
     path: "/",
-    Icon: Ilban,
-    arrow: Section,
+    icon: ilban_setting_icon,
+    // arrow: section_setting_icon,
     hidden: false,
     Child: [{ title: "대시보드", params: "" }],
   },
@@ -29,7 +29,7 @@ export const sidebar = [
     title: "회원관리",
     path: "/members",
     element: <MemberShip_Status />,
-    Icon: User,
+    icon: user_setting_icon,
     hidden: false,
     Child: [
       { title: "회원형황", params: "members" },
@@ -41,7 +41,7 @@ export const sidebar = [
     title: "토근관리",
     path: "/token_managment",
     element: <TokenMember />,
-    Icon: Ak,
+    icon: ak_setting_icon,
     hidden: false,
     Child: [
       { title: "토근괸리", params: "token_managment" },
@@ -55,7 +55,7 @@ export const sidebar = [
     title: "자산관리",
     path: "/asset_management",
     element: <AssetManagment />,
-    Icon: Bank,
+    icon: bank_setting_icon,
     hidden: false,
     Child: [
       { title: "스왑 관리", params: "asset_management" },
@@ -67,7 +67,7 @@ export const sidebar = [
     title: "NFT 관리",
     path: "/nft_register",
     element: <NftManagment />,
-    Icon: Nft,
+    icon: nft_setting_icon,
     hidden: false,
     Child: [
       { title: "NFT 등록", params: "nft_register" },
@@ -79,7 +79,7 @@ export const sidebar = [
     title: "성정",
     path: "/setting",
     element: <Settings />,
-    Icon: Setting,
+    icon: setting_icon,
     hidden: false,
     Child: [
       { title: "운영 설정", params: "setting" },
