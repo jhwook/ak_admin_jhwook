@@ -2,15 +2,17 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import MemberDetailsTable from "./MembrDetailsTable";
+
 export const MemberDetails = () => {
   return (
     <Container>
       <LinkCont>
         <NavLink
-          className={({ isActive }) =>
+          className={({ isActive = true }) =>
             isActive ? "minting active" : "minting"
           }
-          to="minting"
+          to="/memberDetails"
+          end
         >
           Minting{" "}
         </NavLink>

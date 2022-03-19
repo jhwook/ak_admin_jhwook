@@ -28,8 +28,8 @@ const Routers = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/members" element={<MemberShip_Status />} />
-      <Route path="memberDetails" element={<MemberDetails />}>
-        <Route index path="minting" element={<Minting />} />
+      <Route path="/memberDetails" element={<MemberDetails />}>
+        <Route index element={<Minting />} />
         <Route path="market" element={<Market />} />
         <Route path="lend" element={<Lend />} />
       </Route>
@@ -40,6 +40,7 @@ const Routers = () => {
       <Route path="/asset_management" element={<AssetManagment />} />
 
       <Route path="/buy" element={<BeySell />}>
+        <Route index element={<Buy />} />
         <Route path="buy" element={<Buy />} />
         <Route path="sell" element={<Sell />} />
       </Route>
