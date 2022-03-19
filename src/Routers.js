@@ -22,14 +22,13 @@ import Sell from "./pages/But/Sell";
 import Iteminformation from "./pages/NftCrurrent/Iteminformation";
 import Myprofile from "./pages/AdminSetting/Myprofile";
 
-
 const Routers = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/members" element={<MemberShip_Status />} />
-      <Route path="memberDetails" element={<MemberDetails />}>
-        <Route index path="minting" element={<Minting />} />
+      <Route path="/memberDetails" element={<MemberDetails />}>
+        <Route index element={<Minting />} />
         <Route path="market" element={<Market />} />
         <Route path="lend" element={<Lend />} />
       </Route>
@@ -39,8 +38,8 @@ const Routers = () => {
       <Route path="/pull_praduct" element={<PulllPraduct />} />
       <Route path="/asset_management" element={<AssetManagment />} />
 
-
       <Route path="/buy" element={<BeySell />}>
+        <Route index element={<Buy />} />
         <Route path="buy" element={<Buy />} />
         <Route path="sell" element={<Sell />} />
       </Route>
@@ -49,16 +48,14 @@ const Routers = () => {
       <Route path="/nft_current" element={<NftCurrent />} />
       <Route path="/setting" element={<Settings />} />
       <Route path="/admin_setting" element={<AdminSetting />} />
-      <Route index path='/memberInformation' element={<MemberInformation />} />
-      <Route path='/market' element={<Market />} />
-      <Route path='/lend' element={<Lend />} />
-      <Route path='/createApair' element={<CreateApair />} />
-      <Route path='/iteminformation' element={<Iteminformation />} />
-      <Route path='/myProfile' element={<Myprofile />} />
+      <Route index path="/memberInformation" element={<MemberInformation />} />
+      <Route path="/market" element={<Market />} />
+      <Route path="/lend" element={<Lend />} />
+      <Route path="/createApair" element={<CreateApair />} />
+      <Route path="/iteminformation" element={<Iteminformation />} />
+      <Route path="/myProfile" element={<Myprofile />} />
     </Routes>
-
   );
 };
 
 export default Routers;
-
