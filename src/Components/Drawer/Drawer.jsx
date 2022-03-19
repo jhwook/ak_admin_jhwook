@@ -29,7 +29,9 @@ const DrawerField = ({ title, childItems, Icon }) => {
             gap: "11px",
           }}
         >
-          <Icon />
+          {/* <Icon /> */}
+
+          <img src={Icon} alt="icons" />
 
           <ListItemText sx={{ marginLEft: "1.5rem" }} primary={title} />
         </div>
