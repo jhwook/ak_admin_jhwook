@@ -1,13 +1,13 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, Stack } from '@mui/material';
 import { Box } from '@mui/system';
 import Search from 'antd/lib/transfer/search';
-import React from 'react'
+import React,{useState} from 'react'
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components';
 import Switch from '@mui/material/Switch';
 import { Checkbox } from 'antd';
 
-export const Data = () => {
+export const PullTable = () => {
     const [checked, setChecked] = React.useState(true);
 
   const [age, setAge] = React.useState('');
@@ -16,7 +16,7 @@ export const Data = () => {
   };
   return (
     <Container>
-      <h1>Token 관리</h1>
+      <h1>Pull 관리</h1>
       <Wrapper>
 
       
@@ -58,12 +58,10 @@ export const Data = () => {
       <tr>
         <th> <Checkbox/> </th>
         <th>순서</th>
-        <th>토큰명</th>
-        <th>심볼</th>
-        <th>Contract</th>
-        <th>총 수량</th>
-        <th>분배 수량</th>
-        <th>잔여 수량</th>
+        <th>풀</th>
+        <th>총입금 수량</th>
+        <th>분배수량</th>
+        <th>풀상세 수량</th>
         <th>사용여부</th>
       </tr>
       
@@ -74,12 +72,10 @@ export const Data = () => {
       <tr>
       <td> <Checkbox/> </td>
         <td>1</td>
-        <td>Table cell</td>
-        <td>AKD Dollar</td>
-        <td>AkD</td>
-        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
-        <td>264,321</td>
-        <td> 155,506</td>
+        <td>AKD</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
         <td>   <Switch
       checked={checked}
       onChange={handleChange}
@@ -88,20 +84,18 @@ export const Data = () => {
       </tr>
       <tr>
       <td> <Checkbox/> </td>
-
-        <td>2</td>
-        <td>Table cell</td>
-        <td>AKD Dollar</td>
-        <td>AkD</td>
-        <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
-        <td>264,321</td>
-        <td> 155,506</td>
+        <td>1</td>
+        <td>AKD</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
+        <td>AkD:264,524.102</td>
         <td>   <Switch
       checked={checked}
       onChange={handleChange}
       inputProps={{ 'aria-label': 'controlled' }}
     /> </td>
       </tr>
+     
       
     </tbody>
   </Table>
@@ -145,4 +139,4 @@ display: flex;
 width: 100%;
 
 `
-export default Data
+export default PullTable
