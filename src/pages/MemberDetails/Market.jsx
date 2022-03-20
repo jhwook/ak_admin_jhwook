@@ -1,31 +1,33 @@
-import { CalendarMonthOutlined, SearchOutlined } from '@mui/icons-material'
-import { Pagination, Stack } from '@mui/material'
-import React from 'react'
-import { Table } from 'react-bootstrap'
-import styled from 'styled-components'
+import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
+import { Pagination, Stack } from "@mui/material";
+import React from "react";
+import { Table } from "react-bootstrap";
+import styled from "styled-components";
 export const Market = () => {
   return (
     <Container>
-
       <Wrapper>
         <CardHead>
-          <select aria-label="Default select example">
-            <option selected>10개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example">
+            <option selected>10개씩 보기 </option>
             <option selected>20개씩 보기</option>
           </select>
-          <CalenIkon><CalendarMonthOutlined /></CalenIkon>
-          <input className='data' placeholder='2022-01-18 ~ 2202-01-28' />
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
 
-          <Ikon><SearchOutlined /> </Ikon>
-          <input className='search' placeholder='검석'></input>
-          <button className='excel'>EXCEL</button>
+          <div className="excel">EXCEL</div>
         </CardHead>
 
         <WrapperTable>
           <Border />
           <Table responsive="sm">
             <thead>
-
               <tr>
                 <th>순서</th>
                 <th>거래일시</th>
@@ -40,11 +42,8 @@ export const Market = () => {
                 <th>수수료</th>
                 <th>Transaction</th>
               </tr>
-
             </thead>
             <tbody>
-
-
               <tr>
                 <td>1</td>
                 <td> 2022-01-12 09:50:11</td>
@@ -58,7 +57,6 @@ export const Market = () => {
                 <td>@ioimmoj</td>
                 <td>0.25 AKD</td>
                 <td>0x5906a5c0e5747ee...</td>
-
               </tr>
               <tr>
                 <td>1</td>
@@ -73,7 +71,6 @@ export const Market = () => {
                 <td>@ioimmoj</td>
                 <td>0.25 AKD</td>
                 <td>0x5906a5c0e5747ee...</td>
-
               </tr>
               <tr>
                 <td>1</td>
@@ -110,112 +107,116 @@ export const Market = () => {
           </Stack>
         </Paginotion>
       </Wrapper>
-
     </Container>
-  )
-}
+  );
+};
 
-const Ikon = styled.div`
-position: absolute;
-width: 14px;
-height: 14px;
-top: 225px;
-left: 1520px;
-box-sizing: border-box;
-
-
-`
-const CalenIkon = styled.div`
-position: absolute;
-width: 14px;
-height: 14px;
-top: 165px;
-left: 1260px;
-box-sizing: border-box;
-`
 const Border = styled.div`
-border: 1px solid #D9D9D9;
-`
+  border: 1px solid #d9d9d9;
+`;
 const Container = styled.div`
-margin: 44px;
-display: flex;
-flex-direction: column;
-.data{
-  background: #FFFFFF;
-border: 1px solid #D9D9D9;
-box-sizing: border-box;
-border-radius: 8px;
-width: 298px;
-height: 44px;
-margin-right: 14px;
-padding: 20px;
-
-}
-.search{
-  width: 240px;
-height: 44px;
-  background: #FFFFFF;
-border: 1px solid #D9D9D9;
-box-sizing: border-box;
-border-radius: 8px;
-margin-right: 24px;
-padding: 20px;
-
-}
-.excel{
-  border: none;
-width: 162px;
-height: 44px;
-background: #4876EF;
-border-radius: 8px;
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 19px;
-text-align: center;
-color: #FFFFFF;
-
-}
-`
+  margin: 44px;
+  display: flex;
+  flex-direction: column;
+`;
 const CardHead = styled.div`
-width: 100%;
-height: 44px;
-select{
-  margin-right: 526px;
-  width: 160px;
-height: 44px;
+  width: 100%;
+  display: flex;
+  .excel {
+    width: 162px;
+    height: 44px;
+    background: #4876ef;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .selectCont {
+    width: 160px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: auto;
+  }
+  .CalendarCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .data {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconCont {
+      position: relative;
+      right: 40px;
+    }
+  }
 
-background: #FFFFFF;
-border: 1px solid #D9D9D9;
-box-sizing: border-box;
-border-radius: 8px;
-}
-
-`
+  .SearchCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconSerach {
+      position: relative;
+      right: 40px;
+    }
+  }
+`;
 const Wrapper = styled.div`
-padding: 50px;
-display: flex;
-flex-direction: column;
-width: 1526px;
-height: 529px;
-background: #FFFFFF;
-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-border-radius: 12px;
-tr:hover{
- background-color: #D9D9D9;;
-}
-`
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 1526px;
+  height: 529px;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  tbody {
+    tr:hover {
+      background-color: #d9d9d9;
+    }
+  }
+  table {
+    cursor: pointer;
+  }
+`;
 
 const WrapperTable = styled.div`
-margin-top: 24px;
-
-`
+  margin-top: 24px;
+`;
 const Paginotion = styled.div`
-display: flex ;
-justify-content: center;
-align-items: center;
-width: 100%;
-margin-top: 24px;
-
-`
-export default Market
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+`;
+export default Market;

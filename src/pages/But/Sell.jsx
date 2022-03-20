@@ -1,3 +1,4 @@
+import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
 import React from "react";
 import { Table } from "react-bootstrap";
@@ -9,16 +10,21 @@ export const Sell = () => {
     <Container>
       <Wrapper>
         <CardHead>
-          <select aria-label="Default select example">
-            <option selected>10개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example">
+            <option selected>10개씩 보기 </option>
             <option selected>20개씩 보기</option>
           </select>
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
 
-          <input className="data" placeholder="2022-01-18 ~ 2202-01-28"></input>
-          <input className="search" placeholder="검석"></input>
-          <button className="excel">EXCEL</button>
+          <div className="excel">EXCEL</div>
         </CardHead>
-
         <WrapperTable>
           <Table responsive="sm">
             <thead>
@@ -166,16 +172,73 @@ const Container = styled.div`
 `;
 const CardHead = styled.div`
   width: 100%;
-  height: 44px;
-  select {
-    margin-right: 526px;
+  display: flex;
+  .excel {
+    width: 162px;
+    height: 44px;
+    background: #4876ef;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .selectCont {
     width: 160px;
     height: 44px;
-
     background: #ffffff;
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
     border-radius: 8px;
+    padding: 10px;
+    margin-right: auto;
+  }
+  .CalendarCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .data {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconCont {
+      position: relative;
+      right: 55px;
+    }
+  }
+
+  .SearchCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconSerach {
+      position: relative;
+      right: 55px;
+    }
   }
 `;
 const Wrapper = styled.div`
@@ -191,7 +254,9 @@ const Wrapper = styled.div`
 
 const WrapperTable = styled.div`
   margin-top: 24px;
-  table {
+
+  tbody {
+    cursor: pointer;
     tr:hover {
       background-color: #d9d9d9;
     }

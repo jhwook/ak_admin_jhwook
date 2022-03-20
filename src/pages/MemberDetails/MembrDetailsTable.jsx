@@ -19,20 +19,20 @@ export const MemberDetailsTable = () => {
     <Container>
       <Wrapper>
         <CardHead>
-          <select aria-label="Default select example">
-            <option selected>10개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example">
+            <option selected>10개씩 보기 </option>
             <option selected>20개씩 보기</option>
           </select>
-          <CalenIkon>
-            <CalendarMonthOutlined />
-          </CalenIkon>
-          <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
 
-          <Ikon>
-            <SearchOutlined />{" "}
-          </Ikon>
-          <input className="search" placeholder="검석"></input>
-          <button className="excel">EXCEL</button>
+          <div className="excel">EXCEL</div>
         </CardHead>
 
         <WrapperTable>
@@ -174,22 +174,22 @@ const ModelTab = styled.div`
     color: #000000;
   }
 `;
-const Ikon = styled.div`
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  top: 225px;
-  left: 1520px;
-  box-sizing: border-box;
-`;
-const CalenIkon = styled.div`
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  top: 225px;
-  left: 1260px;
-  box-sizing: border-box;
-`;
+// const Ikon = styled.div`
+//   position: absolute;
+//   width: 14px;
+//   height: 14px;
+//   top: 225px;
+//   left: 1520px;
+//   box-sizing: border-box;
+// `;
+// const CalenIkon = styled.div`
+//   position: absolute;
+//   width: 14px;
+//   height: 14px;
+//   top: 225px;
+//   left: 1260px;
+//   box-sizing: border-box;
+// `;
 const Border = styled.div`
   border: 1px solid #d9d9d9;
 `;
@@ -197,28 +197,11 @@ const Container = styled.div`
   margin: 44px;
   display: flex;
   flex-direction: column;
-  .data {
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    width: 298px;
-    height: 44px;
-    margin-right: 14px;
-    padding: 20px;
-  }
-  .search {
-    width: 240px;
-    height: 44px;
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-right: 24px;
-    padding: 20px;
-  }
+`;
+const CardHead = styled.div`
+  width: 100%;
+  display: flex;
   .excel {
-    border: none;
     width: 162px;
     height: 44px;
     background: #4876ef;
@@ -229,20 +212,61 @@ const Container = styled.div`
     line-height: 19px;
     text-align: center;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
-`;
-const CardHead = styled.div`
-  width: 100%;
-  height: 44px;
-  select {
-    margin-right: 526px;
+  .selectCont {
     width: 160px;
     height: 44px;
-
     background: #ffffff;
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
     border-radius: 8px;
+    padding: 10px;
+    margin-right: auto;
+  }
+  .CalendarCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .data {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconCont {
+      position: relative;
+      right: 40px;
+    }
+  }
+
+  .SearchCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconSerach {
+      position: relative;
+      right: 40px;
+    }
   }
 `;
 const Wrapper = styled.div`
@@ -254,8 +278,16 @@ const Wrapper = styled.div`
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  tr:hover {
-    background-color: #d9d9d9;
+  table {
+    cursor: pointer;
+  }
+  table {
+    cursor: pointer;
+  }
+  tbody {
+    tr:hover {
+      background-color: #d9d9d9;
+    }
   }
 `;
 

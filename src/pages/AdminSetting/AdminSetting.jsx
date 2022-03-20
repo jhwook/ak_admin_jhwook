@@ -1,26 +1,39 @@
+import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Switch } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 
 export const AdminSetting = () => {
-  let navigation = useNavigate();
+  const [open, setOpen] = useState(false);
 
+  let navigation = useNavigate();
+  function handleClick() {
+    setOpen(() => !open);
+  }
   return (
     <Container>
       <Wrapper>
         <h1>관리자 계정관리</h1>
         <CardHead>
-          <select aria-label="Default select example">
-            <option selected>10개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example">
+            <option selected>10개씩 보기 </option>
             <option selected>20개씩 보기</option>
           </select>
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
 
-          <input className="data" placeholder="2022-01-18 ~ 2202-01-28"></input>
-          <input className="search" placeholder="검석"></input>
-          <button className="excel">등록</button>
+          <div className="excel" onClick={handleClick}>
+            등록
+          </div>
         </CardHead>
 
         <WrapperTable>
@@ -288,84 +301,160 @@ export const AdminSetting = () => {
           </Table>
         </WrapperTable>
 
-        <ModalAdminRegister>
-          <h1>관리자 계정 등록</h1>
-          <div className="registerCont">
-            <div className="regText">관리자 ID</div>
-            <div>
-              <input className="ModalInput" type="text" />{" "}
+        {open && (
+          <ModalAdminRegister>
+            <h1>관리자 계정 등록</h1>
+            <div className="registerCont">
+              <div className="regText">관리자 ID</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
             </div>
-          </div>
-          <Border />
-          {/* 2 */}
-          <div className="registerCont">
-            <div className="regText">관리자 이름</div>
-            <div>
-              <input className="ModalInput" type="text" />{" "}
+            <Border />
+            {/* 2 */}
+            <div className="registerCont">
+              <div className="regText">관리자 이름</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
             </div>
-          </div>
-          <Border />
-          {/* 3 */}
-          <div className="registerCont">
-            <div className="regText">비밀번호*</div>
-            <div>
-              <input className="ModalInput" type="password" />{" "}
+            <Border />
+            {/* 3 */}
+            <div className="registerCont">
+              <div className="regText">비밀번호*</div>
+              <div>
+                <input className="ModalInput" type="password" />{" "}
+              </div>
             </div>
-          </div>
-          <Border />
-          {/* 4 */}
-          <div className="registerCont">
-            <div className="regText">비밀번호 재확인*</div>
-            <div>
-              <input className="ModalInput" type="password " />{" "}
+            <Border />
+            {/* 4 */}
+            <div className="registerCont">
+              <div className="regText">비밀번호 재확인*</div>
+              <div>
+                <input className="ModalInput" type="password " />{" "}
+              </div>
             </div>
-          </div>
-          <Border />
-          {/* 5 */}
+            <Border />
+            {/* 5 */}
 
-          <div className="registerCont">
-            <div className="regText">연락처*</div>
-            <div>
-              <input className="ModalInput" type="text" />{" "}
+            <div className="registerCont">
+              <div className="regText">연락처*</div>
+              <div>
+                <input className="ModalInput" type="text" />{" "}
+              </div>
             </div>
-          </div>
-          <Border />
-          {/* 6 */}
-          <div className="registerCont">
-            <div className="regText">사용자 그룹*</div>
-            <div>
-              <select
-                class="form-select"
-                className="ModalSelect"
-                aria-label="Default select example"
-              >
-                <option selected>선택</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+            <Border />
+            {/* 6 */}
+            <div className="registerCont">
+              <div className="regText">사용자 그룹*</div>
+              <div>
+                <select
+                  class="form-select"
+                  className="ModalSelect"
+                  aria-label="Default select example"
+                >
+                  <option selected>선택</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
             </div>
-          </div>
-          {/* 7 */}
-          <Border />
-          <div className="registerCont">
-            <div className="regSwt">사용자 그룹*</div>
-            <div>
-              <Switch />
+            {/* 7 */}
+            <Border />
+            <div className="registerCont">
+              <div className="regSwt">사용자 그룹*</div>
+              <div>
+                <Switch />
+              </div>
             </div>
-          </div>
 
-          <Border />
+            <Border />
 
-          <div className="regButton">
-            <button className="regCencel">취소</button>
-            <button className="regOk">확인</button>
-          </div>
-        </ModalAdminRegister>
+            <div className="regButton">
+              <button className="regCencel" onClick={handleClick}>
+                취소
+              </button>
+              <button className="regOk">확인</button>
+            </div>
+          </ModalAdminRegister>
+        )}
       </Wrapper>
     </Container>
   );
 };
+
+const CardHead = styled.div`
+  width: 100%;
+  display: flex;
+  .excel {
+    width: 162px;
+    height: 44px;
+    background: #4876ef;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .selectCont {
+    width: 160px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: auto;
+  }
+  .CalendarCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .data {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconCont {
+      position: relative;
+      right: 40px;
+    }
+  }
+
+  .SearchCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconSerach {
+      position: relative;
+      right: 40px;
+    }
+  }
+`;
 const Border = styled.div`
   border: 1px solid #e6e6e6;
 `;
@@ -373,7 +462,7 @@ const ModalAdminRegister = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 540px;
+  width: 580px;
   height: 606px;
 
   left: 1200px;
@@ -483,55 +572,8 @@ const Container = styled.div`
   margin: 44px;
   display: flex;
   flex-direction: column;
-  .data {
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    width: 298px;
-    height: 44px;
-    margin-right: 14px;
-    padding: 20px;
-  }
-  .search {
-    width: 240px;
-    height: 44px;
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-right: 24px;
-    padding: 20px;
-  }
-  .excel {
-    border: none;
-    width: 162px;
-    height: 44px;
-    background: #4876ef;
-    border-radius: 8px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    color: #ffffff;
-  }
 `;
-const CardHead = styled.div`
-  width: 100%;
-  height: 44px;
-  margin-top: 24px;
-  select {
-    margin-right: 526px;
-    width: 160px;
-    height: 44px;
 
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-  }
-`;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;

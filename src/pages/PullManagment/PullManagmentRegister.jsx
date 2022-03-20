@@ -1,22 +1,36 @@
+import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
 import { Switch } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 
 export const PullmnagmentRegister = () => {
+  const [open, setOpen] = useState(false);
+  function handleClick() {
+    setOpen(() => !open);
+  }
   return (
     <Container>
       <Wrapper>
         <h1>Pool 관리</h1>
         <CardHead>
-          <select aria-label="Default select example">
-            <option selected>10개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example">
+            <option selected>10개씩 보기 </option>
             <option selected>20개씩 보기</option>
           </select>
-          <input className="data" placeholder="2022-01-18 ~ 2202-01-28"></input>
-          <input className="search" placeholder="검석"></input>
-          <button className="excel">등록</button>
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
+
+          <div className="excel" onClick={handleClick}>
+            등록
+          </div>
         </CardHead>
         <WrapperTable>
           <Table responsive="sm">
@@ -61,79 +75,82 @@ export const PullmnagmentRegister = () => {
               <td></td>
             </tbody>
           </Table>
-
-          <ModalRegister>
-            <h1>Register pool</h1>
-            <div className="registerCont">
-              <div className="regText">token1 address</div>
-              <div>
-                <input className="ModalInput" type="text" />{" "}
+          {open && (
+            <ModalRegister>
+              <h1>Register pool</h1>
+              <div className="registerCont">
+                <div className="regText">token1 address</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
               </div>
-            </div>
-            <Border />
-            {/* 2 */}
-            <div className="registerCont">
-              <div className="regText">token1 symbol</div>
-              <div>
-                <select
-                  class="form-select"
-                  className="ModalSelect"
-                  aria-label="Default select example"
-                >
-                  <option selected>선택</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+              <Border />
+              {/* 2 */}
+              <div className="registerCont">
+                <div className="regText">token1 symbol</div>
+                <div>
+                  <select
+                    class="form-select"
+                    className="ModalSelect"
+                    aria-label="Default select example"
+                  >
+                    <option selected>선택</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <Border />
-            {/* 3 */}
-            <div className="registerCont">
-              <div className="regText">token1 initial supply</div>
-              <div>
-                <input className="ModalInput" type="text" />{" "}
+              <Border />
+              {/* 3 */}
+              <div className="registerCont">
+                <div className="regText">token1 initial supply</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
               </div>
-            </div>
-            <Border />
-            {/* 4 */}
-            <div className="registerCont">
-              <div className="regText">token2 address</div>
-              <div>
-                <input className="ModalInput" type="text" />{" "}
+              <Border />
+              {/* 4 */}
+              <div className="registerCont">
+                <div className="regText">token2 address</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
               </div>
-            </div>
-            <Border />
-            {/* 5 */}
-            <div className="registerCont">
-              <div className="regText">token2 symbol</div>
-              <div>
-                <select
-                  class="form-select"
-                  className="ModalSelect"
-                  aria-label="Default select example"
-                >
-                  <option selected>선택</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+              <Border />
+              {/* 5 */}
+              <div className="registerCont">
+                <div className="regText">token2 symbol</div>
+                <div>
+                  <select
+                    class="form-select"
+                    className="ModalSelect"
+                    aria-label="Default select example"
+                  >
+                    <option selected>선택</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <Border />
-            {/* 6 */}
-            <div className="registerCont">
-              <div className="regText">token2 initial supply</div>
-              <div>
-                <input className="ModalInput" type="text" />{" "}
+              <Border />
+              {/* 6 */}
+              <div className="registerCont">
+                <div className="regText">token2 initial supply</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
               </div>
-            </div>
-            <Border />
-            <div className="regButton">
-              <button className="regCencel">취소</button>
-              <button className="regOk">확인</button>
-            </div>
-          </ModalRegister>
+              <Border />
+              <div className="regButton">
+                <button className="regCencel" onClick={handleClick}>
+                  취소
+                </button>
+                <button className="regOk">확인</button>
+              </div>
+            </ModalRegister>
+          )}
         </WrapperTable>
         <Paginotion>
           <Stack>
@@ -254,28 +271,12 @@ const Container = styled.div`
   margin: 44px;
   display: flex;
   flex-direction: column;
-  .data {
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    width: 298px;
-    height: 44px;
-    margin-right: 14px;
-    padding: 20px;
-  }
-  .search {
-    width: 240px;
-    height: 44px;
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-right: 24px;
-    padding: 20px;
-  }
+`;
+
+const CardHead = styled.div`
+  width: 100%;
+  display: flex;
   .excel {
-    border: none;
     width: 162px;
     height: 44px;
     background: #4876ef;
@@ -286,32 +287,64 @@ const Container = styled.div`
     line-height: 19px;
     text-align: center;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
-`;
-const CardHead = styled.div`
-  width: 100%;
-  height: 44px;
-  .btnDelte {
+  .selectCont {
     width: 160px;
     height: 44px;
     background: #ffffff;
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
     border-radius: 8px;
-    margin-right: 346px;
-    margin-left: 14px;
+    padding: 10px;
+    margin-right: auto;
   }
-  select {
-    margin-right: 526px;
-    width: 160px;
-    height: 44px;
+  .CalendarCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .data {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconCont {
+      position: relative;
+      right: 40px;
+    }
+  }
 
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
+  .SearchCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconSerach {
+      position: relative;
+      right: 40px;
+    }
   }
 `;
+
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
@@ -335,7 +368,9 @@ const Wrapper = styled.div`
 `;
 
 const WrapperTable = styled.div`
-  margin-top: 24px;
+  table {
+    cursor: pointer;
+  }
   thead {
     tr {
       background: #f1f2f4;
