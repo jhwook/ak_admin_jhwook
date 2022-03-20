@@ -1,5 +1,5 @@
-import ilban_setting_icon from "../assets/icons/Ilban.svg";
-import user_setting_icon from "../assets/icons/User.svg";
+import ilban_setting_icon from "../assets/icons/ilban.svg";
+import user_setting_icon from "../assets/icons/user.svg";
 import ak_setting_icon from "../assets/icons/AK.svg";
 import bank_setting_icon from "../assets/icons/Bank.svg";
 import nft_setting_icon from "../assets/icons/Nft.svg";

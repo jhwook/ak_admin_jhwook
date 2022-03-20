@@ -1,37 +1,42 @@
-import * as React from "react";
-import Paper from "@mui/material/Paper";
-import {
-  Chart,
-  PieSeries,
-  Title,
-} from "@devexpress/dx-react-chart-material-ui";
-import { Animation } from "@devexpress/dx-react-chart";
+import React, { Component } from "react";
+import { cloneDeep } from "lodash";
+import { render } from "react-dom";
+import * as agCharts from "ag-charts-community";
+import { AgChartsReact } from "ag-charts-react";
 
-const data = [
-  { country: "Australia", area: 34 },
-  { country: "Minting", area: 19 },
-  { country: "Others", area: 49 },
-];
-export default class Demo extends React.PureComponent {
+class ChartExample extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data,
+      options: {
+        data: [
+          { os: "Android", share: 56.9, bgcolor: "yellow" },
+          { os: "iOS", share: 22.5 },
+          { os: "BlackBerry", share: 6.8 },
+          { os: "Symbian", share: 8.5 },
+          { os: "Bada", share: 2.6 },
+          { os: "Windows", share: 1.9 },
+        ],
+        series: [
+          {
+            type: "pie",
+            labelKey: "os",
+            angleKey: "share",
+            innerRadiusOffset: -70,
+            bgcolor: "red",
+          },
+        ],
+      },
     };
   }
 
-  render() {
-    const { data: chartData } = this.state;
+  componentDidMount() {}
 
-    return (
-      <Paper>
-        <Chart data={chartData}>
-          <PieSeries valueField="area" argumentField="country" />
-          <Title text="Area of Countries" />
-          <Animation />
-        </Chart>
-      </Paper>
-    );
+  render() {
+    return <AgChartsReact options={this.state.options} />;
   }
 }
+
+render(<ChartExample />, document.querySelector("#root"));
+export default ChartExample;
