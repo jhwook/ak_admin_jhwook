@@ -4,7 +4,7 @@ import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { tpi } from "../../boot/axios";
+import { api } from "../../boot/axios";
 
 export const Transactions = () => {
     let navigate = useNavigate();
@@ -12,7 +12,7 @@ export const Transactions = () => {
 
 
     useEffect(() => {
-        tpi.get().then(res => {
+        api.get().then(res => {
             setTableData(res.data.list);
         }).catch(err => console.log(err));
     }, []);

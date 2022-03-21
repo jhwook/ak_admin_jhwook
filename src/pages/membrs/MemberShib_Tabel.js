@@ -13,7 +13,7 @@ export const MemberTable = () => {
 
   useEffect(() => {
     api.get().then(res => {
-      setTableData(res.data.list);
+      setTableData(res?.data?.list);
     }).catch(err => console.log(err));
   }, []);
 
@@ -58,7 +58,7 @@ export const MemberTable = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {tableData?.map((item, index) => (
                 <tr
                   key={index + 1}
                   onClick={() => {

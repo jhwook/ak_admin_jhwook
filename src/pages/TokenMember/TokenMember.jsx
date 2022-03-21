@@ -2,9 +2,11 @@ import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { Checkbox, Switch } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
+// import { tokenList } from "../../boot/axios";
+
 
 export const TokenMember = () => {
   const [open, setOpen] = useState(false);
@@ -15,6 +17,15 @@ export const TokenMember = () => {
   function Register() {
     setRegister(() => !register);
   }
+
+  // const [tableData, setTableData] = useState([]);
+  // useEffect(() => {
+  //   tokenList.get().then(res => {
+  //     setTableData(res.data.list);
+  //   }).catch(err => console.log(err));
+  // }, []);
+
+
   return (
     <Container>
       <Wrapper>
@@ -57,6 +68,12 @@ export const TokenMember = () => {
               <th></th>
               <th></th>
               <th></th>
+
+
+              {/* {tableData.map((item, indexe => ( */}
+
+
+
               <tr>
                 <th>
                   <Checkbox onClick={checkBoxClick} />
@@ -70,6 +87,11 @@ export const TokenMember = () => {
                 <th>잔여 수량</th>
                 <th>사용여부</th>
               </tr>
+
+              {/* // )))} */}
+
+
+
             </thead>
             <tbody>
               <tr>
