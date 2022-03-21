@@ -22,6 +22,7 @@ import Sell from "./pages/But/Sell";
 import Iteminformation from "./pages/NftCrurrent/Iteminformation";
 import Myprofile from "./pages/AdminSetting/Myprofile";
 import PullmnagmentRegister from "./pages/PullManagment/PullManagmentRegister";
+import Transactions from "./pages/transactions/transactions";
 
 const Routers = () => {
   return (
@@ -33,6 +34,7 @@ const Routers = () => {
         <Route path="market" element={<Market />} />
         <Route path="lend" element={<Lend />} />
       </Route>
+      <Route path="/transactions" element={<Transactions />} />
       <Route path="/token_managment" element={<TokenMember />} />
       <Route path="/pull_managment" element={<Pullmnagament />} />
       <Route path="/apr_managment" element={<AprManagment />} />

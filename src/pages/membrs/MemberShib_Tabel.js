@@ -14,7 +14,6 @@ export const MemberTable = () => {
   useEffect(() => {
     api.get().then(res => {
       setTableData(res.data.list);
-      console.log("useState", tableData);
     }).catch(err => console.log(err));
   }, []);
 
@@ -218,7 +217,6 @@ const Wrapper = styled.div`
 `;
 
 const WrapperTable = styled.div`
-border: 1px solid red;
 margin-top: 24px;
 max-width: 100%;
 max-height: 700px;

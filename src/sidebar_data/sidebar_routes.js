@@ -34,6 +34,7 @@ export const sidebar = [
     Child: [
       { title: "회원형황", params: "members" },
       { title: "회원상세", params: "memberDetails" },
+      { title: "Transactions", params: "transactions" },
     ],
   },
   {
