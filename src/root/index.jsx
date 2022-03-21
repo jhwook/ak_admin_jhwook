@@ -8,8 +8,8 @@ export const Root = () => {
     <Container>
       <Navbar />
       <MainContent>
-        <Dashboard />
-        <Routers />
+        {/* <Dashboard /> */}
+        {/* <Routers /> */}
       </MainContent>
     </Container>
   );
