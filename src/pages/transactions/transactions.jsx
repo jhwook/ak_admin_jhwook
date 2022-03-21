@@ -4,7 +4,7 @@ import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { api } from "../../boot/axios";
+import { tpi } from "../../boot/axios";
 
 export const Transactions = () => {
     let navigate = useNavigate();
@@ -12,7 +12,7 @@ export const Transactions = () => {
 
 
     useEffect(() => {
-        api.get().then(res => {
+        tpi.get().then(res => {
             setTableData(res.data.list);
         }).catch(err => console.log(err));
     }, []);
@@ -42,8 +42,8 @@ export const Transactions = () => {
 
 
                     <Border />
-                    <Table responsive="sm">
-                        <thead>
+                    <Table className="vaha">
+                        <thead className="vaha2">
                             <tr>
                                 <th>순서</th>
                                 <th>지갑주소</th>
@@ -68,7 +68,7 @@ export const Transactions = () => {
                                     <td>{index + 1}</td>
                                     <td>{item.username}</td>
                                     <td>{item.id}</td>
-                                    <td>409.169 USDT</td>
+                                    <td>{item.id}</td>
                                     <td>409.169 USDT</td>
                                     <td>50</td>
                                     <td>1548 AKD</td>
@@ -82,7 +82,7 @@ export const Transactions = () => {
                 </WrapperTable>
                 <Paginotion>
                     <Stack>
-                        <Pagination count={2} shape="rounded" />
+                        <Pagination count={tableData.length} shape="rounded" />
                     </Stack>
                 </Paginotion>
             </Wrapper>
@@ -194,6 +194,7 @@ const Wrapper = styled.div`
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
+
   h1 {
     font-style: normal;
     font-weight: 600;
@@ -218,16 +219,14 @@ const Wrapper = styled.div`
 
 const WrapperTable = styled.div`
 margin-top: 24px;
-max-width: 100%;
+/* max-width: 1300px; */
 max-height: 700px;
 overflow-y: scroll;
+overflow-x: scroll;
+
 box-sizing: content-box;
 
-thead{
-tr{
-  max-width: 50px;
-  overflow-x: hidden;
-}}
+
 `;
 const Paginotion = styled.div`
   display: flex;
