@@ -1,12 +1,23 @@
 import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
-import { Pagination, Stack } from "@mui/material";
-import React from "react";
+import { Pagination, Stack, TableCell } from "@mui/material";
+import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { api } from "../../boot/axios";
 
 export const MemberTable = () => {
   let navigate = useNavigate();
+  const [tableData, setTableData] = useState([]);
+
+
+  useEffect(() => {
+    api.get().then(res => {
+      setTableData(res.data.list);
+      console.log("useState", tableData);
+    }).catch(err => console.log(err));
+  }, []);
+
   return (
     <Container>
       <Wrapper>
@@ -29,6 +40,8 @@ export const MemberTable = () => {
         </CardHead>
 
         <WrapperTable>
+
+
           <Border />
           <Table responsive="sm">
             <thead>
@@ -46,114 +59,25 @@ export const MemberTable = () => {
               </tr>
             </thead>
             <tbody>
-              <tr
-                onClick={() => {
-                  navigate("/memberInformation");
-                }}
-              >
-                <td>1</td>
-                <td> 0x8...F7F8</td>
-                <td>@ioimmoj</td>
-                <td>409.169 USDT</td>
-                <td>409.169 USDT</td>
-                <td>50</td>
-                <td>1548 AKD</td>
-                <td> 1548 AKD</td>
-                <td>일반</td>
-                <td>2022-01-29 11:00:00</td>
-              </tr>
-              <tr
-                onClick={() => {
-                  navigate("/memberInformation");
-                }}
-              >
-                <td>2</td>
-                <td> 0x8...F7F8</td>
-                <td>@ioimmoj</td>
-                <td>409.169 USDT</td>
-                <td>409.169 USDT</td>
-                <td>50</td>
-                <td>1548 AKD</td>
-                <td> 1548 AKD</td>
-                <td>일반</td>
-                <td>2022-01-29 11:00:00</td>
-              </tr>
-
-              <tr
-                onClick={() => {
-                  navigate("/memberInformation");
-                }}
-              >
-                <td>3</td>
-                <td> 0x8...F7F8</td>
-                <td>@ioimmoj</td>
-                <td>409.169 USDT</td>
-                <td>409.169 USDT</td>
-                <td>50</td>
-                <td>1548 AKD</td>
-                <td> 1548 AKD</td>
-                <td>일반</td>
-                <td>2022-01-29 11:00:00</td>
-              </tr>
-              <tr
-                onClick={() => {
-                  navigate("/memberInformation");
-                }}
-              >
-                <td>4</td>
-                <td> 0x8...F7F8</td>
-                <td>@ioimmoj</td>
-                <td>409.169 USDT</td>
-                <td>409.169 USDT</td>
-                <td>50</td>
-                <td>1548 AKD</td>
-                <td> 1548 AKD</td>
-                <td>일반</td>
-                <td>2022-01-29 11:00:00</td>
-              </tr>
-              <tr
-                onClick={() => {
-                  navigate("/memberInformation");
-                }}
-              >
-                <td>5</td>
-                <td> 0x8...F7F8</td>
-                <td>@ioimmoj</td>
-                <td>409.169 USDT</td>
-                <td>409.169 USDT</td>
-                <td>50</td>
-                <td>1548 AKD</td>
-                <td> 1548 AKD</td>
-                <td>일반</td>
-                <td>2022-01-29 11:00:00</td>
-              </tr>
-              <tr
-                onClick={() => {
-                  navigate("/memberInformation");
-                }}
-              >
-                <td>6</td>
-                <td> 0x8...F7F8</td>
-                <td>@ioimmoj</td>
-                <td>409.169 USDT</td>
-                <td>409.169 USDT</td>
-                <td>50</td>
-                <td>1548 AKD</td>
-                <td> 1548 AKD</td>
-                <td>일반</td>
-                <td>2022-01-29 11:00:00</td>
-              </tr>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              {tableData.map((item, index) => (
+                <tr
+                  key={index + 1}
+                  onClick={() => {
+                    navigate("/memberInformation");
+                  }}
+                >
+                  <td>{index + 1}</td>
+                  <td>{item.username}</td>
+                  <td>{item.id}</td>
+                  <td>409.169 USDT</td>
+                  <td>409.169 USDT</td>
+                  <td>50</td>
+                  <td>1548 AKD</td>
+                  <td> 1548 AKD</td>
+                  <td>일반</td>
+                  <td>{item.createdat}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </WrapperTable>
@@ -285,17 +209,27 @@ const Wrapper = styled.div`
     color: #000000;
   }
   table {
+    box-sizing: border-box;
     cursor: pointer;
   }
-  tbody {
-    tr:hover {
-      background-color: #d9d9d9;
-    }
-  }
+  
+  
+ 
 `;
 
 const WrapperTable = styled.div`
-  margin-top: 24px;
+border: 1px solid red;
+margin-top: 24px;
+max-width: 100%;
+max-height: 700px;
+overflow-y: scroll;
+box-sizing: content-box;
+
+thead{
+tr{
+  max-width: 50px;
+  overflow-x: hidden;
+}}
 `;
 const Paginotion = styled.div`
   display: flex;

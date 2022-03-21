@@ -8,7 +8,7 @@ export const Root = () => {
   return (
     <Container>
       <Navbar />
-      <Login />
+      {/* <Login /> */}
       <MainContent>
         <Dashboard />
         <Routers />
