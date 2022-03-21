@@ -8,15 +8,15 @@ export const BeySell = () => {
     <Container>
       <LinkCont>
         <NavLink
-          className={({ isActive = true }) =>
-            isActive ? "minting active" : "minting"
-          }
-          to="buy"
+          className={({ isActive }) => (isActive ? "market active" : "market")}
+          to="buy" end
         >
           Buy
         </NavLink>
         <NavLink
-          className={({ isActive }) => (isActive ? "market active" : "market")}
+          className={({ isActive = true }) =>
+            isActive ? "minting active" : "minting"
+          }
           to="sell"
         >
           Sell
