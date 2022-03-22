@@ -1,12 +1,30 @@
 import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import TextField from '@mui/material/TextField';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import { LocalizationProvider } from "@mui/lab";
+import Searches from "../../Components/Search/Searches";
+import ContainedButton from "../../Components/Buttons/CountainetButton";
+import { item } from "../../boot/axios";
 
 export const NftCurrent = () => {
+  const [value, setValue] = useState(new Date());
+
   let navigate = useNavigate();
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    item.get().then(res => {
+      setTableData(res.data.list);
+    }).catch(err => console.log(err));
+  }, []);
+
+
 
   return (
     <Container>
@@ -44,15 +62,36 @@ export const NftCurrent = () => {
             <option selected>20개씩 보기</option>
           </select>
           <div className="CalendarCont">
-            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
-            <CalendarMonthOutlined className="iconCont" />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+
+
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={value}
+                minDate={new Date('2017-01-01')}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={value}
+                minDate={new Date('2017-01-01')}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+
+            </LocalizationProvider>
           </div>
           <div className="SearchCont">
-            <input className="search" placeholder="검석" />{" "}
-            <SearchOutlined className="iconSerach" />
-          </div>
 
-          <div className="excel">EXCEL</div>
+            <Searches />
+          </div>
+          <ContainedButton subject="EXCEL" />
+
         </CardHead>
 
         <WrapperTable>
@@ -72,90 +111,29 @@ export const NftCurrent = () => {
               </tr>
             </thead>
             <tbody>
-              <tr
-                onClick={() => {
-                  navigate("/iteminformation");
-                }}
-              >
-                <td>1</td>
-                <td>Friends #0002</td>
-                <td>@A20e989...</td>
-                <td>100 AKD</td>
-                <td>고정가</td>
-                <td>0x5906a5c0e5747ee...</td>
-                <td>진행중</td>
-                <td>@ioimmoj</td>
-                <td> 2022-01-12 09:50:11</td>
-                <td> 2022-01-12 09:50:11</td>
-              </tr>
 
-              <tr
-                onClick={() => {
-                  navigate("/iteminformation");
-                }}
-              >
-                <td>2</td>
-                <td>Friends #0002</td>
-                <td>@A20e989...</td>
-                <td>100 AKD</td>
-                <td>고정가</td>
-                <td>0x5906a5c0e5747ee...</td>
-                <td>진행중</td>
-                <td>@ioimmoj</td>
-                <td> 2022-01-12 09:50:11</td>
-                <td> 2022-01-12 09:50:11</td>
-              </tr>
 
-              <tr
-                onClick={() => {
-                  navigate("/iteminformation");
-                }}
-              >
-                <td>3</td>
-                <td>Friends #0002</td>
-                <td>@A20e989...</td>
-                <td>100 AKD</td>
-                <td>고정가</td>
-                <td>0x5906a5c0e5747ee...</td>
-                <td>진행중</td>
-                <td>@ioimmoj</td>
-                <td> 2022-01-12 09:50:11</td>
-                <td> 2022-01-12 09:50:11</td>
-              </tr>
+              {tableData.map((item, index) => (
 
-              <tr
-                onClick={() => {
-                  navigate("/iteminformation");
-                }}
-              >
-                <td>4</td>
-                <td>Friends #0002</td>
-                <td>@A20e989...</td>
-                <td>100 AKD</td>
-                <td>고정가</td>
-                <td>0x5906a5c0e5747ee...</td>
-                <td>진행중</td>
-                <td>@ioimmoj</td>
-                <td> 2022-01-12 09:50:11</td>
-                <td> 2022-01-12 09:50:11</td>
-              </tr>
+                <tr
+                  onClick={() => {
+                    navigate("/iteminformation");
+                  }}
+                >
+                  <td>{index + 1}</td>
+                  <td><img className="itemUrl" src={item.url} alt="" /> </td>
+                  <td>@A20e989...</td>
+                  <td>100 AKD</td>
+                  <td>고정가</td>
+                  <td>0x5906a5c0e5747ee...</td>
+                  <td>진행중</td>
+                  <td>@ioimmoj</td>
+                  <td> 2022-01-12 09:50:11</td>
+                  <td> 2022-01-12 09:50:11</td>
+                </tr>))}
 
-              <tr
-                onClick={() => {
-                  navigate("/iteminformation");
-                }}
-              >
-                <td>5</td>
-                <td>Friends #0002</td>
-                <td>@A20e989...</td>
-                <td>100 AKD</td>
-                <td>고정가</td>
-                <td>0x5906a5c0e5747ee...</td>
-                <td>진행중</td>
-                <td>@ioimmoj</td>
-                <td> 2022-01-12 09:50:11</td>
-                <td> 2022-01-12 09:50:11</td>
-              </tr>
+
+
               <td></td>
               <td></td>
               <td></td>
@@ -182,22 +160,8 @@ export const NftCurrent = () => {
 const CardHead = styled.div`
   width: 100%;
   display: flex;
-  .excel {
-    width: 162px;
-    height: 44px;
-    background: #4876ef;
-    border-radius: 8px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
+  justify-content: center;
+  align-items: center;
   .selectCont {
     width: 160px;
     height: 44px;
@@ -208,52 +172,20 @@ const CardHead = styled.div`
     padding: 10px;
     margin-right: auto;
   }
-  .CalendarCont {
-    position: relative;
-    display: flex;
-    align-items: center;
-    .data {
-      width: 298px;
-      height: 44px;
-      background: #ffffff;
-      border: 1px solid #d9d9d9;
-      box-sizing: border-box;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      padding: 20px;
-    }
-    .iconCont {
-      position: relative;
-      right: 40px;
-    }
-  }
+.CalendarCont{
+  gap:20px;
+}
 
-  .SearchCont {
-    position: relative;
-    display: flex;
-    align-items: center;
-    .search {
-      width: 298px;
-      height: 44px;
-      background: #ffffff;
-      border: 1px solid #d9d9d9;
-      box-sizing: border-box;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      padding: 20px;
-    }
-    .iconSerach {
-      position: relative;
-      right: 40px;
-    }
-  }
+  
 `;
 
 const WrapperTable = styled.div`
-  margin-top: 24px;
+ max-width: 100%;
+max-height: 400px;
+overflow-y: scroll;
+box-sizing: content-box;
   tbody {
+    .itemUrl{width: 40px}
     tr:hover {
       background-color: #d9d9d9;
     }

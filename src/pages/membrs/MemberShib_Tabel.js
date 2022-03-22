@@ -1,12 +1,20 @@
 import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
-import { Pagination, Stack, TableCell } from "@mui/material";
+import { Pagination, TableCell } from "@mui/material";
 import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { api } from "../../boot/axios";
+import TextField from '@mui/material/TextField';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import { LocalizationProvider } from "@mui/lab";
+import Stack from '@mui/material/Stack';
+
+
 
 export const MemberTable = () => {
+  const [value, setValue] = useState(new Date());
   let navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
 
@@ -27,8 +35,29 @@ export const MemberTable = () => {
             <option selected>20개씩 보기</option>
           </select>
           <div className="CalendarCont">
-            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
-            <CalendarMonthOutlined className="iconCont" />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+
+
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={value}
+                minDate={new Date('2017-01-01')}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={value}
+                minDate={new Date('2017-01-01')}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+
+            </LocalizationProvider>
           </div>
           <div className="SearchCont">
             <input className="search" placeholder="검석" />{" "}
@@ -119,7 +148,7 @@ const CardHead = styled.div`
   display: flex;
   .excel {
     width: 162px;
-    height: 44px;
+    height: 58px;
     background: #4876ef;
     border-radius: 8px;
     font-style: normal;
@@ -147,6 +176,8 @@ const CardHead = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    margin-right: 14px;
+    gap: 20px;
     .data {
       width: 298px;
       height: 44px;
@@ -170,7 +201,7 @@ const CardHead = styled.div`
     align-items: center;
     .search {
       width: 298px;
-      height: 44px;
+      height: 58px;
       background: #ffffff;
       border: 1px solid #d9d9d9;
       box-sizing: border-box;

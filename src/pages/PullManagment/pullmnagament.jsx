@@ -10,15 +10,9 @@ import CircleIcon from "@mui/icons-material/Circle";
 import { pai } from "../../boot/axios";
 
 export const Pullmnagment = () => {
-  let navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [register, setRegister] = useState(false);
-  function checkBoxClick() {
-    setOpen(() => !open);
-  }
-  function Register() {
-    setRegister(() => !register);
-  }
+
+
+
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -27,7 +21,10 @@ export const Pullmnagment = () => {
     }).catch(err => console.log(err));
   }, []);
 
-
+  const [open, setOpen] = useState(false);
+  function handleClick() {
+    setOpen(() => !open);
+  }
   return (
     <Container>
       <Wrapper>
@@ -54,12 +51,7 @@ export const Pullmnagment = () => {
             <SearchOutlined className="iconSerach" />
           </div>
 
-          <div
-            className="excel"
-            onClick={() => {
-              navigate("/pullmnagmentRegister");
-            }}
-          >
+          <div className="excel" onClick={handleClick}>
             등록
           </div>
         </CardHead>
@@ -73,15 +65,16 @@ export const Pullmnagment = () => {
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
               <tr>
-                <th>
-                  <Checkbox onClick={checkBoxClick} />
-                </th>
+
                 <th>순서</th>
-                <th>풀</th>
-                <th>총 입금 수량</th>
-                <th>분배 수량</th>
-                <th>풀 상세 수량</th>
+                <th>pair Pool Address</th>
+                <th>token00 address</th>
+                <th>token01 address</th>
+                <th>token00 reserve</th>
+                <th>token01 reserve</th>
+                <th>누적 트랜잭션 횟수 add/swap/remove</th>
                 <th>사용여부</th>
               </tr>
             </thead>
@@ -90,14 +83,14 @@ export const Pullmnagment = () => {
               {
                 tableData.map((item, index) => (
                   <tr>
-                    <th>
-                      <Checkbox onClick={checkBoxClick} />
-                    </th>
+
                     <td>{index + 1} </td>
                     <td>{item.tokenname0}</td>
                     <td>
-                      <CircleIcon className="dot" /> {item.nettype}
+                      {item.nettype}
                     </td>
+                    <td>{item.tokenaddress1}</td>
+                    <td>AKD : 264,524.102</td>
                     <td>AKD : 264,524.102</td>
                     <td>AKD : 264,524.102</td>
                     <td>
@@ -115,13 +108,14 @@ export const Pullmnagment = () => {
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
             </tbody>
           </Table>
-          {register && (
+          {open && (
             <ModalRegister>
-              <h1>토큰 등록</h1>
+              <h1>Register pool</h1>
               <div className="registerCont">
-                <div className="regText">컨트랙트</div>
+                <div className="regText">token1 address</div>
                 <div>
                   <input className="ModalInput" type="text" />{" "}
                 </div>
@@ -129,15 +123,24 @@ export const Pullmnagment = () => {
               <Border />
               {/* 2 */}
               <div className="registerCont">
-                <div className="regText">토큰명 (한글)</div>
+                <div className="regText">token1 symbol</div>
                 <div>
-                  <input className="ModalInput" type="text" />{" "}
+                  <select
+                    class="form-select"
+                    className="ModalSelect"
+                    aria-label="Default select example"
+                  >
+                    <option selected>선택</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
               </div>
               <Border />
               {/* 3 */}
               <div className="registerCont">
-                <div className="regText">토큰명 (영문)</div>
+                <div className="regText">token1 initial supply</div>
                 <div>
                   <input className="ModalInput" type="text" />{" "}
                 </div>
@@ -145,7 +148,7 @@ export const Pullmnagment = () => {
               <Border />
               {/* 4 */}
               <div className="registerCont">
-                <div className="regText">소수 자릿수</div>
+                <div className="regText">token2 address</div>
                 <div>
                   <input className="ModalInput" type="text" />{" "}
                 </div>
@@ -153,19 +156,31 @@ export const Pullmnagment = () => {
               <Border />
               {/* 5 */}
               <div className="registerCont">
-                <div className="regText">심볼</div>
+                <div className="regText">token2 symbol</div>
                 <div>
-                  <input
-                    className="ModalInput"
-                    placeholder="이미지를 추가해주세요."
-                    type="text"
-                  />
-                  <button className="regSelect">선택</button>
+                  <select
+                    class="form-select"
+                    className="ModalSelect"
+                    aria-label="Default select example"
+                  >
+                    <option selected>선택</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+              <Border />
+              {/* 6 */}
+              <div className="registerCont">
+                <div className="regText">token2 initial supply</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
                 </div>
               </div>
               <Border />
               <div className="regButton">
-                <button className="regCencel" onClick={Register}>
+                <button className="regCencel" onClick={handleClick}>
                   취소
                 </button>
                 <button className="regOk">확인</button>
@@ -186,7 +201,8 @@ const ModalRegister = styled.div`
   position: absolute;
   width: 620px;
   height: 556px;
-  left: 1096px;
+  left: 1200px;
+  top: 300px;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
@@ -249,6 +265,15 @@ const ModalRegister = styled.div`
     text-align: center;
     color: #000000;
     margin-right: auto;
+  }
+  .ModalSelect {
+    padding-left: 20px;
+    width: 321px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
   }
   .ModalInput {
     width: 321px;
