@@ -2,11 +2,12 @@ import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { Checkbox, Switch } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import CircleIcon from "@mui/icons-material/Circle";
+import { pai } from "../../boot/axios";
 
 export const Pullmnagment = () => {
   let navigate = useNavigate();
@@ -18,10 +19,19 @@ export const Pullmnagment = () => {
   function Register() {
     setRegister(() => !register);
   }
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    pai.get().then(res => {
+      setTableData(res.data.list);
+    }).catch(err => console.log(err));
+  }, []);
+
+
   return (
     <Container>
       <Wrapper>
-        <h1>Token 관리</h1>
+        <h1>Pull 관리</h1>
         <CardHead>
           <div className="sizeBTn">
             <select className="selectCont" aria-label="Default select example">
@@ -76,21 +86,28 @@ export const Pullmnagment = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>
-                  <Checkbox onClick={checkBoxClick} />
-                </th>
-                <td>1</td>
-                <td>AKD</td>
-                <td>
-                  <CircleIcon className="dot" /> AKD : 264,524.102
-                </td>
-                <td>AKD : 264,524.102</td>
-                <td>AKD : 264,524.102</td>
-                <td>
-                  <Switch />{" "}
-                </td>
-              </tr>
+
+              {
+                tableData.map((item, index) => (
+                  <tr>
+                    <th>
+                      <Checkbox onClick={checkBoxClick} />
+                    </th>
+                    <td>{index + 1} </td>
+                    <td>{item.tokenname0}</td>
+                    <td>
+                      <CircleIcon className="dot" /> {item.nettype}
+                    </td>
+                    <td>AKD : 264,524.102</td>
+                    <td>AKD : 264,524.102</td>
+                    <td>
+                      <Switch />{" "}
+                    </td>
+                  </tr>
+
+                ))
+              }
+
               <th></th>
               <th></th>
               <th></th>

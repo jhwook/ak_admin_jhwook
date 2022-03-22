@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 // import { tokenList } from "../../boot/axios";
+import { token } from "../../boot/axios";
 
 
 export const TokenMember = () => {
@@ -17,6 +18,15 @@ export const TokenMember = () => {
   function Register() {
     setRegister(() => !register);
   }
+
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    token.get().then(res => {
+      setTableData(res.data.list);
+    }).catch(err => console.log(err));
+
+  }, [])
 
   // const [tableData, setTableData] = useState([]);
   // useEffect(() => {
@@ -94,22 +104,27 @@ export const TokenMember = () => {
 
             </thead>
             <tbody>
-              <tr>
-                <th>
-                  <Checkbox onClick={checkBoxClick} />
-                </th>
-                <td>1</td>
-                <td>AK dollar</td>
-                <td>AKD</td>
-                <td>0x7b24e052c138df127ab26a8bd5182ba913d9f7d0dd8a71...</td>
-                <td>264,321</td>
-                <td>155,506</td>
-                <td>155,506</td>
-                <td>
-                  {" "}
-                  <Switch />{" "}
-                </td>
-              </tr>
+              {tableData.map((item, index) => (
+                <tr>
+                  <th>
+                    <Checkbox onClick={checkBoxClick} />
+                  </th>
+                  <td>{index + 1}</td>
+                  <td>{item.name}</td>
+                  <td>AKD</td>
+                  <td>{item.createdat}</td>
+                  <td>264,321</td>
+                  <td>155,506</td>
+                  <td>155,506</td>
+                  <td>
+                    {" "}
+                    <Switch />{" "}
+                  </td>
+                </tr>
+
+
+              ))}
+
             </tbody>
           </Table>
           {register && (

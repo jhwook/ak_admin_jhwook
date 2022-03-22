@@ -4,90 +4,90 @@ import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { api } from "../../boot/axios";
+import { trans } from "../../boot/axios";
 
 export const Transactions = () => {
-    let navigate = useNavigate();
-    const [tableData, setTableData] = useState([]);
+  let navigate = useNavigate();
+  const [tableData, setTableData] = useState([]);
 
 
-    useEffect(() => {
-        api.get().then(res => {
-            setTableData(res.data.list);
-        }).catch(err => console.log(err));
-    }, []);
+  useEffect(() => {
+    trans.get().then(res => {
+      setTableData(res.data.list);
+    }).catch(err => console.log(err));
+  }, []);
 
-    return (
-        <Container>
-            <Wrapper>
-                <h1>Transactions</h1>
-                <CardHead>
-                    <select className="selectCont" aria-label="Default select example">
-                        <option selected>10개씩 보기 </option>
-                        <option selected>20개씩 보기</option>
-                    </select>
-                    <div className="CalendarCont">
-                        <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
-                        <CalendarMonthOutlined className="iconCont" />
-                    </div>
-                    <div className="SearchCont">
-                        <input className="search" placeholder="검석" />{" "}
-                        <SearchOutlined className="iconSerach" />
-                    </div>
+  return (
+    <Container>
+      <Wrapper>
+        <h1>Transactions</h1>
+        <CardHead>
+          <select className="selectCont" aria-label="Default select example">
+            <option selected>10개씩 보기 </option>
+            <option selected>20개씩 보기</option>
+          </select>
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
 
-                    <div className="excel">EXCEL</div>
-                </CardHead>
+          <div className="excel">EXCEL</div>
+        </CardHead>
 
-                <WrapperTable>
+        <WrapperTable>
 
 
-                    <Border />
-                    <Table className="vaha">
-                        <thead className="vaha2">
-                            <tr>
-                                <th>순서</th>
-                                <th>지갑주소</th>
-                                <th>닉네임</th>
-                                <th>예치량</th>
-                                <th>출금량</th>
-                                <th>Item 수</th>
-                                <th>보유 AKD</th>
-                                <th>보유 AKG</th>
-                                <th>회원상태</th>
-                                <th>가입일</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData.map((item, index) => (
-                                <tr
-                                    key={index + 1}
-                                    onClick={() => {
-                                        navigate("/memberInformation");
-                                    }}
-                                >
-                                    <td>{index + 1}</td>
-                                    <td>{item.username}</td>
-                                    <td>{item.id}</td>
-                                    <td>{item.id}</td>
-                                    <td>409.169 USDT</td>
-                                    <td>50</td>
-                                    <td>1548 AKD</td>
-                                    <td> 1548 AKD</td>
-                                    <td>일반</td>
-                                    <td>{item.createdat}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </WrapperTable>
-                <Paginotion>
-                    <Stack>
-                        <Pagination count={tableData.length} shape="rounded" />
-                    </Stack>
-                </Paginotion>
-            </Wrapper>
-        </Container>
-    );
+          <Border />
+          <Table className="vaha">
+            <thead className="vaha2">
+              <tr>
+                <th>순서</th>
+                <th>지갑주소</th>
+                <th>닉네임</th>
+                <th>예치량</th>
+                <th>출금량</th>
+                <th>Item 수</th>
+                <th>보유 AKD</th>
+                <th>보유 AKG</th>
+                <th>회원상태</th>
+                <th>가입일</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((item, index) => (
+                <tr
+                  key={index + 1}
+                  onClick={() => {
+                    navigate("/memberInformation");
+                  }}
+                >
+                  <td>{index + 1}</td>
+                  <td>{item.username}</td>
+                  <td>{item.id}</td>
+                  <td>{item.itemid}</td>
+                  <td>409.169 USDT</td>
+                  <td>50</td>
+                  <td>1548 AKD</td>
+                  <td> 1548 AKD</td>
+                  <td>일반</td>
+                  <td>{item.createdat}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </WrapperTable>
+        <Paginotion>
+          <Stack>
+            <Pagination count={tableData.length} shape="rounded" />
+          </Stack>
+        </Paginotion>
+      </Wrapper>
+    </Container>
+  );
 };
 
 const Ikon = styled.div`
