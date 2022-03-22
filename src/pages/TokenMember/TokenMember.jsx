@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 // import { tokenList } from "../../boot/axios";
-import { token } from "../../boot/axios";
-
+import { api } from "../../boot/axios";
+import axios from "axios";
 
 export const TokenMember = () => {
   const [open, setOpen] = useState(false);
@@ -22,11 +22,13 @@ export const TokenMember = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    token.get().then(res => {
-      setTableData(res.data.list);
-    }).catch(err => console.log(err));
-
-  }, [])
+    axios
+      .get(api.API_USERS)
+      .then((res) => {
+        setTableData(res.data.list);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   // const [tableData, setTableData] = useState([]);
   // useEffect(() => {
@@ -34,7 +36,6 @@ export const TokenMember = () => {
   //     setTableData(res.data.list);
   //   }).catch(err => console.log(err));
   // }, []);
-
 
   return (
     <Container>
@@ -79,10 +80,7 @@ export const TokenMember = () => {
               <th></th>
               <th></th>
 
-
               {/* {tableData.map((item, indexe => ( */}
-
-
 
               <tr>
                 <th>
@@ -99,9 +97,6 @@ export const TokenMember = () => {
               </tr>
 
               {/* // )))} */}
-
-
-
             </thead>
             <tbody>
               {tableData.map((item, index) => (
@@ -121,10 +116,7 @@ export const TokenMember = () => {
                     <Switch />{" "}
                   </td>
                 </tr>
-
-
               ))}
-
             </tbody>
           </Table>
           {register && (

@@ -5,24 +5,25 @@ import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { api } from "../../boot/axios";
-import TextField from '@mui/material/TextField';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import TextField from "@mui/material/TextField";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider } from "@mui/lab";
-import Stack from '@mui/material/Stack';
-
-
+import Stack from "@mui/material/Stack";
+import axios from "axios";
 
 export const MemberTable = () => {
   const [value, setValue] = useState(new Date());
   let navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
 
-
   useEffect(() => {
-    api.get().then(res => {
-      setTableData(res?.data?.list);
-    }).catch(err => console.log(err));
+    axios
+      .get(api.API_USERS)
+      .then((res) => {
+        setTableData(res?.data?.list);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -36,12 +37,10 @@ export const MemberTable = () => {
           </select>
           <div className="CalendarCont">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
-
-
               <DesktopDatePicker
                 label="03/22/2022"
                 value={value}
-                minDate={new Date('2017-01-01')}
+                minDate={new Date("2017-01-01")}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}
@@ -50,13 +49,12 @@ export const MemberTable = () => {
               <DesktopDatePicker
                 label="03/22/2022"
                 value={value}
-                minDate={new Date('2017-01-01')}
+                minDate={new Date("2017-01-01")}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
-
             </LocalizationProvider>
           </div>
           <div className="SearchCont">
@@ -68,8 +66,6 @@ export const MemberTable = () => {
         </CardHead>
 
         <WrapperTable>
-
-
           <Border />
           <Table responsive="sm">
             <thead>
@@ -242,23 +238,21 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     cursor: pointer;
   }
-  
-  
- 
 `;
 
 const WrapperTable = styled.div`
-margin-top: 24px;
-max-width: 100%;
-max-height: 700px;
-overflow-y: scroll;
-box-sizing: content-box;
+  margin-top: 24px;
+  max-width: 100%;
+  max-height: 700px;
+  overflow-y: scroll;
+  box-sizing: content-box;
 
-thead{
-tr{
-  max-width: 50px;
-  overflow-x: hidden;
-}}
+  thead {
+    tr {
+      max-width: 50px;
+      overflow-x: hidden;
+    }
+  }
 `;
 const Paginotion = styled.div`
   display: flex;

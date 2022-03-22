@@ -7,18 +7,19 @@ import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import CircleIcon from "@mui/icons-material/Circle";
-import { pai } from "../../boot/axios";
+import { api } from "../../boot/axios";
+import axios from "axios";
 
 export const Pullmnagment = () => {
-
-
-
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    pai.get().then(res => {
-      setTableData(res.data.list);
-    }).catch(err => console.log(err));
+    axios
+      .get(api.API_PAI)
+      .then((res) => {
+        setTableData(res.data.list);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const [open, setOpen] = useState(false);
@@ -67,7 +68,6 @@ export const Pullmnagment = () => {
               <th></th>
               <th></th>
               <tr>
-
                 <th>순서</th>
                 <th>pair Pool Address</th>
                 <th>token00 address</th>
@@ -79,27 +79,20 @@ export const Pullmnagment = () => {
               </tr>
             </thead>
             <tbody>
-
-              {
-                tableData.map((item, index) => (
-                  <tr>
-
-                    <td>{index + 1} </td>
-                    <td>{item.tokenname0}</td>
-                    <td>
-                      {item.nettype}
-                    </td>
-                    <td>{item.tokenaddress1}</td>
-                    <td>AKD : 264,524.102</td>
-                    <td>AKD : 264,524.102</td>
-                    <td>AKD : 264,524.102</td>
-                    <td>
-                      <Switch />{" "}
-                    </td>
-                  </tr>
-
-                ))
-              }
+              {tableData.map((item, index) => (
+                <tr>
+                  <td>{index + 1} </td>
+                  <td>{item.tokenname0}</td>
+                  <td>{item.nettype}</td>
+                  <td>{item.tokenaddress1}</td>
+                  <td>AKD : 264,524.102</td>
+                  <td>AKD : 264,524.102</td>
+                  <td>AKD : 264,524.102</td>
+                  <td>
+                    <Switch />{" "}
+                  </td>
+                </tr>
+              ))}
 
               <th></th>
               <th></th>

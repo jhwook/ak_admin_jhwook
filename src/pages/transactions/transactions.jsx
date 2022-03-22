@@ -4,17 +4,20 @@ import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { trans } from "../../boot/axios";
+import { api } from "../../boot/axios";
+import axios from "axios";
 
 export const Transactions = () => {
   let navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
 
-
   useEffect(() => {
-    trans.get().then(res => {
-      setTableData(res.data.list);
-    }).catch(err => console.log(err));
+    axios
+      .get(api.API_TRANS)
+      .then((res) => {
+        setTableData(res.data.list);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -39,8 +42,6 @@ export const Transactions = () => {
         </CardHead>
 
         <WrapperTable>
-
-
           <Border />
           <Table className="vaha">
             <thead className="vaha2">
@@ -212,21 +213,16 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     cursor: pointer;
   }
-  
-  
- 
 `;
 
 const WrapperTable = styled.div`
-margin-top: 24px;
-/* max-width: 1300px; */
-max-height: 700px;
-overflow-y: scroll;
-overflow-x: scroll;
+  margin-top: 24px;
+  /* max-width: 1300px; */
+  max-height: 700px;
+  overflow-y: scroll;
+  overflow-x: scroll;
 
-box-sizing: content-box;
-
-
+  box-sizing: content-box;
 `;
 const Paginotion = styled.div`
   display: flex;
@@ -236,5 +232,4 @@ const Paginotion = styled.div`
   margin-top: 24px;
 `;
 
-
-export default Transactions
+export default Transactions;

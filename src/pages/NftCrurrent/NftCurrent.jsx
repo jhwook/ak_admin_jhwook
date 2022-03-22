@@ -4,13 +4,14 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import TextField from '@mui/material/TextField';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import TextField from "@mui/material/TextField";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider } from "@mui/lab";
 import Searches from "../../Components/Search/Searches";
 import ContainedButton from "../../Components/Buttons/CountainetButton";
-import { item } from "../../boot/axios";
+import { api } from "../../boot/axios";
+import axios from "axios";
 
 export const NftCurrent = () => {
   const [value, setValue] = useState(new Date());
@@ -19,12 +20,13 @@ export const NftCurrent = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    item.get().then(res => {
-      setTableData(res.data.list);
-    }).catch(err => console.log(err));
+    axios
+      .get(api.API_ITEM)
+      .then((res) => {
+        setTableData(res.data.list);
+      })
+      .catch((err) => console.log(err));
   }, []);
-
-
 
   return (
     <Container>
@@ -63,12 +65,10 @@ export const NftCurrent = () => {
           </select>
           <div className="CalendarCont">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
-
-
               <DesktopDatePicker
                 label="03/22/2022"
                 value={value}
-                minDate={new Date('2017-01-01')}
+                minDate={new Date("2017-01-01")}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}
@@ -77,21 +77,18 @@ export const NftCurrent = () => {
               <DesktopDatePicker
                 label="03/22/2022"
                 value={value}
-                minDate={new Date('2017-01-01')}
+                minDate={new Date("2017-01-01")}
                 onChange={(newValue) => {
                   setValue(newValue);
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
-
             </LocalizationProvider>
           </div>
           <div className="SearchCont">
-
             <Searches />
           </div>
           <ContainedButton subject="EXCEL" />
-
         </CardHead>
 
         <WrapperTable>
@@ -111,17 +108,16 @@ export const NftCurrent = () => {
               </tr>
             </thead>
             <tbody>
-
-
               {tableData.map((item, index) => (
-
                 <tr
                   onClick={() => {
                     navigate("/iteminformation");
                   }}
                 >
                   <td>{index + 1}</td>
-                  <td><img className="itemUrl" src={item.url} alt="" /> </td>
+                  <td>
+                    <img className="itemUrl" src={item.url} alt="" />{" "}
+                  </td>
                   <td>@A20e989...</td>
                   <td>100 AKD</td>
                   <td>고정가</td>
@@ -130,9 +126,8 @@ export const NftCurrent = () => {
                   <td>@ioimmoj</td>
                   <td> 2022-01-12 09:50:11</td>
                   <td> 2022-01-12 09:50:11</td>
-                </tr>))}
-
-
+                </tr>
+              ))}
 
               <td></td>
               <td></td>
@@ -172,20 +167,20 @@ const CardHead = styled.div`
     padding: 10px;
     margin-right: auto;
   }
-.CalendarCont{
-  gap:20px;
-}
-
-  
+  .CalendarCont {
+    gap: 20px;
+  }
 `;
 
 const WrapperTable = styled.div`
- max-width: 100%;
-max-height: 400px;
-overflow-y: scroll;
-box-sizing: content-box;
+  max-width: 100%;
+  max-height: 400px;
+  overflow-y: scroll;
+  box-sizing: content-box;
   tbody {
-    .itemUrl{width: 40px}
+    .itemUrl {
+      width: 40px;
+    }
     tr:hover {
       background-color: #d9d9d9;
     }
