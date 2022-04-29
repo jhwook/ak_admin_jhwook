@@ -11,55 +11,126 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider } from "@mui/lab";
 import Stack from "@mui/material/Stack";
 import axios from "axios";
+import moment from "moment";
 
 export const MemberTable = () => {
   const [value, setValue] = useState(new Date());
+  const [date, setDate] = useState({
+    date0: null,
+    date1: null,
+  });
   let navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [rows, setRows] = useState(10);
+  const [searchkey, setSearchKey] = useState(null);
+
+
+  console.log("11", tableData);
+  //pageNation
 
   useEffect(() => {
     axios
-      .get(api.API_USERS)
+      .get(api.API_USERS + `/${page * rows}/${rows}/id/DESC`, {
+        params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
+      })
       .then((res) => {
+        console.log("res", res);
+        setCount(res.data.payload.count);
         setTableData(res?.data?.list);
+        setTotalPages(Math.ceil(res.data.payload.count / rows));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [page, rows, value, searchkey]);
+
+  const handleRows = (event) => {
+    setRows(event.target.value);
+  };
+
+  const onclick_search_Btn = () => {
+    axios
+      .get(api.API_USERS + `/${page * rows}/${rows}/id/DESC`, {
+        params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
+      })
+      .then((res) => {
+        console.log("onclick", res);
+        setCount(res.data.payload.count);
+        setTableData(res?.data?.list);
+        setTotalPages(Math.ceil(res.data.payload.count / rows));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // const queryAkdBalance = (myaddress) => {
+  //   if (myaddress) {
+  //   } else {
+  //     return;
+  //   }
+  //   if (myaddress) {
+  //   } else return;
+  //   query_with_arg({
+  //     contractaddress: addresses.AKD,
+  //     abikind: "ERC20",
+  //     methodname: "balanceOf",
+  //     aargs: [myaddress],
+  //   }).then((resp) => {
+  //     setMyAkdBalance(getethrep("" + resp));
+  //   });
+  // };
+
+  // useEffect(()=>{
+  //    setTimeout(()=>{
+  //     queryAkdBalance()
+  //    },1500)
+  // },[])
 
   return (
     <Container>
       <Wrapper>
         <h1>회원현황</h1>
         <CardHead>
-          <select className="selectCont" aria-label="Default select example">
-            <option selected>10개씩 보기 </option>
-            <option selected>20개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example" value={rows} onChange={handleRows}>
+            <option value={10}>10개씩 보기 </option>
+            <option value={20}>20개씩 보기</option>
           </select>
           <div className="CalendarCont">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DesktopDatePicker
                 label="03/22/2022"
-                value={value}
+                value={date.date0}
                 minDate={new Date("2017-01-01")}
                 onChange={(newValue) => {
-                  setValue(newValue);
+                  setDate({ ...date, date0: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
               <DesktopDatePicker
                 label="03/22/2022"
-                value={value}
+                value={date.date1}
                 minDate={new Date("2017-01-01")}
                 onChange={(newValue) => {
-                  setValue(newValue);
+                  setDate({ ...date, date1: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
           </div>
           <div className="SearchCont">
-            <input className="search" placeholder="검석" />{" "}
-            <SearchOutlined className="iconSerach" />
+            <input
+              className="search"
+              placeholder="검색"
+              onChange={(e) => {
+                setSearchKey(e.target.value);
+              }}
+            />{" "}
+            <SearchOutlined
+              className="iconSerach"
+              onClick={() => {
+                onclick_search_Btn();
+              }}
+            />
           </div>
 
           <div className="excel">EXCEL</div>
@@ -67,7 +138,7 @@ export const MemberTable = () => {
 
         <WrapperTable>
           <Border />
-          <Table responsive="sm">
+          <Table responsive={true}>
             <thead>
               <tr>
                 <th>순서</th>
@@ -87,17 +158,17 @@ export const MemberTable = () => {
                 <tr
                   key={index + 1}
                   onClick={() => {
-                    navigate("/memberInformation");
+                    navigate("/memberInformation", { state: item });
                   }}
                 >
                   <td>{index + 1}</td>
                   <td>{item.username}</td>
-                  <td>{item.id}</td>
-                  <td>409.169 USDT</td>
-                  <td>409.169 USDT</td>
-                  <td>50</td>
-                  <td>1548 AKD</td>
-                  <td> 1548 AKD</td>
+                  <td>{item.nickname}</td>
+                  <td>null</td>
+                  <td>null</td>
+                  <td>null</td>
+                  <td>need akd queries</td>
+                  <td>need akd queries</td>
                   <td>일반</td>
                   <td>{item.createdat}</td>
                 </tr>
@@ -107,7 +178,18 @@ export const MemberTable = () => {
         </WrapperTable>
         <Paginotion>
           <Stack>
-            <Pagination count={2} shape="rounded" />
+            {totalPages > 1 ? (
+              <Pagination
+                onChange={(e, v) => {
+                  setPage(v - 1);
+                }}
+                count={totalPages}
+                showFirstButton
+                showLastButton
+              />
+            ) : (
+              ""
+            )}
           </Stack>
         </Paginotion>
       </Wrapper>
@@ -209,6 +291,7 @@ const CardHead = styled.div`
     .iconSerach {
       position: relative;
       right: 40px;
+      cursor: pointer;
     }
   }
 `;

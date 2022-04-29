@@ -32,7 +32,7 @@ export const sidebar = [
     icon: user_setting_icon,
     hidden: false,
     Child: [
-      { title: "회원형황", params: "members" },
+      { title: "회원현황", params: "members" },
       { title: "회원상세", params: "memberDetails" },
       { title: "Transactions", params: "transactions" },
     ],

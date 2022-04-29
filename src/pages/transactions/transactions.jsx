@@ -6,36 +6,104 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { api } from "../../boot/axios";
 import axios from "axios";
+import { LocalizationProvider } from "@mui/lab";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import moment from "moment";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import TextField from "@mui/material/TextField";
+import { LOGGER, strDot } from "../../utils/common";
 
 export const Transactions = () => {
   let navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const [value, setValue] = useState(new Date());
+  const [date, setDate] = useState({
+    date0: null,
+    date1: null,
+  });
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [rows, setRows] = useState(10);
+  const [searchkey, setSearchKey] = useState(null);
 
   useEffect(() => {
     axios
-      .get(api.API_TRANS)
+      .get(api.API_TRANS + `/${page * rows}/${rows}/id/DESC`, {
+        params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
+      })
       .then((res) => {
-        setTableData(res.data.list);
+        console.log("res", res);
+        setCount(res.data.payload.count);
+        setTableData(res?.data?.list);
+        setTotalPages(Math.ceil(res.data.payload.count / rows));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [page, rows, value, searchkey]);
+
+  const onclick_search_Btn = () => {
+    axios
+      .get(api.API_USERS + `/${page * rows}/${rows}/id/DESC`, {
+        params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
+      })
+      .then((res) => {
+        console.log("onclick", res);
+        setCount(res.data.payload.count);
+        setTableData(res?.data?.list);
+        setTotalPages(Math.ceil(res.data.payload.count / rows));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleRows = (event) => {
+    setRows(event.target.value);
+  };
 
   return (
     <Container>
       <Wrapper>
         <h1>Transactions</h1>
         <CardHead>
-          <select className="selectCont" aria-label="Default select example">
-            <option selected>10개씩 보기 </option>
-            <option selected>20개씩 보기</option>
+          <select className="selectCont" aria-label="Default select example" value={rows} onChange={handleRows}>
+            <option value={10}>10개씩 보기 </option>
+            <option value={20}>20개씩 보기</option>
           </select>
           <div className="CalendarCont">
-            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
-            <CalendarMonthOutlined className="iconCont" />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={date.date0}
+                minDate={new Date("2017-01-01")}
+                onChange={(newValue) => {
+                  setDate({ ...date, date0: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={date.date1}
+                minDate={new Date("2017-01-01")}
+                onChange={(newValue) => {
+                  setDate({ ...date, date1: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
           </div>
           <div className="SearchCont">
-            <input className="search" placeholder="검석" />{" "}
-            <SearchOutlined className="iconSerach" />
+            <input
+              className="search"
+              placeholder="검석"
+              onChange={(e) => {
+                setSearchKey(e.target.value);
+              }}
+            />{" "}
+            <SearchOutlined
+              className="iconSerach"
+              onClick={() => {
+                onclick_search_Btn();
+              }}
+            />
           </div>
 
           <div className="excel">EXCEL</div>
@@ -48,42 +116,56 @@ export const Transactions = () => {
               <tr>
                 <th>순서</th>
                 <th>지갑주소</th>
-                <th>닉네임</th>
-                <th>예치량</th>
+                <th>Contract_type</th>
+                <th>Tx Hash</th>
                 <th>출금량</th>
-                <th>Item 수</th>
-                <th>보유 AKD</th>
-                <th>보유 AKG</th>
-                <th>회원상태</th>
-                <th>가입일</th>
+                <th>User_action</th>
+                <th>token_symbol</th>
+                <th>날짜</th>
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {tableData?.map((item, index) => (
                 <tr
                   key={index + 1}
-                  onClick={() => {
-                    navigate("/memberInformation");
-                  }}
+                  // onClick={() => {
+                  //   navigate("/memberInformation");
+                  // }}
                 >
-                  <td>{index + 1}</td>
-                  <td>{item.username}</td>
                   <td>{item.id}</td>
-                  <td>{item.itemid}</td>
-                  <td>409.169 USDT</td>
-                  <td>50</td>
-                  <td>1548 AKD</td>
-                  <td> 1548 AKD</td>
-                  <td>일반</td>
+                  <td>{strDot(item.username, 3, 13)}</td>
+                  <td>{item.auxdata.contract_type}</td>
+                  <td>{strDot(item.txhash, 3, 13)}</td>
+                  <td>null</td>
+                  <td>{item.auxdata.user_action}</td>
+                  <td>{item.auxdata.to_token_symbol}</td>
                   <td>{item.createdat}</td>
                 </tr>
               ))}
             </tbody>
+
+            {/* "{"user_action":"approve","contract_type":"ERC20",
+            "from_token_contract":"0x798a84fa2a82ec3ef61ae93594605540153d91c0",
+            "my_address":"0x8d41e0fc9abce8d4014dd025392ddb7ae086a795",
+            "to_token":"0x372a404d58badbfd9af4723f03780cc20b7e89e3",
+            "to_token_symbol":"USDT","from_amount":"","to_amount":"","fee_rate":0.2,
+            "fee_amount":0,"nettype":"KLAY_TESTNET"}" */}
           </Table>
         </WrapperTable>
         <Paginotion>
           <Stack>
-            <Pagination count={tableData.length} shape="rounded" />
+            {totalPages > 1 ? (
+              <Pagination
+                onChange={(e, v) => {
+                  setPage(v - 1);
+                }}
+                count={totalPages}
+                showFirstButton
+                showLastButton
+              />
+            ) : (
+              ""
+            )}
           </Stack>
         </Paginotion>
       </Wrapper>

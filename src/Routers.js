@@ -23,8 +23,38 @@ import Iteminformation from "./pages/NftCrurrent/Iteminformation";
 import Myprofile from "./pages/AdminSetting/Myprofile";
 import PullmnagmentRegister from "./pages/PullManagment/PullManagmentRegister";
 import Transactions from "./pages/transactions/transactions";
+import { useEffect } from "react";
 
 const Routers = () => {
+  let accounts;
+  let { klaytn } = window;
+  klaytn.on("accountsChanged", function (acc) {
+    accounts = acc;
+    if (accounts && accounts.length > 0) {
+      // alert(accounts);
+      // display_button(true);
+    } else {
+      // display_button(false);
+    }
+  });
+
+  const kaikas_connect = async () => {
+    if (typeof window.klaytn !== "undefined") {
+      const provider = window["klaytn"];
+      // Kaikas user detected. You can now use the provider.
+      try {
+        const accounts = await klaytn.enable();
+        console.log("provider", provider, "accounts", accounts);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    kaikas_connect();
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />

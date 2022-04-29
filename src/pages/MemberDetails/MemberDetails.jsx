@@ -1,32 +1,16 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
-import MemberDetailsTable from "./MembrDetailsTable";
 
 export const MemberDetails = () => {
   return (
     <Container>
       <LinkCont>
-        <NavLink
-          className={({ isActive = true }) =>
-            isActive ? "minting active" : "minting"
-          }
-          to="/memberDetails"
-          end
-        >
+        <NavLink className={({ isActive = true }) => (isActive ? "minting active" : "minting")} to="/memberDetails" end>
           Minting{" "}
         </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? "market active" : "market")}
-          to="market"
-        >
+        <NavLink className={({ isActive }) => (isActive ? "market active" : "market")} to="market">
           Market
-        </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? "lend active" : "lend")}
-          to="lend"
-        >
-          Lend
         </NavLink>
       </LinkCont>
       <Outlet />

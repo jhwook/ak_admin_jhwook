@@ -4,6 +4,48 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 export const Lend = () => {
+  // const queryApproval = () => {
+  //   // let myaddress = getmyaddress(wallet);
+  //   // let myaddress = "0xcfafe47dd0089ededd844c6387ca31474cc4c3d4";
+  //   let myaddress = "0x2B843A7f3D62b2DfA77f404D07DddaaA62325510";
+  //   // let myaddress = "0x2B843A7f3D62b2DfA77f404D07DddaaA62325510";
+  //   if (myaddress) {
+  //   } else {
+  //     return;
+  //   }
+  //   query_with_arg({
+  //     contractaddress: contract,
+  //     abikind: "ERC721",
+  //     methodname: "isApprovedForAll",
+  //     aargs: [myaddress, contractEmployer],
+  //   }).then((res) => {
+  //     console.log("approval", res);
+  //     setIsApproved(res);
+  //   });
+  // };
+
+  // useEffect(
+  //   (_) => {
+  //     // let myaddress = getmyaddress(wallet);
+  //     // let myaddress = "0xcfafe47dd0089ededd844c6387ca31474cc4c3d4";
+  //     let myaddress = "0x2B843A7f3D62b2DfA77f404D07DddaaA62325510";
+  //     if (contract && contractEmployer) {
+  //     } else return;
+  //     console.log("MYADDRESS", myaddress);
+  //     setTimeout(() => {
+  //       queryTotalSupply();
+  //       query_claimed_reward();
+  //       querychain();
+  //       queryTotalMinted();
+  //       queryApproval();
+  //       query_approval_employer_contract();
+  //       queryMyAkgBalance();
+  //       queryClaimableAmount();
+  //     }, 1500);
+  //   },
+  //   [contract, contractEmployer]
+  // );
+
   return (
     <Container>
       <Wrapper>
@@ -17,8 +59,7 @@ export const Lend = () => {
             <CalendarMonthOutlined className="iconCont" />
           </div>
           <div className="SearchCont">
-            <input className="search" placeholder="검석" />{" "}
-            <SearchOutlined className="iconSerach" />
+            <input className="search" placeholder="검석" /> <SearchOutlined className="iconSerach" />
           </div>
 
           <div className="excel">EXCEL</div>

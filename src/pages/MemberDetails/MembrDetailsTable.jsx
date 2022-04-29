@@ -1,12 +1,10 @@
-import {
-  CalendarMonthOutlined,
-  Close,
-  SearchOutlined,
-} from "@mui/icons-material";
+import { CalendarMonthOutlined, Close, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
+import axios from "axios";
+import { api } from "../../boot/axios";
 
 export const MemberDetailsTable = () => {
   const [open, setOpen] = useState(false);
@@ -14,6 +12,46 @@ export const MemberDetailsTable = () => {
   function handleClick() {
     setOpen(() => !open);
   }
+
+  const [value, setValue] = useState(new Date());
+  const [date, setDate] = useState({
+    date0: null,
+    date1: null,
+  });
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [rows, setRows] = useState(10);
+  const [searchkey, setSearchKey] = useState(null);
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(api.API_TRANSATION + `/${page * rows}/${rows}/id/DESC`, {
+        params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
+      })
+      .then((res) => {
+        console.log("res", res);
+        setCount(res.data.payload.count);
+        setTableData(res?.data?.list);
+        setTotalPages(Math.ceil(res.data.payload.count / rows));
+      })
+      .catch((err) => console.log(err));
+  }, [page, rows, value, searchkey]);
+
+  const onclick_search_Btn = () => {
+    axios
+      .get(api.API_USERS + `/${page * rows}/${rows}/id/DESC`, {
+        params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
+      })
+      .then((res) => {
+        console.log("onclick", res);
+        setCount(res.data.payload.count);
+        setTableData(res?.data?.list);
+        setTotalPages(Math.ceil(res.data.payload.count / rows));
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Container>
@@ -28,8 +66,19 @@ export const MemberDetailsTable = () => {
             <CalendarMonthOutlined className="iconCont" />
           </div>
           <div className="SearchCont">
-            <input className="search" placeholder="검석" />{" "}
-            <SearchOutlined className="iconSerach" />
+            <input
+              className="search"
+              placeholder="검색"
+              onChange={(e) => {
+                setSearchKey(e.target.value);
+              }}
+            />{" "}
+            <SearchOutlined
+              className="iconSerach"
+              onClick={() => {
+                onclick_search_Btn();
+              }}
+            />
           </div>
 
           <div className="excel">EXCEL</div>
@@ -75,7 +124,18 @@ export const MemberDetailsTable = () => {
         </WrapperTable>
         <Paginotion>
           <Stack>
-            <Pagination count={2} shape="rounded" />
+            {totalPages > 1 ? (
+              <Pagination
+                onChange={(e, v) => {
+                  setPage(v - 1);
+                }}
+                count={totalPages}
+                showFirstButton
+                showLastButton
+              />
+            ) : (
+              ""
+            )}
           </Stack>
         </Paginotion>
       </Wrapper>
