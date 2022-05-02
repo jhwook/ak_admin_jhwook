@@ -93,7 +93,7 @@ export const Transactions = () => {
           <div className="SearchCont">
             <input
               className="search"
-              placeholder="검석"
+              placeholder="검색"
               onChange={(e) => {
                 setSearchKey(e.target.value);
               }}
@@ -111,8 +111,8 @@ export const Transactions = () => {
 
         <WrapperTable>
           <Border />
-          <Table className="vaha">
-            <thead className="vaha2">
+          <Table className="sm">
+            <thead>
               <tr>
                 <th>순서</th>
                 <th>지갑주소</th>
@@ -125,31 +125,21 @@ export const Transactions = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData?.map((item, index) => (
-                <tr
-                  key={index + 1}
-                  // onClick={() => {
-                  //   navigate("/memberInformation");
-                  // }}
-                >
-                  <td>{item.id}</td>
-                  <td>{strDot(item.username, 3, 13)}</td>
-                  <td>{item.auxdata.contract_type}</td>
-                  <td>{strDot(item.txhash, 3, 13)}</td>
-                  <td>null</td>
-                  <td>{item.auxdata.user_action}</td>
-                  <td>{item.auxdata.to_token_symbol}</td>
-                  <td>{item.createdat}</td>
-                </tr>
-              ))}
+              {tableData.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{item.id}</td>
+                    <td>{strDot(item.username, 3, 13)}</td>
+                    <td>{item.auxdata.contract_type}</td>
+                    <td>{strDot(item.txhash, 3, 13)}</td>
+                    <td>null</td>
+                    <td>{item.auxdata.user_action}</td>
+                    <td>{item.auxdata.to_token_symbol}</td>
+                    <td>{item.createdat}</td>
+                  </tr>
+                );
+              })}
             </tbody>
-
-            {/* "{"user_action":"approve","contract_type":"ERC20",
-            "from_token_contract":"0x798a84fa2a82ec3ef61ae93594605540153d91c0",
-            "my_address":"0x8d41e0fc9abce8d4014dd025392ddb7ae086a795",
-            "to_token":"0x372a404d58badbfd9af4723f03780cc20b7e89e3",
-            "to_token_symbol":"USDT","from_amount":"","to_amount":"","fee_rate":0.2,
-            "fee_amount":0,"nettype":"KLAY_TESTNET"}" */}
           </Table>
         </WrapperTable>
         <Paginotion>

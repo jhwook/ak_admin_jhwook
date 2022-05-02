@@ -27,7 +27,6 @@ export const MemberTable = () => {
   const [rows, setRows] = useState(10);
   const [searchkey, setSearchKey] = useState(null);
 
-
   console.log("11", tableData);
   //pageNation
 
@@ -62,29 +61,6 @@ export const MemberTable = () => {
       })
       .catch((err) => console.log(err));
   };
-
-  // const queryAkdBalance = (myaddress) => {
-  //   if (myaddress) {
-  //   } else {
-  //     return;
-  //   }
-  //   if (myaddress) {
-  //   } else return;
-  //   query_with_arg({
-  //     contractaddress: addresses.AKD,
-  //     abikind: "ERC20",
-  //     methodname: "balanceOf",
-  //     aargs: [myaddress],
-  //   }).then((resp) => {
-  //     setMyAkdBalance(getethrep("" + resp));
-  //   });
-  // };
-
-  // useEffect(()=>{
-  //    setTimeout(()=>{
-  //     queryAkdBalance()
-  //    },1500)
-  // },[])
 
   return (
     <Container>
@@ -138,7 +114,7 @@ export const MemberTable = () => {
 
         <WrapperTable>
           <Border />
-          <Table responsive={true}>
+          <Table>
             <thead>
               <tr>
                 <th>순서</th>
@@ -156,12 +132,12 @@ export const MemberTable = () => {
             <tbody>
               {tableData?.map((item, index) => (
                 <tr
-                  key={index + 1}
+                  key={index}
                   onClick={() => {
                     navigate("/memberInformation", { state: item });
                   }}
                 >
-                  <td>{index + 1}</td>
+                  <td>{item.id}</td>
                   <td>{item.username}</td>
                   <td>{item.nickname}</td>
                   <td>null</td>
