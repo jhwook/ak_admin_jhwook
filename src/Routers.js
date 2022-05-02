@@ -20,6 +20,7 @@ import TokenMember from "./pages/TokenMember/TokenMember";
 import Buy from "./pages/But/Buy";
 import Sell from "./pages/But/Sell";
 import Iteminformation from "./pages/NftCrurrent/Iteminformation";
+import AkgApprove from "./pages/AkgApprove";
 import Myprofile from "./pages/AdminSetting/Myprofile";
 import PullmnagmentRegister from "./pages/PullManagment/PullManagmentRegister";
 import Transactions from "./pages/transactions/transactions";
@@ -88,6 +89,7 @@ const Routers = () => {
       <Route path="/iteminformation" element={<Iteminformation />} />
       <Route path="/myProfile" element={<Myprofile />} />
       <Route path="/pullmnagmentRegister" element={<PullmnagmentRegister />} />
+      <Route path="/akgApprove" element={<AkgApprove />} />
     </Routes>
   );
 };
