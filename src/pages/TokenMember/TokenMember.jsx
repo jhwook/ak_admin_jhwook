@@ -1,26 +1,72 @@
+import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
 import { Pagination, Stack } from "@mui/material";
-import { Checkbox } from "antd";
-import React from "react";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { Checkbox, Switch } from "antd";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
+// import { tokenList } from "../../boot/axios";
+import { api } from "../../boot/axios";
+import axios from "axios";
 
 export const TokenMember = () => {
+  const [open, setOpen] = useState(false);
+  const [register, setRegister] = useState(false);
+  function checkBoxClick() {
+    setOpen(() => !open);
+  }
+  function Register() {
+    setRegister(() => !register);
+  }
+
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(api.API_USERS)
+      .then((res) => {
+        setTableData(res.data.list);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  // const [tableData, setTableData] = useState([]);
+  // useEffect(() => {
+  //   tokenList.get().then(res => {
+  //     setTableData(res.data.list);
+  //   }).catch(err => console.log(err));
+  // }, []);
+
   return (
     <Container>
       <Wrapper>
         <h1>Token 관리</h1>
         <CardHead>
-          <select aria-label="Default select example">
-            <option selected>10개씩 보기</option>
-            <option selected>20개씩 보기</option>
-          </select>
-          <button className="btnDelte">선택삭제</button>
-          <input className="data" placeholder="2022-01-18 ~ 2202-01-28"></input>
-          <input className="search" placeholder="검석"></input>
-          <button className="excel">EXCEL</button>
-        </CardHead>
+          <div className="sizeBTn">
+            <select className="selectCont" aria-label="Default select example">
+              <option selected>10개씩 보기 </option>
+              <option selected>20개씩 보기</option>
+            </select>
+            {open && (
+              <div className="ContDelte">
+                <HighlightOffIcon className="iconDelta" />
+                <div className="btnDelte">선택삭제</div>
+              </div>
+            )}
+          </div>
+          <div className="CalendarCont">
+            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
+            <CalendarMonthOutlined className="iconCont" />
+          </div>
+          <div className="SearchCont">
+            <input className="search" placeholder="검석" />{" "}
+            <SearchOutlined className="iconSerach" />
+          </div>
 
+          <div className="excel" onClick={Register}>
+            등록
+          </div>
+        </CardHead>
         <WrapperTable>
           <Table responsive="sm">
             <thead>
@@ -33,51 +79,195 @@ export const TokenMember = () => {
               <th></th>
               <th></th>
               <th></th>
-              <th></th>
+
+              {/* {tableData.map((item, indexe => ( */}
+
               <tr>
                 <th>
-                  <Checkbox />
+                  <Checkbox onClick={checkBoxClick} />
                 </th>
                 <th>순서</th>
-                <th>거래일시</th>
-                <th>계정</th>
-                <th>출금 Token</th>
-                <th>출금금액</th>
-                <th>체결상태</th>
-                <th>수수료</th>
-                <th>정산금액</th>
-                <th>Transaction</th>
+                <th>토큰명</th>
+                <th>심볼</th>
+                <th>Contract</th>
+                <th>총 수량</th>
+                <th>분배 수량</th>
+                <th>잔여 수량</th>
+                <th>사용여부</th>
               </tr>
+
+              {/* // )))} */}
             </thead>
             <tbody>
-              <tr>
-                <th>
-                  <Checkbox />
-                </th>
-                <td>1</td>
-                <td>2022-01-12 09:50:11</td>
-                <td>@ioisdfsfsdgsg</td>
-                <td>USDT</td>
-                <td>100</td>
-                <td>진행중</td>
-                <td>0.25 AKD</td>
-                <td> 100.25 AKD</td>
-                <td> 0x5906a5c0e5740x5906a5c0e5a5e...</td>
-              </tr>
+              {tableData.map((item, index) => (
+                <tr>
+                  <th>
+                    <Checkbox onClick={checkBoxClick} />
+                  </th>
+                  <td>{index + 1}</td>
+                  <td>{item.name}</td>
+                  <td>AKD</td>
+                  <td>{item.createdat}</td>
+                  <td>264,321</td>
+                  <td>155,506</td>
+                  <td>155,506</td>
+                  <td>
+                    {" "}
+                    <Switch />{" "}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
-
-          {/* <BuysellTable/> */}
+          {register && (
+            <ModalRegister>
+              <h1>토큰 등록</h1>
+              <div className="registerCont">
+                <div className="regText">컨트랙트</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
+              </div>
+              <Border />
+              {/* 2 */}
+              <div className="registerCont">
+                <div className="regText">토큰명 (한글)</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
+              </div>
+              <Border />
+              {/* 3 */}
+              <div className="registerCont">
+                <div className="regText">토큰명 (영문)</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
+              </div>
+              <Border />
+              {/* 4 */}
+              <div className="registerCont">
+                <div className="regText">소수 자릿수</div>
+                <div>
+                  <input className="ModalInput" type="text" />{" "}
+                </div>
+              </div>
+              <Border />
+              {/* 5 */}
+              <div className="registerCont">
+                <div className="regText">심볼</div>
+                <div>
+                  <input
+                    className="ModalInput"
+                    placeholder="이미지를 추가해주세요."
+                    type="text"
+                  />
+                  <button className="regSelect">선택</button>
+                </div>
+              </div>
+              <Border />
+              <div className="regButton">
+                <button className="regCencel" onClick={Register}>
+                  취소
+                </button>
+                <button className="regOk">확인</button>
+              </div>
+            </ModalRegister>
+          )}
         </WrapperTable>
-        <Paginotion>
-          <Stack>
-            <Pagination count={2} shape="rounded" />
-          </Stack>
-        </Paginotion>
       </Wrapper>
     </Container>
   );
 };
+const Border = styled.div`
+  border: 1px solid #e6e6e6;
+`;
+const ModalRegister = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 620px;
+  height: 556px;
+  left: 1096px;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 34px 50px 34px 50px;
+  .regButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    width: 100%;
+    gap: 20px;
+  }
+  .regCencel {
+    width: 230px;
+    height: 54px;
+    background: #f1f2f4;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #7a7a7a;
+  }
+  .regOk {
+    width: 230px;
+    height: 54px;
+    background: #4876ef;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .regSelect {
+    width: 60px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #4876ef;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #4876ef;
+    margin-left: 13px;
+  }
+  .regText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin-right: auto;
+  }
+  .ModalInput {
+    width: 321px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    /* gap: 10px; */
+  }
+  .registerCont {
+    display: flex;
+    margin-bottom: 9px;
+    margin-top: 8px;
+  }
+`;
+
 const Container = styled.div`
   .buysell {
     display: flex;
@@ -89,28 +279,11 @@ const Container = styled.div`
   margin: 44px;
   display: flex;
   flex-direction: column;
-  .data {
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    width: 298px;
-    height: 44px;
-    margin-right: 14px;
-    padding: 20px;
-  }
-  .search {
-    width: 240px;
-    height: 44px;
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-right: 24px;
-    padding: 20px;
-  }
+`;
+const CardHead = styled.div`
+  width: 100%;
+  display: flex;
   .excel {
-    border: none;
     width: 162px;
     height: 44px;
     background: #4876ef;
@@ -121,12 +294,92 @@ const Container = styled.div`
     line-height: 19px;
     text-align: center;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .selectCont {
+    width: 160px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .CalendarCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .data {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconCont {
+      position: relative;
+      right: 40px;
+    }
+  }
+
+  .SearchCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .search {
+      width: 298px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    .iconSerach {
+      position: relative;
+      right: 40px;
+    }
+  }
+
+  .ContDelte {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .btnDelte {
+      width: 160px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .iconDelta {
+      position: relative;
+      left: 40px;
+      color: #4876ef;
+    }
+  }
+  .sizeBTn {
+    width: 400px;
+    display: flex;
+    margin-right: auto;
   }
 `;
-const CardHead = styled.div`
-  width: 100%;
-  height: 44px;
-  .btnDelte {
+
+/* .btnDelte {
     width: 160px;
     height: 44px;
     background: #ffffff;
@@ -135,18 +388,7 @@ const CardHead = styled.div`
     border-radius: 8px;
     margin-right: 346px;
     margin-left: 14px;
-  }
-  select {
-    /* margin-right: 526px; */
-    width: 160px;
-    height: 44px;
-
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    box-sizing: border-box;
-    border-radius: 8px;
-  }
-`;
+  } */
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
@@ -170,7 +412,9 @@ const Wrapper = styled.div`
 `;
 
 const WrapperTable = styled.div`
-  margin-top: 24px;
+  table {
+    cursor: pointer;
+  }
   thead {
     tr {
       background: #f1f2f4;
@@ -190,107 +434,3 @@ const Paginotion = styled.div`
   margin-top: 24px;
 `;
 export default TokenMember;
-
-const ModelTab = styled.div`
-  //   thead {
-  //     border-bottom: 1px solid #f6f6f6;
-  //   }
-  //   input {
-  //     width: 321px;
-  //     height: 38px;
-  //     background: #ffffff;
-  //     border: 1px solid #d9d9d9;
-  //     box-sizing: border-box;
-  //     border-radius: 8px;
-  //   }
-  //   .img {
-  //     width: 248px;
-  //   }
-  //   .btntoken {
-  //     margin-left: 8px;
-  //     width: 60px;
-  //     height: 38px;
-  //     background: #ffffff;
-  //     border: 1px solid #4876ef;
-  //     box-sizing: border-box;
-  //     border-radius: 8px;
-  //   }
-  //   position: absolute;
-  //   padding: 50px 34px;
-  //   width: 540px;
-  //   height: 550px;
-  //   left: 1174px;
-  //   top: 350px;
-  //   background: #ffffff;
-  //   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  //   border-radius: 12px;
-  //   h1 {
-  //     margin-right: auto;
-  //     font-style: normal;
-  //     font-weight: 600;
-  //     font-size: 24px;
-  //     line-height: 36px;
-  //     display: flex;
-  //     align-items: center;
-  //     text-align: center;
-  //     color: #000000;
-  //   }
-  //
-`;
-
-{
-  /* <ModelTab>
-          <Head>
-            <h1> 토큰 등록</h1>
-          </Head>
-          <table className="table table-borderless">
-            <thead>
-              <tr>
-                <th scope="col">컨트랙트</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">토큰명 (한글)</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">토큰명 (영문)</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">소수 자릿수</th>
-                <th scope="col">
-                  <input />
-                </th>
-              </tr>
-            </thead>
-            <thead>
-              <tr>
-                <th scope="col">심볼</th>
-                <th scope="col">
-                  <input className="img" />{" "}
-                  <button className="btntoken">선택</button>{" "}
-                </th>
-                <th scope="col"> </th>
-              </tr>
-            </thead>
-          </table>
-          <BtnCont>
-            <button className="btnTokens">취소</button>
-
-            <button className="btnTokenOk">등록</button>
-          </BtnCont>
-        </ModelTab> */
-}

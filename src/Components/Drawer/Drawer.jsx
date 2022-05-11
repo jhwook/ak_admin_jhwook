@@ -6,7 +6,7 @@ import up_arrow_icon from "../../assets/icons/up-arrow-icon.svg";
 import down_arrow_icon from "../../assets/icons/down-arrow-icon.svg";
 import styled from "styled-components";
 
-const DrawerField = ({ title, childItems, Icon }) => {
+const DrawerField = ({ title, childItems, setting_icon }) => {
   const [open, setOpen] = useState(false);
 
   const onClick = () => {
@@ -26,10 +26,12 @@ const DrawerField = ({ title, childItems, Icon }) => {
         <div
           style={{
             display: "flex",
+            gap: "11px",
           }}
         >
-          {/* <img src={Icon} alt="icon" /> */}
-          <Icon />
+          {/* <Icon /> */}
+
+          <img src={setting_icon} alt="icons" />
 
           <ListItemText sx={{ marginLEft: "1.5rem" }} primary={title} />
         </div>

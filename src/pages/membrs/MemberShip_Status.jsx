@@ -6,7 +6,7 @@ export const MemberShipStatus = () => {
 
   return (
     <Container>
-        <MembersTabele/>
+      <MembersTabele />
     </Container>
   );
 };
@@ -21,6 +21,7 @@ const Wrapper = styled.div`
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   margin: 44px;
+
   h1{
     margin: 34px 50px;
 
