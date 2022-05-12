@@ -5,14 +5,17 @@ import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import axios from "axios";
 import { api } from "../../boot/axios";
+import { LocalizationProvider } from "@mui/lab";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import TextField from "@mui/material/TextField";
+import moment from "moment";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import { strDot } from "../../utils/common";
+
 
 export const MemberDetailsTable = () => {
   const [open, setOpen] = useState(false);
-
-  function handleClick() {
-    setOpen(() => !open);
-  }
-
+  const [item, setItem] = useState({});
   const [value, setValue] = useState(new Date());
   const [date, setDate] = useState({
     date0: null,
@@ -24,6 +27,15 @@ export const MemberDetailsTable = () => {
   const [rows, setRows] = useState(10);
   const [searchkey, setSearchKey] = useState(null);
   const [tableData, setTableData] = useState([]);
+
+  function handleClick(item) {
+    console.log(item);
+    setOpen(() => !open);
+    if(!open) setItem(item);
+    else setItem({});
+  }
+
+  console.log("11", tableData);
 
   useEffect(() => {
     axios
@@ -39,9 +51,13 @@ export const MemberDetailsTable = () => {
       .catch((err) => console.log(err));
   }, [page, rows, value, searchkey]);
 
+  const handleRows = (event) => {
+    setRows(event.target.value);
+  };
+
   const onclick_search_Btn = () => {
     axios
-      .get(api.API_USERS + `/${page * rows}/${rows}/id/DESC`, {
+      .get(api.API_TRANSATION + `/${page * rows}/${rows}/id/DESC`, {
         params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
       })
       .then((res) => {
@@ -56,14 +72,32 @@ export const MemberDetailsTable = () => {
   return (
     <Container>
       <Wrapper>
-        <CardHead>
-          <select className="selectCont" aria-label="Default select example">
-            <option selected>10개씩 보기 </option>
-            <option selected>20개씩 보기</option>
+      <CardHead>
+          <select className="selectCont" aria-label="Default select example" value={rows} onChange={handleRows}>
+            <option value={10}>10개씩 보기 </option>
+            <option value={20}>20개씩 보기</option>
           </select>
           <div className="CalendarCont">
-            <input className="data" placeholder="2022-01-18 ~ 2202-01-28" />
-            <CalendarMonthOutlined className="iconCont" />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={date.date0}
+                minDate={new Date("2017-01-01")}
+                onChange={(newValue) => {
+                  setDate({ ...date, date0: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+              <DesktopDatePicker
+                label="03/22/2022"
+                value={date.date1}
+                minDate={new Date("2017-01-01")}
+                onChange={(newValue) => {
+                  setDate({ ...date, date1: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
           </div>
           <div className="SearchCont">
             <input
@@ -105,20 +139,25 @@ export const MemberDetailsTable = () => {
             </thead>
 
             <tbody>
-              <tr onClick={handleClick}>
-                <td>1</td>
-                <td> 2022-01-12 09:50:11</td>
+              {tableData?.map((item, index) =>( 
+              <tr 
+                key={index}
+                onClick={() => handleClick(item)}
+              >
+                <td>{item.id}</td>
+                <td>{moment(item.createdat).format("YYYY-MM-DD HH:mm:ss")}</td>
                 <td>Friends #002</td>
-                <td>100 AKD</td>
+                <td>{item.price ? item.price : 0}</td>
                 <td>Or 13</td>
-                <td>경매</td>
+                <td>{JSON.parse(item.auxdata).contract_type}</td>
                 <td>진행중</td>
-                <td> 100 AKD</td>
-                <td>@Kimsdjfkdfl</td>
-                <td>@ioimmoj</td>
-                <td>0.25 AKD</td>
-                <td>0x5906a5c0e5747ee...</td>
+                <td>0</td>
+                <td>{item.seller ? item.seller : "-"}</td>
+                <td>{item.buyer ? item.buyer : "-"}</td>
+                <td>0</td>
+                <td>{strDot(item.txhash, 3, 13)}</td>
               </tr>
+              ))}
             </tbody>
           </Table>
         </WrapperTable>
@@ -150,7 +189,7 @@ export const MemberDetailsTable = () => {
             <thead>
               <tr>
                 <th scope="col">거래일시</th>
-                <th scope="col">2022-01-12 09:50:11</th>
+                <th scope="col">{moment(item.createdat).format('YYYY-MM-DD HH:mm:ss')}</th>
               </tr>
             </thead>
             <thead>
@@ -168,20 +207,20 @@ export const MemberDetailsTable = () => {
             <thead>
               <tr>
                 <td>판매자</td>
-                <td>@dgjgj</td>
+                <td>{item.seller}</td>
               </tr>
             </thead>
 
             <thead>
               <tr>
                 <td>구매자</td>
-                <td>@fdhdh3</td>
+                <td>{item.buyer}</td>
               </tr>
             </thead>
             <thead>
               <tr>
                 <td>결제금액</td>
-                <td>100 AKD</td>
+                <td>{item.price ? item.price : 0}</td>
               </tr>
             </thead>
 
@@ -334,14 +373,25 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 1526px;
-  height: 529px;
+  height: 734px;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  table {
-    cursor: pointer;
+  h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
   }
   table {
+    box-sizing: border-box;
     cursor: pointer;
   }
   tbody {
@@ -351,8 +401,20 @@ const Wrapper = styled.div`
   }
 `;
 
+
 const WrapperTable = styled.div`
   margin-top: 24px;
+  max-width: 100%;
+  max-height: 700px;
+  overflow-y: scroll;
+  box-sizing: content-box;
+
+  thead {
+    tr {
+      max-width: 50px;
+      overflow-x: hidden;
+    }
+  }
 `;
 const Paginotion = styled.div`
   display: flex;

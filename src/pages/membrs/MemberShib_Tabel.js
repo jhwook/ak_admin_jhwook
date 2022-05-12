@@ -1,17 +1,17 @@
-import { CalendarMonthOutlined, SearchOutlined } from "@mui/icons-material";
-import { Pagination, TableCell } from "@mui/material";
-import { React, useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { api } from "../../boot/axios";
-import TextField from "@mui/material/TextField";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import { LocalizationProvider } from "@mui/lab";
-import Stack from "@mui/material/Stack";
-import axios from "axios";
-import moment from "moment";
+import { CalendarMonthOutlined, SearchOutlined } from '@mui/icons-material';
+import { Pagination, TableCell } from '@mui/material';
+import { React, useState, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { api } from '../../boot/axios';
+import TextField from '@mui/material/TextField';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import { LocalizationProvider } from '@mui/lab';
+import Stack from '@mui/material/Stack';
+import axios from 'axios';
+import moment from 'moment';
 
 export const MemberTable = () => {
   const [value, setValue] = useState(new Date());
@@ -27,18 +27,28 @@ export const MemberTable = () => {
   const [rows, setRows] = useState(10);
   const [searchkey, setSearchKey] = useState(null);
 
-  console.log("11", tableData);
+  console.log('11', tableData);
   //pageNation
 
   useEffect(() => {
+    setTableData([]);
     axios
       .get(api.API_USERS + `/${page * rows}/${rows}/id/DESC`, {
         params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
       })
       .then((res) => {
-        console.log("res", res);
+        const arr = res.data.list;
+        res.data.list.map((data, index) => {
+          axios
+            .get(`${api.API_COUNT}/items/username/${data.username}`)
+            .then(({ data }) => {
+              let { count } = data;
+              arr[index]['itemcount'] = count;
+              setTableData((pre) => [...arr]);
+            });
+        });
+        console.log('res', res);
         setCount(res.data.payload.count);
-        setTableData(res?.data?.list);
         setTotalPages(Math.ceil(res.data.payload.count / rows));
       })
       .catch((err) => console.log(err));
@@ -54,7 +64,7 @@ export const MemberTable = () => {
         params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
       })
       .then((res) => {
-        console.log("onclick", res);
+        console.log('onclick', res);
         setCount(res.data.payload.count);
         setTableData(res?.data?.list);
         setTotalPages(Math.ceil(res.data.payload.count / rows));
@@ -67,7 +77,12 @@ export const MemberTable = () => {
       <Wrapper>
         <h1>회원현황</h1>
         <CardHead>
-          <select className="selectCont" aria-label="Default select example" value={rows} onChange={handleRows}>
+          <select
+            className="selectCont"
+            aria-label="Default select example"
+            value={rows}
+            onChange={handleRows}
+          >
             <option value={10}>10개씩 보기 </option>
             <option value={20}>20개씩 보기</option>
           </select>
@@ -76,18 +91,24 @@ export const MemberTable = () => {
               <DesktopDatePicker
                 label="03/22/2022"
                 value={date.date0}
-                minDate={new Date("2017-01-01")}
+                minDate={new Date('2017-01-01')}
                 onChange={(newValue) => {
-                  setDate({ ...date, date0: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
+                  setDate({
+                    ...date,
+                    date0: moment(newValue).format('YYYY-MM-DD HH:mm:ss'),
+                  });
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
               <DesktopDatePicker
                 label="03/22/2022"
                 value={date.date1}
-                minDate={new Date("2017-01-01")}
+                minDate={new Date('2017-01-01')}
                 onChange={(newValue) => {
-                  setDate({ ...date, date1: moment(newValue).format("YYYY-MM-DD HH:mm:ss") });
+                  setDate({
+                    ...date,
+                    date1: moment(newValue).format('YYYY-MM-DD HH:mm:ss'),
+                  });
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
@@ -100,7 +121,7 @@ export const MemberTable = () => {
               onChange={(e) => {
                 setSearchKey(e.target.value);
               }}
-            />{" "}
+            />{' '}
             <SearchOutlined
               className="iconSerach"
               onClick={() => {
@@ -134,19 +155,21 @@ export const MemberTable = () => {
                 <tr
                   key={index}
                   onClick={() => {
-                    navigate("/memberInformation", { state: item });
+                    navigate('/memberInformation', { state: item });
                   }}
                 >
                   <td>{item.id}</td>
                   <td>{item.username}</td>
                   <td>{item.nickname}</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
+                  <td>{item.stakeamout ? item.stakeamout : '-'}</td>
+                  <td>-</td>
+                  <td>{item.itemcount}</td>
                   <td>need akd queries</td>
                   <td>need akd queries</td>
                   <td>일반</td>
-                  <td>{item.createdat}</td>
+                  <td>
+                    {moment(item.createdat).format('YYYY-MM-DD HH:mm:ss')}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -164,7 +187,7 @@ export const MemberTable = () => {
                 showLastButton
               />
             ) : (
-              ""
+              ''
             )}
           </Stack>
         </Paginotion>
@@ -296,6 +319,11 @@ const Wrapper = styled.div`
   table {
     box-sizing: border-box;
     cursor: pointer;
+  }
+  tbody {
+    tr:hover {
+      background-color: #d9d9d9;
+    }
   }
 `;
 

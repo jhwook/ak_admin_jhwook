@@ -9,7 +9,7 @@ import { api } from "../../boot/axios";
 export const MemberInformation = () => {
   const userInfo = useLocation().state;
   const [active, setActive] = useState(userInfo.active === 1 ? true : false);
-
+  console.log(userInfo);
   console.log(active);
 
   const onclick_user_active_btn = () => {
@@ -55,15 +55,15 @@ export const MemberInformation = () => {
               </TabdleCad>
               <TabdleCad>
                 <TableLeft>프로필 아이템</TableLeft>
-                <TableRight>Friends #002????</TableRight>
+                <TableRight>{userInfo.profileimgurl}</TableRight>
               </TabdleCad>
               <TabdleCad>
                 <TableLeft>예치량</TableLeft>
-                <TableRight>1548 USDT?????</TableRight>
+                <TableRight>{userInfo.stakeamount ? userInfo.stakeamount : '-'}</TableRight>
               </TabdleCad>
               <TabdleCad>
                 <TableLeft>출금량</TableLeft>
-                <TableRight>1548 USDT?????</TableRight>
+                <TableRight>출금량</TableRight>
               </TabdleCad>
             </TableCont>
             <TableCont>

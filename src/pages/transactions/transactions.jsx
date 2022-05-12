@@ -27,6 +27,8 @@ export const Transactions = () => {
   const [rows, setRows] = useState(10);
   const [searchkey, setSearchKey] = useState(null);
 
+  console.log('11', tableData)
+
   useEffect(() => {
     axios
       .get(api.API_TRANS + `/${page * rows}/${rows}/id/DESC`, {
@@ -47,7 +49,7 @@ export const Transactions = () => {
         params: { date0: date.date0, date1: date.date1, searchkey: searchkey },
       })
       .then((res) => {
-        console.log("onclick", res);
+        console.log('onclick', res);
         setCount(res.data.payload.count);
         setTableData(res?.data?.list);
         setTotalPages(Math.ceil(res.data.payload.count / rows));
@@ -129,13 +131,13 @@ export const Transactions = () => {
                 return (
                   <tr key={index}>
                     <td>{item.id}</td>
-                    <td>{strDot(item.username, 3, 13)}</td>
-                    <td>{item.auxdata.contract_type}</td>
+                    <td>{item.username}</td>
+                    <td>{JSON.parse(item.auxdata).contract_type}</td>
                     <td>{strDot(item.txhash, 3, 13)}</td>
-                    <td>null</td>
-                    <td>{item.auxdata.user_action}</td>
-                    <td>{item.auxdata.to_token_symbol}</td>
-                    <td>{item.createdat}</td>
+                    <td>{item.priceunit ? item.priceunit : '-'}</td>
+                    <td>{item.typestr}</td>
+                    <td>-</td>
+                    <td>{moment(item.createdat).format("YYYY-MM-DD HH:mm:ss")}</td>
                   </tr>
                 );
               })}

@@ -1,4 +1,4 @@
-const URL = "http://animalkingdom1.net:31273";
+const URL = 'http://animalkingdom1.net:31273';
 
 // const api = axios.create({ baseURL: "http://animalkingdom1.net:31273/queries/rows/users/active/1/10/30/username/DESC" });
 // const trans = axios.create({ baseURL: "http://animalkingdom1.net:31273/queries/rows/transactions/active/1/10/30/username/DESC" });
@@ -15,7 +15,9 @@ const api = {
   API_SET_ACTIVE_USER: `${URL}/users/user_active`,
   API_TRANSATION: `${URL}/queries/rows/transactions/active/1`,
   API_MARKET_SELL_ITEM: `${URL}/queries/rows/items/salestatus/1`,
+  API_COUNT: `${URL}/queries/count`,
 };
-
+// ?userdetail=1
+// ?itemdetail=1
 // export { api, trans, token, pai, item };
 export { api };

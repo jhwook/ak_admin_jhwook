@@ -9,7 +9,7 @@ export const AssetManagment = () => {
   return (
     <Container>
       <Wrapper>
-        <h1>스욉관리</h1>
+        <h1>스왑관리</h1>
         <CardHead>
           <select className="selectCont" aria-label="Default select example">
             <option selected>10개씩 보기 </option>

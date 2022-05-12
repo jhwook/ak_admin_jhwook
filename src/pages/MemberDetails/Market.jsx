@@ -25,6 +25,8 @@ export const Market = () => {
   const [rows, setRows] = useState(10);
   const [searchkey, setSearchKey] = useState(null);
 
+  console.log('11', tableData);
+
   useEffect(() => {
     axios
       .get(api.API_TRANSATION + `/${page * rows}/${rows}/id/DESC`, {
@@ -140,8 +142,8 @@ export const Market = () => {
                     <td>{item.auxdata.contract_type}</td>
                     <td>진행중</td>
                     <td> 100 AKD</td>
-                    <td>{item.seller ? item.seller : "null"}</td>
-                    <td>{item.buyer ? item.buyer : "null"}</td>
+                    <td>{item.seller ? item.seller : "-"}</td>
+                    <td>{item.buyer ? item.buyer : "-"}</td>
                     <td>0.25 AKD</td>
                     <td>{strDot(item.txhash, 3, 9)}</td>
                   </tr>
@@ -167,6 +169,8 @@ export const Market = () => {
           </Stack>
         </Paginotion>
       </Wrapper>
+
+      
     </Container>
   );
 };
@@ -255,22 +259,47 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 1526px;
-  height: 529px;
+  height: 734px;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
+  h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+  }
+  table {
+    box-sizing: border-box;
+    cursor: pointer;
+  }
   tbody {
     tr:hover {
       background-color: #d9d9d9;
     }
   }
-  table {
-    cursor: pointer;
-  }
 `;
 
 const WrapperTable = styled.div`
   margin-top: 24px;
+  max-width: 100%;
+  max-height: 700px;
+  overflow-y: scroll;
+  box-sizing: content-box;
+
+  thead {
+    tr {
+      max-width: 50px;
+      overflow-x: hidden;
+    }
+  }
 `;
 const Paginotion = styled.div`
   display: flex;
