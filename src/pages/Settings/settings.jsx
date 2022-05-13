@@ -12,7 +12,7 @@ export const Settings = () => {
        
     <thead>
       <tr>
-        <th>수수료 적요 (%)</th>
+        <th>수수료 적용 (%)</th>
         <th>회원 설정 범위</th>
         <th>지급 기준</th>
         <th>지급주기</th>

@@ -188,7 +188,7 @@ const CardHead = styled.div`
   display: flex;
   .excel {
     width: 162px;
-    height: 44px;
+    height: 58px;
     background: #4876ef;
     border-radius: 8px;
     font-style: normal;
@@ -216,6 +216,8 @@ const CardHead = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    margin-right: 14px;
+    gap: 20px;
     .data {
       width: 298px;
       height: 44px;
@@ -239,7 +241,7 @@ const CardHead = styled.div`
     align-items: center;
     .search {
       width: 298px;
-      height: 44px;
+      height: 58px;
       background: #ffffff;
       border: 1px solid #d9d9d9;
       box-sizing: border-box;
@@ -251,6 +253,7 @@ const CardHead = styled.div`
     .iconSerach {
       position: relative;
       right: 40px;
+      cursor: pointer;
     }
   }
 `;

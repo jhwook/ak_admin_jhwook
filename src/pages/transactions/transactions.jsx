@@ -132,11 +132,11 @@ export const Transactions = () => {
                   <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.username}</td>
-                    <td>{JSON.parse(item.auxdata).contract_type}</td>
+                    <td>{JSON.parse(item.auxdata).contract_type ? JSON.parse(item.auxdata).contract_type : '-'}</td>
                     <td>{strDot(item.txhash, 3, 13)}</td>
-                    <td>{item.priceunit ? item.priceunit : '-'}</td>
+                    <td>{JSON.parse(item.auxdata).toAmount ? parseFloat(JSON.parse(item.auxdata).toAmount).toFixed(6) : '-'}</td>
                     <td>{item.typestr}</td>
-                    <td>-</td>
+                    <td>{JSON.parse(item.auxdata).rewardTokenSymbol ? JSON.parse(item.auxdata).rewardTokenSymbol : '-'}</td>
                     <td>{moment(item.createdat).format("YYYY-MM-DD HH:mm:ss")}</td>
                   </tr>
                 );
@@ -194,7 +194,7 @@ const CardHead = styled.div`
   display: flex;
   .excel {
     width: 162px;
-    height: 44px;
+    height: 58px;
     background: #4876ef;
     border-radius: 8px;
     font-style: normal;
@@ -222,6 +222,8 @@ const CardHead = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    margin-right: 14px;
+    gap: 20px;
     .data {
       width: 298px;
       height: 44px;
@@ -245,7 +247,7 @@ const CardHead = styled.div`
     align-items: center;
     .search {
       width: 298px;
-      height: 44px;
+      height: 58px;
       background: #ffffff;
       border: 1px solid #d9d9d9;
       box-sizing: border-box;
@@ -257,6 +259,7 @@ const CardHead = styled.div`
     .iconSerach {
       position: relative;
       right: 40px;
+      cursor: pointer;
     }
   }
 `;

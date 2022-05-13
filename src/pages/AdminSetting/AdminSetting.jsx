@@ -27,7 +27,7 @@ export const AdminSetting = () => {
             <CalendarMonthOutlined className="iconCont" />
           </div>
           <div className="SearchCont">
-            <input className="search" placeholder="검석" />{" "}
+            <input className="search" placeholder="검색" />{" "}
             <SearchOutlined className="iconSerach" />
           </div>
 
